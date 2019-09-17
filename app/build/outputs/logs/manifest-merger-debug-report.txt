@@ -1,0 +1,902 @@
+-- Merging decision tree log ---
+provider#android.support.v4.content.FileProvider
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:55:9-63:20
+	android:grantUriPermissions
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:59:13-47
+	android:authorities
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:57:13-60
+	android:exported
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:58:13-37
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:56:13-67
+manifest
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:1-515:12
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:1-515:12
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:1-515:12
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:1-515:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\20176ab96501405af68f8c9dbcfcf8fb\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e47c97812fe0e381c5e7739bb834a02c\AndroidManifest.xml:2:1-11:12
+MERGED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:17:1-48:12
+MERGED from [com.android.support:gridlayout-v7:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-28.0.0.aar\b275d5e74dcc49f777ed339fa125f660\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-location:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.1.aar\459420e1d919cf8b36c3052f0b5e7b85\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.1.aar\c6cfc5a76d4cb1f11c43e2dc573030a9\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\35b925c055c0fdc3264480823593b76d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.maps.android:android-maps-utils:0.4] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\android-maps-utils-0.4.aar\3056a0a141b1e8af41433c248fc27777\AndroidManifest.xml:2:1-13:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\cdabdc1f3ecf60e57093385e0603e855\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\5d4fdf6601de83b6f0ca84affe937de3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\d30f393a7fc59c1ac44fdca918ab8419\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\77b3b7fa87f92c7b7b73183ddd75ee0a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\7c927b6ffb3efbef030aa5af79550b4d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\48c1a09d8c8a97e397b23a20303fa302\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\500a28ee3167427ad5f12fe1a006809f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\e3baa6f4d8a102e37f3d402bbe645da5\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\dd74327bafc6127d0e7467eba4462368\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\2d228e0389a29131ea46469ceccca132\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\e992d9cef01fb277f944bc573d0e38a6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\09049c50fe77ca71930689b90f458753\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\850f4c5c7f5bec493ad4268baf12137f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\36add3b2604fefe0e890e637b01ee44a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6dc367033425873a22f8bcded1cb950b\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\eb369f984f937740d28348627aec5475\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\b213547e79e451d66c77cff86360e320\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7275d2fbad1c3804869ce1602735be78\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9f7256c1bb27410add9154f22d453746\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\878b1ae51eda332cb2d7f3d671603d54\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\59f5ca6aa03cbddc42d4bed57f9ea6a6\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\7c4b9f7cbba93abddd3cfaed72d744b4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\b61e9c518d19895fc189461dd51106f3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\ee881ef2ff66ed947047a388f24ff453\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\8fcfb9db8367762fa75ee825c4579433\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\04a38df6d09df27c69f23c66fe9ee0dd\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-location-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.1.aar\7f181456a26c9bf2814c9210c5145dfe\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.1.aar\25e022b3e2fa11d9317a759273c54fa9\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.1.aar\254dcb7de0d53efaff8014ab3358b65f\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.1.aar\4720f8f0c0ec08ae7b260beb21bbaff1\AndroidManifest.xml:17:1-24:12
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:1-515:12
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:1-515:12
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:1-515:12
+	package
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:4:5-52
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:7:5-31
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:3:5-51
+	xmlns:android
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:6:5-29
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+	android:permission
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:5:5-67
+uses-permission#android.permission.INTERNET
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:9:5-67
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:9:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:10:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:12:5-89
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:12:22-86
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:13:5-79
+MERGED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:30:5-79
+MERGED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:30:5-79
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:13:22-76
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:14:5-75
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:14:22-72
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:15:5-81
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:15:22-78
+uses-permission#android.permission.WRITE_INTERNAL_STORAGE
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:16:5-81
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:16:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:17:5-80
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:17:22-77
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:18:5-81
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:18:22-78
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:19:5-21:47
+	tools:ignore
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:21:9-44
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:20:9-57
+uses-permission#android.permission.SEND_SMS
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:22:5-67
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:22:22-64
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:23:5-70
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:23:22-67
+uses-permission#android.permission.WAKE_LOCK
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:24:5-68
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:24:22-65
+uses-feature#android.hardware.sensor.accelerometer
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:26:5-28:35
+	android:required
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:28:9-32
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:27:9-61
+application
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:30:5-513:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e47c97812fe0e381c5e7739bb834a02c\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e47c97812fe0e381c5e7739bb834a02c\AndroidManifest.xml:9:5-20
+MERGED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:32:5-46:19
+MERGED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:32:5-46:19
+MERGED from [com.google.android.gms:play-services-location:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.1.aar\459420e1d919cf8b36c3052f0b5e7b85\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.1.aar\459420e1d919cf8b36c3052f0b5e7b85\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.1.aar\c6cfc5a76d4cb1f11c43e2dc573030a9\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.1.aar\c6cfc5a76d4cb1f11c43e2dc573030a9\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.maps.android:android-maps-utils:0.4] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\android-maps-utils-0.4.aar\3056a0a141b1e8af41433c248fc27777\AndroidManifest.xml:7:5-11:19
+MERGED from [com.google.maps.android:android-maps-utils:0.4] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\android-maps-utils-0.4.aar\3056a0a141b1e8af41433c248fc27777\AndroidManifest.xml:7:5-11:19
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6dc367033425873a22f8bcded1cb950b\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6dc367033425873a22f8bcded1cb950b\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\eb369f984f937740d28348627aec5475\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\eb369f984f937740d28348627aec5475\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-location-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.1.aar\7f181456a26c9bf2814c9210c5145dfe\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-location-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.1.aar\7f181456a26c9bf2814c9210c5145dfe\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.1.aar\25e022b3e2fa11d9317a759273c54fa9\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.1.aar\25e022b3e2fa11d9317a759273c54fa9\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.1.aar\254dcb7de0d53efaff8014ab3358b65f\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.1.aar\254dcb7de0d53efaff8014ab3358b65f\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.1.aar\4720f8f0c0ec08ae7b260beb21bbaff1\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.1.aar\4720f8f0c0ec08ae7b260beb21bbaff1\AndroidManifest.xml:22:5-20
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6dc367033425873a22f8bcded1cb950b\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:34:9-35
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:37:9-39
+	android:hardwareAccelerated
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:31:9-44
+	android:largeHeap
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:33:9-33
+	android:icon
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:36:9-50
+	android:allowBackup
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:32:9-35
+	android:theme
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:39:9-43
+	android:networkSecurityConfig
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:38:9-69
+	android:usesCleartextTraffic
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:40:9-44
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:35:9-85
+activity#com.lk.lankabell.android.activity.tsr.activity.SplashActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:41:9-53:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:44:13-49
+	android:theme
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:43:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:42:13-52
+intent-filter#action:name:com.lk.lankabell.android.activity.tsr+category:name:android.intent.category.DEFAULT
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:46:13-52:29
+category#android.intent.category.DEFAULT
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:48:17-76
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:48:27-73
+action#com.lk.lankabell.android.activity.tsr
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:50:17-80
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:50:25-77
+uses-library#org.apache.http.legacy
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:65:9-67:40
+	android:required
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:67:13-37
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:66:13-50
+activity#com.lk.lankabell.android.activity.tsr.activity.LoginPage
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:69:9-78:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:72:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:71:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:70:13-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:73:13-77:29
+action#android.intent.action.MAIN
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:74:17-69
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:74:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:76:17-77
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:76:27-74
+service#com.lk.lankabell.android.activity.tsr.activity.BackgroundService
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:89:9-96:19
+	android:process
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:92:13-38
+	android:exported
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:91:13-37
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:90:13-55
+intent-filter#action:name:com.lk.lankabell.android.activity.BackgroundService
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:93:13-95:29
+action#com.lk.lankabell.android.activity.BackgroundService
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:94:17-94
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:94:25-91
+activity#com.lk.lankabell.android.activity.tsr.activity.FaultActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:102:9-113:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:107:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:105:13-42
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:104:13-63
+	android:logo
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:106:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:103:13-51
+intent-filter#action:name:android.intent.action.DEFAULT+category:name:android.intent.category.LAUNCHER
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:108:13-112:29
+action#android.intent.action.DEFAULT
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:109:17-72
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:109:25-69
+activity#com.lk.lankabell.android.activity.tsr.activity.MySynchReports
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:114:9-125:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:119:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:117:13-43
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:116:13-63
+	android:logo
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:118:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:115:13-52
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantInventoryMerchantList
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:126:9-137:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:131:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:129:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:128:13-63
+	android:logo
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:130:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:127:13-67
+activity#com.lk.lankabell.android.activity.tsr.activity.CreateTable
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:138:9-149:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:143:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:141:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:140:13-63
+	android:logo
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:142:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:139:13-49
+activity#com.lk.lankabell.android.activity.tsr.activity.tsrInventory
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:150:9-161:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:155:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:154:13-43
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:152:13-63
+	android:icon
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:153:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:151:13-50
+activity#com.lk.lankabell.android.activity.tsr.activity.SalesSelectType
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:172:9-183:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:177:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:176:13-41
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:174:13-63
+	android:icon
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:175:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:173:13-53
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantInventoryDetails
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:184:9-195:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:189:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:188:13-48
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:186:13-63
+	android:icon
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:187:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:185:13-62
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantInventoryTable
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:196:9-207:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:201:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:200:13-48
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:198:13-63
+	android:icon
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:199:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:197:13-60
+activity#com.lk.lankabell.android.activity.tsr.activity.LocationActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:208:9-219:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:213:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:212:13-43
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:210:13-63
+	android:icon
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:211:13-42
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:209:13-54
+activity#com.lk.lankabell.android.activity.tsr.activity.home
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:220:9-230:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:224:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:223:13-39
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:222:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:221:13-42
+activity#com.lk.lankabell.android.activity.tsr.activity.MainRadioActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:231:9-241:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:235:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:234:13-38
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:233:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:232:13-55
+activity#com.lk.lankabell.android.activity.tsr.activity.SubMenuActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:242:9-252:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:246:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:245:13-48
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:244:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:243:13-53
+activity#com.lk.lankabell.android.activity.tsr.activity.CardSaleActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:253:9-263:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:257:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:256:13-39
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:255:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:254:13-54
+activity#com.lk.lankabell.android.activity.tsr.activity.RemarksActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:264:9-274:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:268:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:267:13-42
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:266:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:265:13-53
+activity#com.lk.lankabell.android.activity.tsr.activity.SelectorActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:275:9-279:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:279:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:278:13-38
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:277:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:276:13-54
+activity#com.lk.lankabell.android.activity.tsr.activity.LocationRegisterActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:280:9-284:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:284:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:283:13-46
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:282:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:281:13-62
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:285:9-289:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:289:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:288:13-43
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:287:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:286:13-54
+activity#com.lk.lankabell.android.activity.tsr.activity.SelectMerchant
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:290:9-300:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:294:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:293:13-44
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:292:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:291:13-52
+activity#com.lk.lankabell.android.activity.tsr.activity.faultTicket
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:301:9-305:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:305:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:304:13-41
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:303:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:302:13-49
+activity#com.lk.lankabell.android.activity.tsr.activity.faultMaterial
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:306:9-310:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:310:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:309:13-44
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:308:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:307:13-51
+activity#com.lk.lankabell.android.activity.tsr.activity.mysales
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:316:9-320:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:320:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:319:13-37
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:318:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:317:13-45
+activity#com.lk.lankabell.android.activity.tsr.activity.Updates
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:321:9-325:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:325:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:324:13-36
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:323:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:322:13-45
+activity#com.lk.lankabell.android.activity.tsr.activity.bulkAccept
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:326:9-330:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:330:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:329:13-45
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:328:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:327:13-48
+activity#com.lk.lankabell.android.activity.tsr.activity.CardDetails
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:331:9-335:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:335:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:334:13-37
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:333:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:332:13-49
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantInventoryCitySelect
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:340:9-343:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:343:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:342:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:341:13-65
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantInventoryCitySelectFinal
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:344:9-347:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:347:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:346:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:345:13-70
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantJobs
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:348:9-351:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:351:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:350:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:349:13-50
+activity#com.lk.lankabell.android.activity.tsr.activity.AddMerchant
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:352:9-355:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:355:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:354:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:353:13-49
+activity#com.lk.lankabell.android.activity.tsr.activity.AssignMerchant
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:356:9-365:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:359:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:358:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:357:13-52
+activity#com.lk.lankabell.android.activity.tsr.activity.EditMerchantFinal
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:366:9-369:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:369:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:368:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:367:13-55
+activity#com.lk.lankabell.android.activity.tsr.activity.EditMerchant
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:370:9-373:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:373:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:372:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:371:13-50
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantInventorySelectType
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:374:9-377:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:377:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:376:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:375:13-65
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantMySales
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:378:9-381:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:381:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:380:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:379:13-53
+activity#com.lk.lankabell.android.activity.tsr.activity.MysalesDateWise
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:382:9-385:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:385:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:384:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:383:13-53
+activity#com.lk.lankabell.android.activity.tsr.activity.MysalesCityWise
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:386:9-389:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:389:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:388:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:387:13-53
+activity#com.lk.lankabell.android.activity.tsr.activity.TSRReports
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:390:9-393:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:393:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:392:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:391:13-48
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantViewer
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:394:9-397:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:397:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:396:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:395:13-52
+activity#com.lk.lankabell.android.activity.tsr.activity.MerchantViewerFinal
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:398:9-401:61
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:401:13-49
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:400:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:399:13-57
+activity#com.lk.lankabell.android.activity.tsr.activity.CardCategoryList
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:402:9-412:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:406:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:405:13-39
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:404:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:403:13-54
+activity#com.lk.lankabell.android.activity.tsr.activity.AddCity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:413:9-423:20
+	android:screenOrientation
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:417:13-49
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:416:13-37
+	android:configChanges
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:415:13-63
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:414:13-45
+activity#com.lk.lankabell.android.activity.tsr.activity.CashierModelActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:424:9-426:77
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:426:13-65
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:425:13-58
+activity#com.lk.lankabell.android.activity.tsr.activity.WebMobileProcessors
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:434:9-436:85
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:436:13-73
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:435:13-57
+activity#com.lk.lankabell.android.activity.tsr.activity.Card_Returns
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:437:9-439:77
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:439:13-65
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:438:13-50
+activity#com.lk.lankabell.android.activity.tsr.activity.Card_Returns_Details
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:440:9-442:86
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:442:13-74
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:441:13-58
+activity#com.lk.lankabell.android.activity.tsr.activity.Approved_card_returns
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:443:9-445:85
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:445:13-73
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:444:13-59
+activity#com.lk.lankabell.android.activity.tsr.activity.Approved_card_retuns_Details
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:446:9-448:93
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:448:13-81
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:447:13-66
+activity#com.lk.lankabell.android.activity.tsr.activity.AddAttendanceActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:449:9-451:59
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:451:13-47
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:450:13-59
+activity#com.lk.lankabell.android.activity.tsr.tracking.recivers.SendSMSActivity
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:452:9-454:41
+	android:label
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:454:13-29
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:453:13-62
+service#com.lk.lankabell.android.activity.tsr.tracking.services.LocationTrackingService
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:456:9-464:19
+	android:enabled
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:458:13-35
+	android:exported
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:459:13-36
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:457:13-70
+service#com.lk.lankabell.android.activity.tsr.tracking.services.UpdateLocationService
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:465:9-473:19
+	android:enabled
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:467:13-35
+	android:exported
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:468:13-36
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:466:13-68
+receiver#com.lk.lankabell.android.activity.tsr.tracking.recivers.LocationStarterReciver
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:483:9-87
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:483:19-75
+receiver#com.lk.lankabell.android.activity.tsr.tracking.recivers.AutoStartReceiver
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:484:9-496:20
+	android:enabled
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:486:13-35
+	android:exported
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:487:13-36
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:485:13-64
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:android.intent.action.REBOOT+action:name:android.provider.Telephony.SMS_RECEIVED+category:name:android.intent.category.DEFAULT
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:488:13-495:29
+action#android.provider.Telephony.SMS_RECEIVED
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:489:17-82
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:489:25-79
+action#android.intent.action.BOOT_COMPLETED
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:490:17-79
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:490:25-76
+action#android.intent.action.REBOOT
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:491:17-71
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:491:25-68
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:492:17-82
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:492:25-79
+receiver#com.lk.lankabell.android.activity.tsr.tracking.recivers.StatusChangeReceiver
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:497:9-503:20
+	android:exported
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:499:13-36
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:498:13-67
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:500:13-502:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:501:17-79
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:501:25-76
+receiver#com.lk.lankabell.android.activity.tsr.tracking.recivers.GPSStatusChangeReceiver
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:504:9-510:20
+	android:exported
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:506:13-36
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:505:13-70
+intent-filter#action:name:android.location.PROVIDERS_CHANGED
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:507:13-509:29
+action#android.location.PROVIDERS_CHANGED
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:508:17-77
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:508:25-74
+receiver#com.lk.lankabell.android.activity.tsr.tracking.recivers.LocationUpdateReciver
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:511:9-86
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:511:19-74
+receiver#com.lk.lankabell.android.activity.tsr.tracking.recivers.ScreenOnReciver
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:512:9-80
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:512:19-68
+uses-sdk
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\20176ab96501405af68f8c9dbcfcf8fb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\20176ab96501405af68f8c9dbcfcf8fb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e47c97812fe0e381c5e7739bb834a02c\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e47c97812fe0e381c5e7739bb834a02c\AndroidManifest.xml:5:5-7:41
+MERGED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:22:5-24:41
+MERGED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:gridlayout-v7:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-28.0.0.aar\b275d5e74dcc49f777ed339fa125f660\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:gridlayout-v7:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-28.0.0.aar\b275d5e74dcc49f777ed339fa125f660\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.1.aar\459420e1d919cf8b36c3052f0b5e7b85\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-12.0.1.aar\459420e1d919cf8b36c3052f0b5e7b85\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.1.aar\c6cfc5a76d4cb1f11c43e2dc573030a9\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-12.0.1.aar\c6cfc5a76d4cb1f11c43e2dc573030a9\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\35b925c055c0fdc3264480823593b76d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\35b925c055c0fdc3264480823593b76d\AndroidManifest.xml:20:5-44
+MERGED from [com.google.maps.android:android-maps-utils:0.4] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\android-maps-utils-0.4.aar\3056a0a141b1e8af41433c248fc27777\AndroidManifest.xml:5:5-43
+MERGED from [com.google.maps.android:android-maps-utils:0.4] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\android-maps-utils-0.4.aar\3056a0a141b1e8af41433c248fc27777\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\cdabdc1f3ecf60e57093385e0603e855\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\cdabdc1f3ecf60e57093385e0603e855\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\5d4fdf6601de83b6f0ca84affe937de3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\5d4fdf6601de83b6f0ca84affe937de3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\d30f393a7fc59c1ac44fdca918ab8419\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\d30f393a7fc59c1ac44fdca918ab8419\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\77b3b7fa87f92c7b7b73183ddd75ee0a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\77b3b7fa87f92c7b7b73183ddd75ee0a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\7c927b6ffb3efbef030aa5af79550b4d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\7c927b6ffb3efbef030aa5af79550b4d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\48c1a09d8c8a97e397b23a20303fa302\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\48c1a09d8c8a97e397b23a20303fa302\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\500a28ee3167427ad5f12fe1a006809f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\500a28ee3167427ad5f12fe1a006809f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\e3baa6f4d8a102e37f3d402bbe645da5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\e3baa6f4d8a102e37f3d402bbe645da5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\dd74327bafc6127d0e7467eba4462368\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\dd74327bafc6127d0e7467eba4462368\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\2d228e0389a29131ea46469ceccca132\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\2d228e0389a29131ea46469ceccca132\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\e992d9cef01fb277f944bc573d0e38a6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\e992d9cef01fb277f944bc573d0e38a6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\09049c50fe77ca71930689b90f458753\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\09049c50fe77ca71930689b90f458753\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\850f4c5c7f5bec493ad4268baf12137f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\850f4c5c7f5bec493ad4268baf12137f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\36add3b2604fefe0e890e637b01ee44a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\36add3b2604fefe0e890e637b01ee44a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6dc367033425873a22f8bcded1cb950b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\6dc367033425873a22f8bcded1cb950b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\eb369f984f937740d28348627aec5475\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\eb369f984f937740d28348627aec5475\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\b213547e79e451d66c77cff86360e320\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\b213547e79e451d66c77cff86360e320\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7275d2fbad1c3804869ce1602735be78\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7275d2fbad1c3804869ce1602735be78\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9f7256c1bb27410add9154f22d453746\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\9f7256c1bb27410add9154f22d453746\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\878b1ae51eda332cb2d7f3d671603d54\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\878b1ae51eda332cb2d7f3d671603d54\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\59f5ca6aa03cbddc42d4bed57f9ea6a6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\59f5ca6aa03cbddc42d4bed57f9ea6a6\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\7c4b9f7cbba93abddd3cfaed72d744b4\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\7c4b9f7cbba93abddd3cfaed72d744b4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\b61e9c518d19895fc189461dd51106f3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\b61e9c518d19895fc189461dd51106f3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\ee881ef2ff66ed947047a388f24ff453\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\ee881ef2ff66ed947047a388f24ff453\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\8fcfb9db8367762fa75ee825c4579433\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\8fcfb9db8367762fa75ee825c4579433\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\04a38df6d09df27c69f23c66fe9ee0dd\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\04a38df6d09df27c69f23c66fe9ee0dd\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.1.aar\7f181456a26c9bf2814c9210c5145dfe\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-location-license-12.0.1.aar\7f181456a26c9bf2814c9210c5145dfe\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.1.aar\25e022b3e2fa11d9317a759273c54fa9\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.1.aar\25e022b3e2fa11d9317a759273c54fa9\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.1.aar\254dcb7de0d53efaff8014ab3358b65f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-12.0.1.aar\254dcb7de0d53efaff8014ab3358b65f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.1.aar\4720f8f0c0ec08ae7b260beb21bbaff1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks-license:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-12.0.1.aar\4720f8f0c0ec08ae7b260beb21bbaff1\AndroidManifest.xml:20:5-44
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+		INJECTED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:60:13-62:58
+	android:resource
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:62:17-55
+	android:name
+		ADDED from E:\@Naseeha\EditedByMe\NewCardSale\CardSale\app\src\main\AndroidManifest.xml:61:17-67
+service#com.firebase.jobdispatcher.GooglePlayReceiver
+ADDED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:38:9-45:19
+	android:exported
+		ADDED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:40:13-36
+	android:permission
+		ADDED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:41:13-93
+	android:name
+		ADDED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:39:13-73
+intent-filter#action:name:com.google.android.gms.gcm.ACTION_TASK_READY
+ADDED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:42:13-44:29
+action#com.google.android.gms.gcm.ACTION_TASK_READY
+ADDED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:43:17-87
+	android:name
+		ADDED from [com.firebase:firebase-jobdispatcher:0.8.6] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\firebase-jobdispatcher-0.8.6.aar\aa7f18b303a8401d50af5a116660cf78\AndroidManifest.xml:43:25-84
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.1.aar\37b7e51b31d1881d244c58720bfebf00\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.maps.android:android-maps-utils:0.4] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\android-maps-utils-0.4.aar\3056a0a141b1e8af41433c248fc27777\AndroidManifest.xml:8:9-10:69
+MERGED from [com.google.maps.android:android-maps-utils:0.4] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\android-maps-utils-0.4.aar\3056a0a141b1e8af41433c248fc27777\AndroidManifest.xml:8:9-10:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:12.0.1] C:\Users\Hasun\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.1.aar\a57140e84134d9153e6e60df4d2242ca\AndroidManifest.xml:24:13-58

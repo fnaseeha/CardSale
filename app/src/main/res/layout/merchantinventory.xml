@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="false" >
+    
+
+
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:background="@drawable/bgseesecond" >
+
+        <!-- Header  Starts -->
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+            android:orientation="horizontal"
+            android:paddingTop="5dip" >
+
+            <!-- Logo Start -->
+
+            <!-- Logo Ends -->
+        </LinearLayout>
+        <!-- Header Ends -->
+
+
+
+ <!-- Menu -->
+ <AbsoluteLayout
+     android:id="@+id/widget33"
+     android:layout_width="fill_parent" 
+     android:layout_height="570dp">
+    
+    <ListView
+        android:id="@+id/lvMerchantcardDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="426dp"
+        android:layout_x="0dp"
+        android:layout_y="31dp"
+        android:cacheColorHint="#000000"
+        android:dividerHeight="1dip"
+        android:textColor="#0d6b90" >
+
+        </ListView>
+    
+    </AbsoluteLayout>     
+      
+        <!-- Menu Form Ends -->
+
+           <!-- Footer Start -->
+        <!-- Footer Ends -->
+
+
+        
+ 
+</RelativeLayout>
+
+
+</AbsoluteLayout>

@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Approved_card_returns" >
+    
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/card_returns_denomination"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/textView2"
+            android:text="@string/card_returns_start_serial"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/textView3"
+            android:text="@string/card_returns_end_serial"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:text="@string/card_returns_bulkcode"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/textView5"
+            android:text="@string/card_returns_number_of_cards"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView5"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/textView6"
+            android:text="@string/card_returns_return_type"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listcardreturns"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/error_message"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/relativeLayout1" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:onClick="OnClickConfirm"
+        android:text="@string/cashier_model_Button_Confirm" />
+
+    <EditText
+        android:id="@+id/securityCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="@string/cashier_model_hint_Confirm_Code" />
+
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/securityCode"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/red"
+        android:text="" />
+
+</RelativeLayout>

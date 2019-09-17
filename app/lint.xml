@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <issue id="Deprecated">
+        <ignore path="res/layout/activity_approved_card_retuns__details.xml" />
+        <ignore path="res/layout/activity_card__returns__details.xml" />
+    </issue>
+    <issue id="NewApi" severity="ignore" />
+    <issue id="SimpleDateFormat" severity="ignore" />
+    <issue id="UselessLeaf">
+        <ignore path="res/layout/activity_card__returns__details.xml" />
+    </issue>
+    <issue id="UselessParent">
+        <ignore path="res/layout/activity_approved_card_retuns__details.xml" />
+        <ignore path="res/layout/activity_card__returns__details.xml" />
+    </issue>
+</lint>

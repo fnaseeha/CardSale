@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/merchantId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="102dp"
+                android:layout_y="11dp"
+                android:text="Id"
+                android:textSize="2sp"
+                android:visibility="invisible"
+                />
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/merchantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/merchantAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Address"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnEditMerchant"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:padding="12dp"
+                android:layout_height="wrap_content"
+                android:onClick="onClickEditMerchantfirst"
+                android:text="View" 
+                />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

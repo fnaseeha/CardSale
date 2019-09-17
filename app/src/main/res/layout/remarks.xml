@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="6"
+    android:fillViewport="false" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="10dp"
+            android:weightSum="2">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="8dp"
+            android:layout_weight="0.6"
+            android:layout_y="15dp"
+            android:text="Merchant ID :"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_weight="1.4"
+            android:id="@+id/merchantID"
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:layout_x="120dp"
+            android:layout_y="15dp"
+            android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="10dp"
+            android:weightSum="2">
+                <TextView
+                    android:id="@+id/txtMerchant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Merchant :"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/lblMerchantName"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remarks :"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/txtRemark"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:ems="10"
+            android:maxLength="40"
+            android:paddingBottom="10dp"
+            android:hint="Enter Remarks"
+            android:singleLine="false" />
+
+        <Button
+            android:id="@+id/btnCon"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:onClick="saveClickHandlerRemarks"
+            android:text="Save" />
+
+        <TextView
+            android:id="@+id/lblError"
+            android:layout_weight="1"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+</LinearLayout>

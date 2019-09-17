@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.lk.lankabell.android.activity.tsr"
+    android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
+    android:versionCode="20"
+    android:versionName="1.20">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
+    <application
+        android:hardwareAccelerated="false"
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:name="com.lk.lankabell.android.activity.tsr.activity.TSRApplication"
+        android:icon="@drawable/application_icon"
+        android:label="TSR Automation"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/CustomTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:theme="@style/Splash"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.lk.lankabell.android.activity.tsr" />
+
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".activity.LoginPage"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- <activity -->
+        <!-- android:name="com.lk.lankabell.android.tsr.activity.Splash" -->
+        <!-- android:configChanges="orientation|keyboardHidden" -->
+        <!-- android:label="Login " -->
+        <!-- android:logo="@drawable/logo" -->
+        <!-- android:screenOrientation="portrait" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <service
+            android:name=".activity.BackgroundService"
+            android:exported="false"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.lk.lankabell.android.activity.BackgroundService" />
+            </intent-filter>
+        </service> <!-- <receiver android:name="com.lk.lankabell.android.tsr.activity.Autostart" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+        <!-- Entries for Activity classes -->
+        <activity
+            android:name=".activity.FaultActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Fault Ticket "
+            android:logo="@drawable/logo"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MySynchReports"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="MySynchReports"
+            android:logo="@drawable/logo"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MerchantInventoryMerchantList"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Merchant Inventory  "
+            android:logo="@drawable/logo"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.CreateTable"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Merchant Inventory  "
+            android:logo="@drawable/logo"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.tsrInventory"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/logo"
+            android:label="TSR Inventory "
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- <activity -->
+        <!-- android:name="com.lk.lankabell.android.tsr.activity.merchantInventory" -->
+        <!-- android:configChanges="orientation|keyboardHidden" -->
+        <!-- android:icon="@drawable/logo" -->
+        <!-- android:label="Merchant Inventory " -->
+        <!-- android:screenOrientation="portrait" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name=".activity.SalesSelectType"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/logo"
+            android:label="Select Type "
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MerchantInventoryDetails"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/logo"
+            android:label="Merchant Inventory "
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MerchantInventoryTable"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/logo"
+            android:label="Merchant Inventory "
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LocationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:icon="@drawable/logo"
+            android:label="Enter Location"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.home"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Card Sales"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainRadioActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Main Menu"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SubMenuActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Select Your Options"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.CardSaleActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Card Sales"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.RemarksActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Enter Reamrks"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SelectorActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Main Menu"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.LocationRegisterActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Register Location"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MerchantActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Merchants List"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.SelectMerchant"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Select Merchant"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.faultTicket"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Fault Ticket"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.faultMaterial"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Fault Material "
+            android:screenOrientation="portrait"></activity> <!-- <activity -->
+        <!-- android:name="com.lk.lankabell.android.tsr.activity.webser" -->
+        <!-- android:configChanges="orientation|keyboardHidden" -->
+        <!-- android:label="Material Entry" -->
+        <!-- android:screenOrientation="portrait" > -->
+        <!-- </activity> -->
+        <activity
+            android:name=".activity.mysales"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="My Sales"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.Updates"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Updates"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.bulkAccept"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Card Bulk Accept"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.CardDetails"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="My Cards"
+            android:screenOrientation="portrait"></activity> <!-- <activity -->
+        <!-- android:name="com.lk.lankabell.android.tsr.activity.BackgroundServicesDetails" -->
+        <!-- android:configChanges="orientation|keyboardHidden" -->
+        <!-- android:screenOrientation="portrait" > -->
+        <!-- </activity> -->
+        <activity
+            android:name=".activity.MerchantInventoryCitySelect"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MerchantInventoryCitySelectFinal"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MerchantJobs"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.AddMerchant"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.AssignMerchant"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.EditMerchantFinal"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.EditMerchant"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MerchantInventorySelectType"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MerchantMySales"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MysalesDateWise"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MysalesCityWise"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.TSRReports"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MerchantViewer"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MerchantViewerFinal"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.CardCategoryList"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Card Sales"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.AddCity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Add City"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.CashierModelActivity"
+            android:label="@string/title_activity_cashier_model"></activity> <!-- <activity -->
+        <!-- android:name="com.lk.lankabell.android.tsr.activity.Home" -->
+        <!-- android:label="@string/title_activity_home" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name=".activity.WebMobileProcessors"
+            android:label="@string/title_activity_web_mobile_processors"></activity>
+        <activity
+            android:name=".activity.Card_Returns"
+            android:label="@string/title_activity_card__returns"></activity>
+        <activity
+            android:name=".activity.Card_Returns_Details"
+            android:label="@string/title_activity_card__returns__details"></activity>
+        <activity
+            android:name=".activity.Approved_card_returns"
+            android:label="@string/title_activity_approved_card_returns"></activity>
+        <activity
+            android:name=".activity.Approved_card_retuns_Details"
+            android:label="@string/title_activity_approved_card_retuns__details"></activity>
+        <activity
+            android:name=".activity.AddAttendanceActivity"
+            android:label="@string/attendance"></activity> <!-- Location tracking services and recivers -->
+        <activity
+            android:name=".tracking.recivers.SendSMSActivity"
+            android:label=""></activity>
+
+        <service
+            android:name=".tracking.services.LocationTrackingService"
+            android:enabled="true"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
+            <!-- </intent-filter> -->
+        </service>
+        <service
+            android:name=".tracking.services.UpdateLocationService"
+            android:enabled="true"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
+            <!-- </intent-filter> -->
+        </service>
+        <service
+            android:name=".tracking.services.LocationTrackingService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".tracking.services.UpdateLocationService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <receiver android:name=".tracking.recivers.LocationStarterReciver"></receiver>
+        <receiver
+            android:name=".tracking.recivers.AutoStartReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.REBOOT" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".tracking.recivers.StatusChangeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".tracking.recivers.GPSStatusChangeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".tracking.recivers.LocationUpdateReciver"></receiver>
+        <receiver android:name=".tracking.recivers.ScreenOnReciver"></receiver>
+    </application>
+
+</manifest>

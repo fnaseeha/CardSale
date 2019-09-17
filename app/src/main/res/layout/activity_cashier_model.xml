@@ -1,0 +1,216 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lk.lankabell.android.activity.tsr.activity.CashierModelActivity">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/llhe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="5">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_denomination"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_Sales_card_count"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_Sales_card_mount"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_inhand_card_count"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_inhand_card_mount"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+            <ListView
+                android:layout_marginTop="5dp"
+                android:layout_weight="5"
+                android:id="@+id/lvcashiremodel"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scrollbars="vertical"
+                android:smoothScrollbar="true"
+                android:textColor="#372c24"
+                android:transcriptMode="alwaysScroll"
+                android:stackFromBottom="false"
+                tools:ignore="NestedScrolling">
+            </ListView>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="end"
+                android:weightSum="5"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="invisible"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_denomination"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_Sales_card_count"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtsalesAmount"
+                    android:gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_Sales_card_mount"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="invisible"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_inhand_card_count"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txthandamount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/cashier_model_inhand_card_mount"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:id="@+id/errormessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cashier_model_hint_error"
+                android:textColor="@color/red" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:id="@+id/llScode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/txtSecurityCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/cashier_model_hint_Confirm_Code"
+                    android:inputType="textPassword"
+                    android:textSize="13sp">
+
+                    <requestFocus />
+                </EditText>
+
+                <EditText
+                    android:id="@+id/txtAdjustAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/cashier_model_hint_ADJUST_AMOUNT"
+                    android:inputType="numberDecimal"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <MultiAutoCompleteTextView
+                android:layout_weight="1"
+                android:id="@+id/txtRemarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/cashier_model_hint_Remarks"
+                android:maxLength="60"
+                android:singleLine="true"
+                android:textSize="13sp" />
+
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/button1"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickConfirm"
+                android:text="@string/cashier_model_Button_Confirm" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bgseesecond" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:padding="20dp"
+            android:layout_alignParentTop="true" >
+
+            <EditText
+                android:id="@+id/txtEdit_MerchantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginBottom="20dp"
+                android:hint="Enter Merchant Name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLength="50" />
+            <requestFocus/>
+
+
+            <EditText
+                android:id="@+id/txtEdd_MerchantAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginBottom="20dp"
+                android:hint="Enter Merchant Address"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:singleLine="false" />
+
+            <EditText
+                android:id="@+id/txtEditMerchantContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Merchant Contact No"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:layout_marginBottom="20dp"
+                android:maxLength="10"
+                android:singleLine="false" />
+
+
+            <AutoCompleteTextView
+                android:id="@+id/atc_Editautocity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginBottom="20dp"
+                android:hint="Enter City"
+                android:imeOptions="actionDone" />
+
+
+
+            <EditText
+                android:id="@+id/txtReloadNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="10"
+                android:inputType="number"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Reload Number"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/lblMerchantError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/red" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="2"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/btnEditfinalMerchant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onClickMerchantEdit"
+                    android:text="Save" />
+
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onClickMerchantDelete"
+                    android:text="Delete" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

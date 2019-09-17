@@ -1,0 +1,76 @@
+<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:paddingTop="4dip"
+     android:paddingBottom="6dip"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+       android:background="#FFFFFF">
+       
+    
+    <RelativeLayout 
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        >
+        
+        <AbsoluteLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            
+            >
+
+<TextView
+    android:id="@+id/lstDateSalesColumn1"
+    android:layout_width="74dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_weight="2"
+    android:layout_x="3dp"
+    android:layout_y="5dp"
+    android:paddingLeft="10dp"
+    android:textColor="#000000"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/lstCardSalesColumn2"
+    android:layout_width="70dip"
+    android:layout_height="wrap_content"
+    
+    android:layout_weight="2"
+    android:layout_x="86dp"
+    android:layout_y="7dp"
+    android:textColor="#000000"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/lstDenomSalesColumn3"
+    android:layout_width="64dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_weight="2"
+    android:layout_x="165dp"
+    android:layout_y="5dp"
+    android:textColor="#000000"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/lstQtySalesColumn4"
+    android:layout_width="65dip"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_weight="2"
+    android:layout_x="241dp"
+    android:layout_y="9dp"
+    android:textColor="#000000"
+    android:textStyle="bold" />
+
+</AbsoluteLayout>
+
+</RelativeLayout>
+
+</LinearLayout>

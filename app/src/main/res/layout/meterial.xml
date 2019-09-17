@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_main" >
+
+        <!-- Header  Starts -->
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" >
+
+            <!-- Logo Start -->
+
+
+            <!-- Logo Ends -->
+
+            <ImageView
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:src="@drawable/logo" />
+
+        </LinearLayout>
+
+        <!-- Header Ends -->
+        <!-- Footer Start -->
+
+        <AbsoluteLayout
+            android:id="@+id/footer"
+            android:layout_width="fill_parent"
+            android:layout_height="90dip"
+            android:layout_alignParentBottom="true"
+            android:textColor="#372c24" >
+
+        </AbsoluteLayout>
+        <!-- Footer Ends -->
+
+
+        <!-- Fault Form Start -->
+
+        <LinearLayout
+            
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:orientation="vertical"
+            android:padding="10dip" >
+
+            <!-- Full Name Label -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Item Code"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/prompt1" />
+
+            <!-- Email Label -->
+
+
+            <!-- Password Label -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Type"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/prompt2" />
+
+            <!-- Register Button -->
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="61dp"
+                android:layout_height="wrap_content"
+                android:text="Qty"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+
+            <EditText
+                android:id="@+id/editQty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+
+                <requestFocus />
+            </EditText>
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="saveMaterials"
+                android:text="Save" />
+            
+        </LinearLayout>
+
+        <!-- Fault Form Ends -->
+
+        <TextView
+            android:id="@+id/errortv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_marginLeft="18dp"
+            android:text=""
+            android:textColor="#FF3333" />
+    </RelativeLayout>
+
+</ScrollView>

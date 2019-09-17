@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:background="@drawable/bgseesecond"
+    android:layout_height="fill_parent"
+    android:fillViewport="false" >
+    
+ <ScrollView
+    android:id="@+id/myview"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="480dp"
+       >
+
+        <!-- Header  Starts -->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" >
+
+            <!-- Logo Start -->
+
+            <!-- Logo Ends -->
+        </LinearLayout>
+       
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/widget33"
+            android:layout_width="fill_parent"
+            android:layout_height="670dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="User Name :"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_weight="2.5"
+                    android:id="@+id/lblUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="14dp"
+            android:layout_y="48dp"
+            android:text="Item :"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spnItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repair Type :"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spnRepairType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="18dp"
+            android:layout_y="209dp"
+            android:text="Quantity"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/txtQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Quantity"
+            android:inputType="number" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="21dp"
+            android:layout_y="297dp"
+            android:text="Remarks :"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/txtRemarks"
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:ems="10"
+            android:layout_marginBottom="12dp"
+            android:hint="Enter Remarks" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add" />
+
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/btnSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save" />
+            </LinearLayout>
+
+
+            <ListView
+                android:id="@+id/listFault"
+                android:layout_width="match_parent"
+                android:layout_height="90dp" >
+
+            </ListView>
+
+            <LinearLayout
+                android:id="@+id/footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@layout/footer_repeat"
+                android:textColor="#372c24" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The Truly Srilankan Telecomunication Company"
+                    android:textColor="#0d6b90" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+</RelativeLayout>
+
+</ScrollView>
+</LinearLayout>

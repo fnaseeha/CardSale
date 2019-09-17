@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <AbsoluteLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/card_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="2dp"
+            android:layout_y="15dp"
+            android:text="TextView"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/bulk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_x="115dp"
+            android:layout_y="15dp"
+            android:text="TextView"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/denom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_x="56dp"
+            android:layout_y="15dp"
+            android:text="TextView"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/startserial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_x="169dp"
+            android:layout_y="15dp"
+            android:text="TextView"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/endserial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="226dp"
+            android:layout_y="15dp"
+            android:text="TextView"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btn_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="278dp"
+            android:layout_y="1dp"
+            android:background="@drawable/accept"
+            android:onClick="OnclickAccept" />
+
+        <TextView
+            android:id="@+id/noofcards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="226dp"
+            android:layout_y="27dp"
+            android:text="TextView"
+            android:textSize="10sp" />
+        
+        </AbsoluteLayout>
+
+    </RelativeLayout>
+    
+</LinearLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, LoginActivity!</string>
+    <string name="app_name">LB TSR System</string>
+    <string name="heading">TSR Sales System</string>
+    <string name="footer"></string>
+    <string name="tv_location">Location</string>
+    <string name="btn_continue">Continue</string>
+    <string name="btn_save">Save</string>
+    <string name="radio_card">Card Sales</string>
+    <string name="radio_fault">Fault Ticket</string>
+    <string name="radio_visit">Customer/Merchant Visit</string>
+    <string name="prompt1">Choose a Items</string>
+    <string name="prompt2">Choose a Type</string>
+    <string name="Update_reset">Data Reload</string>
+    <string name="Update_scnch">Manual Sync</string>
+    <string name="Update_purge">Manual Purge</string>
+    <string name="Update_backup">Backup</string>
+    <string name="Update_balance">Card Balance</string>
+
+    <color name="titlebackgroundcolor">#3232CD</color>
+    <color name="titletextcolor">#FFFF00</color>
+
+    <string-array name="string_array_name">
+        <item>BADULLA</item>
+        <item>BANDARAWELA</item>
+        <item>KURUNEGALA</item>
+    </string-array>
+
+    <string name="proceed">Proceed</string>
+    <string name="select_city">Select City</string>
+    <string name="view">View</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_cashier_model">MainActivity</string>
+    <string name="title_activity_cashier_model_name">Cashre Model Check the Sales</string>
+    <string name="cashier_model_denomination">Deno..</string>
+    <string name="cashier_model_lable_denomination">Card Denomination : </string>
+    <string name="cashier_model_lable_denomination_number"> 50 </string>
+    <string name="cashier_model_Sales_card_count">Sales</string>
+    <string name="cashier_model_lable_Sales_card_count">Sales Count :</string>
+    <string name="cashier_model_lable_Sales_card_count_number"> 10 </string>
+    <string name="cashier_model_Sales_card_mount">S.Amount</string>
+    <string name="cashier_model_lable_Sales_card_mount">Sales Amount : </string>
+    <string name="cashier_model_lable_Sales_card_mount_number"> 500 </string>
+    <string name="cashier_model_inhand_card_count">In-Hand</string>
+    <string name="cashier_model_lable_inhand_card_count">In-Hand Count :</string>
+    <string name="cashier_model_lable_inhand_card_count_number"> 10 </string>
+    <string name="cashier_model_inhand_card_mount">IN.Amount</string>
+    <string name="cashier_model_lable_inhand_card_mount">In-Hand Amount :</string>
+    <string name="cashier_model_lable_inhand_card_mount_number"> 500 </string>
+    <string name="cashier_model_checkBox_AmountTally"> Amount Tally </string>
+    <string name="cashier_model_checkBox_AmountDifferent"> Amount Diifferent</string>
+    <string name="cashier_model_Button_Confirm"> Confirm </string>
+    <string name="cashier_model_hint_ADJUST_AMOUNT">Adjust Amount</string>
+    <string name="cashier_model_hint_Remarks">Enter Remarks</string>
+    <string name="cashier_model_hint_Confirm_Code">Security Code</string>
+    <string name="cashier_model_hint_error">Enter Error Code</string>
+    <string name="cashier_model_hint_Sales_sum">sum S</string>
+    <string name="cashier_model_hint_Inhand_sum">Sum I</string>
+    <string name="cashier_model_hint_Totall">Totall</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_web_mobile_processors">WebMobileProcessors</string>
+    <string name="title_activity_card__returns">Card_Returns</string>
+    <string name="card_returns_denomination">Deno</string>
+    <string name="card_returns_bulkcode">Bulk Code</string>
+    <string name="card_returns_start_serial">Start Serial</string>
+    <string name="card_returns_next_serial">Next Serial</string>
+    <string name="card_returns_end_serial">End Serial</string>
+    <string name="card_returns_number_of_cards">Number of Cards</string>
+    <string name="card_returns_return_type">Type</string>
+    <string name="card_returns_save">Return Cards</string>
+    <string name="card_returns_security_code">Security Code</string>
+    <string name="title_activity_card__returns__details">Card_Returns_Details</string>
+    <string name="card_returns_cards_count">Count</string>
+    <string name="Returns_returnType">Card Return Type :</string>
+    <string name="title_activity_approved_card_returns">Approved_card_returns</string>
+    <string name="title_activity_approved_card_retuns__details">Approved_card_retuns_Details</string>
+    <string name="epf">EPF</string>
+    <string name="datetime">DateTime</string>
+    <string name="longitude">longitude</string>
+    <string name="latitude">latitude</string>
+    <string name="team_code">Team Code</string>
+
+
+    <string name="cards">Cards</string>
+    <string name="my_merchants">My Merchants</string>
+    <string name="my_cards">My Cards</string>
+    <string name="Update">Update</string>
+    <string name="updates">Updates</string>
+    <string name="my_synch">My Synch</string>
+    <string name="logout">Logout</string>
+    <string name="attendance">Attendance</string>
+    <string name="merchants">Merchants</string>
+    <string name="title_activity_add_attendance">Send Attendance SMS</string>
+    <string name="bike_number">Bike Number</string>
+    <string name="meter_value">Meter value</string>
+
+</resources>
