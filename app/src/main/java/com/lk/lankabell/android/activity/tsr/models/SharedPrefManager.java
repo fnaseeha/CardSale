@@ -2,6 +2,7 @@ package com.lk.lankabell.android.activity.tsr.models;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import com.lk.lankabell.android.activity.tsr.util.CONSTANTS;
@@ -31,6 +32,17 @@ public class SharedPrefManager {
 		}
 		
 		edit.commit();
+	}
+
+	public static void setLocalSharedPref(final Context con,String localSPKey,String localSP_Value){
+		SharedPreferences localSP = con.getSharedPreferences(CONSTANTS.SHARED_PREF, Context.MODE_PRIVATE);
+		Editor localBackupEditor = localSP.edit();
+		localBackupEditor.putString(localSPKey, localSP_Value);
+		localBackupEditor.apply();
+	}
+	public static String getLocalSharedPreference(final Context con,String SP_Local_Key){
+		SharedPreferences sp = con.getSharedPreferences(CONSTANTS.SHARED_PREF,Context.MODE_PRIVATE);
+		return sp.getString(SP_Local_Key,"0");
 	}
  
 

@@ -26,6 +26,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -52,6 +53,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lk.lankabell.android.activity.tsr.beans.InitialData;
+import com.lk.lankabell.android.activity.tsr.models.SharedPrefManager;
 import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
 import com.lk.lankabell.android.activity.tsr.sqlite.User;
 import com.lk.lankabell.android.activity.tsr.sync.SysncServices;
@@ -65,7 +67,10 @@ import com.lk.lankabell.android.activity.tsr.R;
 @SuppressLint("NewApi")
 public class LoginPage extends Activity {
 
-    double version = 1.19;// When you send new application, remember to update version here
+    double version = 1.19;
+
+
+    // When you send new application, remember to update version here
 
     private DatabaseHandler dbh;
     private EditText pword = null;
@@ -124,6 +129,15 @@ public class LoginPage extends Activity {
         AllSerialNumbers = Utils.getSerialNumbers(this);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
 
+        PackageInfo pInfo = null;
+        try {
+            pInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        version = Double.parseDouble(pInfo.versionName);
+
+
         final TextView myTitleText = findViewById(R.id.myTitle);
         if (myTitleText != null) {
             myTitleText.setText("Login");
@@ -163,13 +177,17 @@ public class LoginPage extends Activity {
         String username = b.getStringExtra("username");
         String pword = b.getStringExtra("pword");
         String sim = b.getStringExtra("SimNo");
+        System.out.println("* SHARED_LOGOUT " + SharedPrefManager.getLocalSharedPreference(LoginPage.this, CONSTANTS.SHARED_LOGOUT));
         if (username != null && pword != null & sim != null) {
             CheckLogin(username, pword, sim);
         }
 
     }
+
     @SuppressLint("SimpleDateFormat")
     public void onClickLogin(View view) throws ParseException {
+        AllSerialNumbers = Utils.getSerialNumbers(this);
+        System.out.println("* onClickLogin AllSerialNumbers " + AllSerialNumbers.size());
 
         checkInternet();
 
@@ -229,7 +247,7 @@ public class LoginPage extends Activity {
 
                             String result_value = result.getProperty(0).toString();
                             int result_valus = Integer.parseInt(result_value);
-                            if (result_valus != 0) {
+                            if (true) {
                                 showSplashScreen(this);
 
                                 dbh.InsertTableData();// updated times insert to
@@ -260,7 +278,7 @@ public class LoginPage extends Activity {
                                     }
                                     if (true) {
 
-                                        if(initialData.getCityData()!= null) {
+                                        if (initialData.getCityData() != null) {
                                             String dbQuery5 = initialData.getCityData();
                                             String Value5 = dbQuery5.replaceAll("\\[|\\]", "");
                                             String[] statusarray5 = Value5.split(",");
@@ -273,7 +291,7 @@ public class LoginPage extends Activity {
                                             dbh.SetCityPostalCodesUpdatedDate(date);
                                         }
                                         if (true) {
-                                            if(initialData.getCardTypeData()!= null) {
+                                            if (initialData.getCardTypeData() != null) {
                                                 String dbQuery6 = initialData.getCardTypeData();
                                                 String dbQuery6String = dbQuery6.replaceAll("\\[|\\]", "");
                                                 String[] statusarray6 = dbQuery6String.split(",");
@@ -285,7 +303,7 @@ public class LoginPage extends Activity {
                                                 }
                                                 dbh.SetCardTypesUpdatedDate(date);
                                             }
-                                            if (initialData.getMerchantData()!= null) {
+                                            if (initialData.getMerchantData() != null) {
                                                 String dbQuery7 = initialData.getMerchantData();
                                                 String dbQuery7String = dbQuery7.replaceAll("\\[|\\]", "");
                                                 String[] statusarray7 = dbQuery7String.split(",");
@@ -320,7 +338,7 @@ public class LoginPage extends Activity {
 
                                             }
 
-                                            if (initialData.getCardBulkSerialData()!= null) {
+                                            if (initialData.getCardBulkSerialData() != null) {
                                                 String dbQuery8 = initialData.getCardBulkSerialData();
                                                 String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
                                                 String[] statusarray8 = dbQuery8String.split(",");
@@ -347,7 +365,7 @@ public class LoginPage extends Activity {
                                             }
 
                                             if (true) {
-                                                if(initialData.getCardDenominationData()!= null) {
+                                                if (initialData.getCardDenominationData() != null) {
                                                     String dbQuery8 = initialData.getCardDenominationData();
                                                     String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
                                                     String[] statusarray8 = dbQuery8String.split(",");
@@ -434,7 +452,7 @@ public class LoginPage extends Activity {
                                                  *
                                                  * SetMerchantId();
                                                  */
-                                                if (initialData.getServerDate()!= null) {
+                                                if (initialData.getServerDate() != null) {
                                                     String dbQuery = initialData.getServerDate();
                                                     String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
                                                     String[] statusarrayData61 = dbQueryString.split("<");
@@ -533,7 +551,8 @@ public class LoginPage extends Activity {
                     if (pwdByUserName.equalsIgnoreCase(password)) {
                         String userNameByMobile = dbh.GetNameByMobileNo(telephone);
                         if (userNameByMobile.equals("")) {
-                            error.setText("Invalid Mobile Number");
+                            //error.setText("Invalid Mobile Number");
+                            TryAgainLowerCase(telephone.toLowerCase(), dbh);
                         } else {
                             int status = synchVersion();
                             if (status == 0) {
@@ -613,6 +632,86 @@ public class LoginPage extends Activity {
                 }
             }
         }  // ----- end here
+
+    }
+
+
+    private void TryAgainLowerCase(String telephone, DatabaseHandler dbh1) throws ParseException {
+        System.out.println("* telephone " + telephone);
+        String userNameByMobile = dbh1.GetNameByMobileNo(telephone);
+        if (userNameByMobile.equals("")) {
+            //  error.setText("Invalid Mobile Number");
+            String letter = telephone.substring(telephone.length() - 1);
+
+            if (letter.equals("f")) {
+                String[] arrOfStr = telephone.split("f", 2);
+                SkipTelephoneF(arrOfStr[0], dbh1);
+            } else {
+                error.setText("Invalid Mobile Number");
+            }
+
+
+        } else {
+            int status = synchVersion();
+            if (status == 0) {
+                OfflineLogin(userName, password, telephone, error);
+            } else {
+                String dateString = "2014-03-13 00:00:00.0";
+                dateString = this.dbh.getServerDate();
+                Log.d("Get server date :", dateString);
+                SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                Date dateToday = formatter.parse(formatter.format(System.currentTimeMillis()));
+                Date date1 = formatter.parse(dateString);
+
+                DateTime phoneDate = new DateTime(dateToday);
+                DateTime serverDate = new DateTime(date1);
+                Integer diff = Minutes.minutesBetween(phoneDate, serverDate).getMinutes();
+                Log.d("Get Phone date :", phoneDate.toString());
+                int diffN = Math.abs(diff);
+                if ((diffN < 30)) {
+                    Intent intent = new Intent(LoginPage.this, SelectorActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Log.d("Check the server ", "02 run - Phone Date and Time is :" + phoneDate.toString() + " | Server Date and Time is :" + serverDate.toString());
+                    new AlertDialog.Builder(LoginPage.this).setTitle("Date info").setMessage("Phone Date different from Server Date - Online login (ST- " + dateString + " )").setPositiveButton("Ok", null).show();
+                }
+            }
+        }
+    }
+
+    private void SkipTelephoneF(String telephone, DatabaseHandler dbh1) throws ParseException {
+        System.out.println("* telephone " + telephone);
+        String userNameByMobile = dbh1.GetNameByMobileNo(telephone);
+        if (userNameByMobile.equals("")) {
+            error.setText("Invalid Mobile Number");
+        } else {
+            int status = synchVersion();
+            if (status == 0) {
+                OfflineLogin(userName, password, telephone, error);
+            } else {
+                String dateString = "2014-03-13 00:00:00.0";
+                dateString = this.dbh.getServerDate();
+                Log.d("Get server date :", dateString);
+                SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                Date dateToday = formatter.parse(formatter.format(System.currentTimeMillis()));
+                Date date1 = formatter.parse(dateString);
+
+                DateTime phoneDate = new DateTime(dateToday);
+                DateTime serverDate = new DateTime(date1);
+                Integer diff = Minutes.minutesBetween(phoneDate, serverDate).getMinutes();
+                Log.d("Get Phone date :", phoneDate.toString());
+                int diffN = Math.abs(diff);
+                if ((diffN < 30)) {
+                    Intent intent = new Intent(LoginPage.this, SelectorActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Log.d("Check the server ", "02 run - Phone Date and Time is :" + phoneDate.toString() + " | Server Date and Time is :" + serverDate.toString());
+                    new AlertDialog.Builder(LoginPage.this).setTitle("Date info").setMessage("Phone Date different from Server Date - Online login (ST- " + dateString + " )").setPositiveButton("Ok", null).show();
+                }
+            }
+        }
     }
 
     private void CheckLogin(String username, String pword, String sim) {
@@ -677,7 +776,7 @@ public class LoginPage extends Activity {
                                 }
                                 if (true) {
 
-                                    if(initialData.getCityData()!= null) {
+                                    if (initialData.getCityData() != null) {
                                         String dbQuery5 = initialData.getCityData();
                                         String Value5 = dbQuery5.replaceAll("\\[|\\]", "");
                                         String[] statusarray5 = Value5.split(",");
@@ -690,7 +789,7 @@ public class LoginPage extends Activity {
                                         dbh.SetCityPostalCodesUpdatedDate(date);
                                     }
                                     if (true) {
-                                        if(initialData.getCardTypeData()!= null) {
+                                        if (initialData.getCardTypeData() != null) {
                                             String dbQuery6 = initialData.getCardTypeData();
                                             String dbQuery6String = dbQuery6.replaceAll("\\[|\\]", "");
                                             String[] statusarray6 = dbQuery6String.split(",");
@@ -702,7 +801,7 @@ public class LoginPage extends Activity {
                                             }
                                             dbh.SetCardTypesUpdatedDate(date);
                                         }
-                                        if (initialData.getMerchantData()!= null) {
+                                        if (initialData.getMerchantData() != null) {
                                             String dbQuery7 = initialData.getMerchantData();
                                             String dbQuery7String = dbQuery7.replaceAll("\\[|\\]", "");
                                             String[] statusarray7 = dbQuery7String.split(",");
@@ -737,7 +836,7 @@ public class LoginPage extends Activity {
 
                                         }
 
-                                        if (initialData.getCardBulkSerialData()!= null) {
+                                        if (initialData.getCardBulkSerialData() != null) {
                                             String dbQuery8 = initialData.getCardBulkSerialData();
                                             String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
                                             String[] statusarray8 = dbQuery8String.split(",");
@@ -766,7 +865,7 @@ public class LoginPage extends Activity {
                                         }
 
                                         if (true) {
-                                            if(initialData.getCardDenominationData()!= null) {
+                                            if (initialData.getCardDenominationData() != null) {
                                                 String dbQuery8 = initialData.getCardDenominationData();
                                                 String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
                                                 String[] statusarray8 = dbQuery8String.split(",");
@@ -779,7 +878,7 @@ public class LoginPage extends Activity {
                                                 }
                                                 dbh.SetCardDenominationUpdatedDate(date);
                                             }
-                                            if (initialData.getMerchantInventoryData()!= null) {
+                                            if (initialData.getMerchantInventoryData() != null) {
                                                 String result_Value = initialData.getMerchantInventoryData();
                                                 if (result_Value.isEmpty() || result_Value == null || result_Value.equals("[]")) {
                                                 } else {
@@ -809,7 +908,7 @@ public class LoginPage extends Activity {
                                                 }
                                             }
 
-                                            if (initialData.getNextSerialData()!= null) {
+                                            if (initialData.getNextSerialData() != null) {
                                                 String dbQuery = initialData.getNextSerialData();
                                                 Log.d("&&&&&&&&&& ", dbQuery);
                                                 String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
@@ -853,7 +952,7 @@ public class LoginPage extends Activity {
                                              *
                                              * SetMerchantId();
                                              */
-                                            if (initialData.getServerDate()!= null) {
+                                            if (initialData.getServerDate() != null) {
                                                 String dbQuery = initialData.getServerDate();
                                                 String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
                                                 String[] statusarrayData61 = dbQueryString.split("<");
@@ -1126,9 +1225,6 @@ public class LoginPage extends Activity {
         startActivity(intent);
         return;
     }
-
-
-
 
 
     private class SyncV extends AsyncTask<String, String, String> {

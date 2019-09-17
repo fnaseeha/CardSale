@@ -380,6 +380,8 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 						SubscriptionInfo info = infoList.get(i);
 						// int simSlotIndex = info.getSimSlotIndex();
 						String serialNumber = info.getIccId();
+						/*telephonyManager.getSimState()==TelephonyManager.SIM_STATE_READY*/
+
 						SerialNumbers.add(serialNumber);
 						System.out.println("* serial number : " + serialNumber);
 

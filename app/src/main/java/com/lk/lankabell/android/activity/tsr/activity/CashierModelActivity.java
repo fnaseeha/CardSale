@@ -105,7 +105,7 @@ public class CashierModelActivity extends Activity {
 			
 			
 		} else {
-			Log.w("========================", "===========================================================");
+			Log.w("==================", "===========================================================");
 			ArrayList<Cashire_Card_Balance> salesDetails  = dbh.Get_CARD_CASH_BALANCE();			
 			for (Cashire_Card_Balance cashire_Card_Balance : salesDetails) {
 				HashMap<String,String> map = new HashMap<String, String>();

@@ -18,10 +18,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -132,11 +134,11 @@ public class SelectorActivity extends Activity {
 
 //		mTimer3.postDelayed(mTask3, interval3 * 1000L); // start the timer for
 														// the first time
-		Log.d("==================================================", "=======================================================");
+		Log.d("=================", "=======================================");
 		startService(new Intent(this, BackgroundService.class)); // start
 																	// background
 																	// webservices
-		Log.d("==================================================", "==1111111=====================================================");
+		Log.d("================", "==1111111========================================");
 		final TextView myTitleText = (TextView) findViewById(R.id.myTitle);
 		if (myTitleText != null) {
 			myTitleText.setText("Home");
@@ -311,6 +313,7 @@ public class SelectorActivity extends Activity {
 	 */
 	public void onClickExit(View view) {
 
+
 		LayoutInflater factory = LayoutInflater.from(this);
 		final View dialogBuilder = factory.inflate(R.layout.custom_msg_dialog, null);
 		final AlertDialog dialogView = new AlertDialog.Builder(this).create();
@@ -320,14 +323,16 @@ public class SelectorActivity extends Activity {
 		dialogBuilder.findViewById(R.id.btn_yes).setOnClickListener(new  View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+
+				CONSTANTS.SHARED_LOGOUT ="1";
+
+				SharedPrefManager.setLocalSharedPref(SelectorActivity.this,CONSTANTS.SHARED_LOGOUT,"1");
+
+				//overridePendingTransition(R.anim.left_in, R.anim.slide_to_right);
 				finish();
-				overridePendingTransition(R.anim.left_in, R.anim.slide_to_right);
 				System.exit(0);
-//                finish();
-				/*Intent intent = new Intent();
-				intent.setAction(Intent.ACTION_MAIN);
-				intent.addCategory(Intent.CATEGORY_HOME);
-				startActivity(intent);*/
+
+
 			}
 		});
 		dialogBuilder.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {
