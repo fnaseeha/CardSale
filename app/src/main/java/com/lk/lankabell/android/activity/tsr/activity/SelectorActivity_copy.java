@@ -168,10 +168,10 @@ public class SelectorActivity_copy extends Activity {
 			public void onClick(View v) {
 				finish();
 				System.exit(0);
-				Intent intent = new Intent();
-				intent.setAction(Intent.ACTION_MAIN);
-				intent.addCategory(Intent.CATEGORY_HOME);
-				startActivity(intent);
+//				Intent intent = new Intent();
+//				intent.setAction(Intent.ACTION_MAIN);
+//				intent.addCategory(Intent.CATEGORY_HOME);
+//				startActivity(intent);
 			}
 		});
 		dialogBuilder.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {

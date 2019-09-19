@@ -11,6 +11,8 @@ import java.util.List;
 
 import com.lk.lankabell.android.activity.tsr.models.SharedPrefManager;
 import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
+import com.lk.lankabell.android.activity.tsr.sqlite.User;
+import com.lk.lankabell.android.activity.tsr.util.CONSTANTS;
 
 import android.Manifest;
 import android.app.Activity;
@@ -35,6 +37,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 
 public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback {
+
 
 	public static String getSimSerialNumber = "";
 	public static TelephonyManager mTelephonyMgr;
@@ -227,14 +230,28 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 		return getFilesNames("err");
 	}
 
-	public static String getSimSerialNumber(Context context){
-//		String j = getSerialNumbers(context).size()>0 ? getSerialNumbers(context).get(0): "";
-//		System.out.println("* sim "+j);
-		//return j;
-		return "8994084111800545576";//2246
+	public static String getSimSerialNumber(Context context) {
+
+		String simserialNumber = "";
+		if(!CONSTANTS.FinalSimSerialNumber.equals("")){
+			simserialNumber = CONSTANTS.FinalSimSerialNumber;
+		}else {
+			//check db
+			DatabaseHandler dbh = new DatabaseHandler(context);
+			User user = dbh.getUserDetails();
+			if(user!= null){
+				simserialNumber = user.getmobileNo();
+			}else{
+				//else get from android
+				simserialNumber = getSerialNumbers(context).size()>0 ? getSerialNumbers(context).get(0):"";
+			}
+
+		}
+		System.out.println(" * Final Sim serial "+simserialNumber);
+		return simserialNumber;
 	}
 
-//	@SuppressLint("HardwareIds")
+	//	@SuppressLint("HardwareIds")
 //	public static String getSimSerialNumber(Context context) {
 //		//return "89940102166881325622"; //live 4107 / 9127426
 //	//	return "8994029702903652299F"; //live 1039
@@ -348,17 +365,10 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 		ArrayList<String> SerialNumbers = new ArrayList<>();
 
 
-
 		mTelephonyMgr = (TelephonyManager) context
 				.getSystemService(Context.TELEPHONY_SERVICE);
-//android.permission.READ_PHONE_STATE
-        /*int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE);
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
-            }*/
-		int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE);
 
+		int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE);
 
 
 		if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
@@ -373,7 +383,7 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 				if (manager != null) {
 					System.out.println("* manager not null");
 					List<SubscriptionInfo> infoList = manager.getActiveSubscriptionInfoList();
-					System.out.println("* info list "+infoList.size());
+					System.out.println("* info list " + infoList.size());
 
 					for (int i = 0; i < infoList.size(); i++) {
 
@@ -394,7 +404,7 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
                     getSimSerialNumber = mTelephonyMgr.getSimSerialNumber();
                     RunDemo(context);
                 }*/
-				}else{
+				} else {
 					System.out.println("* manager is null");
 					//   getSimSerialNumber = mTelephonyMgr.getSimSerialNumber();
 					//  SerialNumbers.add(getSimSerialNumber);
@@ -409,6 +419,11 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 
 			getSimSerialNumber = mTelephonyMgr.getSimSerialNumber();
 			SerialNumbers.add(getSimSerialNumber);
+
+			SerialNumbers.clear();
+//			SerialNumbers.add("8994034060115581639f");
+//			SerialNumbers.add("8994084111800545576f"); //4107
+
 			// SerialNumbers.add("8994029702649458050"); //131796
 
 			//   SerialNumbers.add("8994036031116012502"); //129141 LIVE USER
@@ -477,7 +492,11 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 				System.out.println("*onRequestPermissionsResult");
 				if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
 
-					getSimSerialNumber = "89940102166881325622"; //mTelephonyMgr.getSimSerialNumber();
+					try{
+					getSimSerialNumber = mTelephonyMgr.getSimSerialNumber();
+					}catch (Exception e){
+						e.printStackTrace();
+					}
 				}
 				break;
 

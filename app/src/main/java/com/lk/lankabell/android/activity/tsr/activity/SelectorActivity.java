@@ -39,6 +39,7 @@ import com.lk.lankabell.android.activity.tsr.beans.MainMenuItem;
 import com.lk.lankabell.android.activity.tsr.bg.GeoListener;
 import com.lk.lankabell.android.activity.tsr.models.SharedPrefManager;
 import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
+import com.lk.lankabell.android.activity.tsr.sqlite.User;
 import com.lk.lankabell.android.activity.tsr.tracking.utils.Utils;
 import com.lk.lankabell.android.activity.tsr.util.CONSTANTS;
 import com.lk.lankabell.android.activity.tsr.util.HTTPServiceCalls;
@@ -324,14 +325,18 @@ public class SelectorActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				CONSTANTS.SHARED_LOGOUT ="1";
+				 DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 
-				SharedPrefManager.setLocalSharedPref(SelectorActivity.this,CONSTANTS.SHARED_LOGOUT,"1");
+				 User user  =dbh.getUserDetails();
+				dbh.SaveLogout(user.getUserName(),"Y");
+				//CONSTANTS.SHARED_LOGOUT ="1";
+
+			//	SharedPrefManager.setLocalSharedPref(SelectorActivity.this,CONSTANTS.SHARED_LOGOUT,"1");
+				//update db
 
 				//overridePendingTransition(R.anim.left_in, R.anim.slide_to_right);
 				finish();
 				System.exit(0);
-
 
 			}
 		});
@@ -424,7 +429,11 @@ public class SelectorActivity extends Activity {
 			intent.putExtra("merchantName", name);
 			startActivity(intent);
 		} else {
-			new AlertDialog.Builder(SelectorActivity.this).setTitle("Reset info").setMessage("Your mobile Data reset is not Done. Please reset again.").setPositiveButton("Ok", null).show();
+			new AlertDialog.Builder(SelectorActivity.this)
+					.setTitle("Reset info")
+					.setMessage("Your mobile Data reset is not Done. Please reset again.")
+					.setPositiveButton("Ok", null)
+					.show();
 		}
 	}
 

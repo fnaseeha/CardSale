@@ -177,7 +177,8 @@ public class LoginPage extends Activity {
         String username = b.getStringExtra("username");
         String pword = b.getStringExtra("pword");
         String sim = b.getStringExtra("SimNo");
-        System.out.println("* SHARED_LOGOUT " + SharedPrefManager.getLocalSharedPreference(LoginPage.this, CONSTANTS.SHARED_LOGOUT));
+        String logout = dbh.GetLogout(username);
+        System.out.println("* SHARED_LOGOUT " + logout);
         if (username != null && pword != null & sim != null) {
             CheckLogin(username, pword, sim);
         }
@@ -220,7 +221,6 @@ public class LoginPage extends Activity {
                 network_enable = isOnline();
                 if (network_enable) {
 
-
                     boolean deletedb = getApplicationContext().deleteDatabase("TSRDBNEW");
                     Log.d("Database is ", deletedb + "");
                     dbh = new DatabaseHandler(getApplicationContext());
@@ -238,7 +238,7 @@ public class LoginPage extends Activity {
                         (new GetAync(this)).execute("");
 
                         for (int i = 0; i < 100; i++) {
-                            for (int j = 0; j < 100; j++) {
+                            for (int j = 0; j < 50; j++) {
                                 System.out.println(" if " + i + j);
                             }
                         }
@@ -247,7 +247,10 @@ public class LoginPage extends Activity {
 
                             String result_value = result.getProperty(0).toString();
                             int result_valus = Integer.parseInt(result_value);
+
                             if (true) {
+
+                                CONSTANTS.FinalSimSerialNumber = telephone;
                                 showSplashScreen(this);
 
                                 dbh.InsertTableData();// updated times insert to
@@ -256,29 +259,51 @@ public class LoginPage extends Activity {
                                 Log.d("DataBasde Path is :", path.getAbsolutePath());
                                 //========================LOGIN  ==========
                                 // BLOCK START
-                                new BlockSync(this).execute("");
+                                new BlockSync(this,telephone).execute("");
+
                                 for (int i = 0; i < 100; i++) {
-                                    for (int j = 0; j < 1000; j++) {
+                                    for (int j = 0; j < 1500; j++) {
                                         System.out.println(" if " + i + j);
                                     }
                                 }
+
+                               /* Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        System.out.println("* initialData delayed "+initialData);
+                                    }
+                                }, 2000);*/
 //
                                 // /======================================================================================/LOGIN
                                 // BLOCK END
 
                                 if (true) {
+
+                                    System.out.println("* initialData "+initialData);
                                     try {
                                         String dbQuery3 = initialData.getLoginData();
+                                        System.out.println("* dbQuery3 "+dbQuery3);
 
-                                        String[] statusarray3 = dbQuery3.split(",");
-                                        dbh.SaveLoginData(statusarray3[0].replaceAll("\\[|\\]|\\<", ""), statusarray3[2], statusarray3[3].replaceAll("\\[|\\]|\\>", ""), statusarray3[1]);
+                                        if(!dbQuery3.equals("[]")){
+                                            String[] statusarray3 = dbQuery3.split(",");
+                                            dbh.SaveLoginData(statusarray3[0].replaceAll("\\[|\\]|\\<", ""),
+                                                    statusarray3[2],
+                                                    statusarray3[3].replaceAll("\\[|\\]|\\>", ""),
+                                                    statusarray3[1]);
+
+                                        }
+
+                                         sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm:ss");
+                                        date = sdf.format(System.currentTimeMillis());
+                                        System.out.println("* date "+date);
                                         dbh.SetLoginDetailsUpdatedDate(date);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
                                     if (true) {
 
-                                        if (initialData.getCityData() != null) {
+                                        if (!initialData.getCityData().equals("[]")) {
                                             String dbQuery5 = initialData.getCityData();
                                             String Value5 = dbQuery5.replaceAll("\\[|\\]", "");
                                             String[] statusarray5 = Value5.split(",");
@@ -288,10 +313,11 @@ public class LoginPage extends Activity {
                                                 String[] datavalues = datavaluesStrings[0].split(",");
                                                 dbh.SaveCityData(datavalues[0], datavalues[1], datavalues[2], datavalues[3], datavalues[4], datavalues[5], datavalues[6], datavalues[7]);
                                             }
+                                            System.out.println("* date1 "+date);
                                             dbh.SetCityPostalCodesUpdatedDate(date);
                                         }
                                         if (true) {
-                                            if (initialData.getCardTypeData() != null) {
+                                            if (!initialData.getCardTypeData().equals("[]")) {
                                                 String dbQuery6 = initialData.getCardTypeData();
                                                 String dbQuery6String = dbQuery6.replaceAll("\\[|\\]", "");
                                                 String[] statusarray6 = dbQuery6String.split(",");
@@ -301,9 +327,10 @@ public class LoginPage extends Activity {
                                                     String[] datavalues = datavaluesStrings[0].split(",");
                                                     dbh.SaveCardTypes(datavalues[0], datavalues[1], datavalues[2], datavalues[3]);
                                                 }
+                                                System.out.println("* date2 "+date);
                                                 dbh.SetCardTypesUpdatedDate(date);
                                             }
-                                            if (initialData.getMerchantData() != null) {
+                                            if (!initialData.getMerchantData().equals("[]")) {
                                                 String dbQuery7 = initialData.getMerchantData();
                                                 String dbQuery7String = dbQuery7.replaceAll("\\[|\\]", "");
                                                 String[] statusarray7 = dbQuery7String.split(",");
@@ -334,11 +361,12 @@ public class LoginPage extends Activity {
                                                     dbh.SaveMerchantDetails(merchantId, name, address, lat, lon, registeredOn, mobileNo, city, IsActive, RegisteredByEpf, isRegistered, isAssigned, isEdited, reloadNo);
                                                     // }
                                                 }
+                                                System.out.println("* date3 "+date);
                                                 dbh.SetMerchantMasterUpdatedDate(date);
 
                                             }
 
-                                            if (initialData.getCardBulkSerialData() != null) {
+                                            if (!initialData.getCardBulkSerialData().equals("[]")) {
                                                 String dbQuery8 = initialData.getCardBulkSerialData();
                                                 String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
                                                 String[] statusarray8 = dbQuery8String.split(",");
@@ -376,6 +404,7 @@ public class LoginPage extends Activity {
                                                         String[] datavalues = datavaluesStrings[0].split(",");
                                                         dbh.SaveCardDenominations(datavalues[1], datavalues[0], Double.parseDouble(datavalues[0]), Double.parseDouble(datavalues[0]));
                                                     }
+                                                    System.out.println("* date30 "+date);
                                                     dbh.SetCardDenominationUpdatedDate(date);
                                                 }
                                                 if (initialData.getMerchantInventoryData() != null) {
@@ -400,6 +429,7 @@ public class LoginPage extends Activity {
                                                                 String activationCount = dataElements[6];
                                                                 String saleCount = dataElements[7];
                                                                 if (i == 1) {
+                                                                    System.out.println("* date31 "+date);
                                                                     dbh.SetMerchantInventorydatedDate(date1);
                                                                 }
                                                                 dbh.SaveMerchantInventoryTableAtLogin(Long.parseLong(merchantid), cardType, Integer.parseInt(Denomination), Integer.parseInt(StocksInha), date1, Integer.parseInt(rolevel), Integer.parseInt(activationCount), Integer.parseInt(saleCount));
@@ -408,7 +438,7 @@ public class LoginPage extends Activity {
                                                     }
                                                 }
 
-                                                if (initialData.getNextSerialData() != null) {
+                                                if (!initialData.getNextSerialData().equals("[]")) {
                                                     String dbQuery = initialData.getNextSerialData();
                                                     Log.d("&&&&&&&&&& ", dbQuery);
                                                     String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
@@ -452,7 +482,7 @@ public class LoginPage extends Activity {
                                                  *
                                                  * SetMerchantId();
                                                  */
-                                                if (initialData.getServerDate() != null) {
+                                                if (true) {
                                                     String dbQuery = initialData.getServerDate();
                                                     String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
                                                     String[] statusarrayData61 = dbQueryString.split("<");
@@ -462,6 +492,7 @@ public class LoginPage extends Activity {
                                                         String[] datavaluesStrings = statusarrayData61[i].split(">");
                                                         String[] datavalues = datavaluesStrings[0].split(",");
                                                         String serverDateStr = datavalues[0];
+                                                        //String server_time = serverDateStr.replace(".0", "");
                                                         // SimpleDateFormat
                                                         // formatter= new
                                                         // SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -475,6 +506,7 @@ public class LoginPage extends Activity {
                                                 }
 
                                                 String dateString = dbh.getServerDate();
+                                                System.out.println("* dateString n 1 "+dateString);
                                                 java.util.Date date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
 
                                                 Date dateToday = new Date();
@@ -490,11 +522,11 @@ public class LoginPage extends Activity {
 
                                                 Log.d("Come to the my m : ", "My method 001 ");
                                                 new updateSync().execute("");
-                                                for (int i = 0; i < 100; i++) {
-                                                    for (int j = 0; j < 100; j++) {
-                                                        System.out.println(" if " + i + j);
-                                                    }
-                                                }
+//                                                for (int i = 0; i < 100; i++) {
+//                                                    for (int j = 0; j < 100; j++) {
+//                                                        System.out.println(" if " + i + j);
+//                                                    }
+//                                                }
                                                 //	UpdateOrCheckTSRSystemprofile();
 
                                                 Integer diff = Minutes.minutesBetween(phoneDate, serverDate).getMinutes();
@@ -553,6 +585,7 @@ public class LoginPage extends Activity {
                         if (userNameByMobile.equals("")) {
                             //error.setText("Invalid Mobile Number");
                             TryAgainLowerCase(telephone.toLowerCase(), dbh);
+
                         } else {
                             int status = synchVersion();
                             if (status == 0) {
@@ -715,7 +748,10 @@ public class LoginPage extends Activity {
     }
 
     private void CheckLogin(String username, String pword, String sim) {
-
+        System.out.println("* Check Login firstrun "+firstrun+" username "+username+" pword "+pword+" sim "+sim);
+        String telephone = sim;
+        String userName = username;
+        String password = pword;
         if (firstrun) {
             network_enable = isOnline();
             if (network_enable) {
@@ -725,27 +761,29 @@ public class LoginPage extends Activity {
                 dbh = new DatabaseHandler(getApplicationContext());
                 initialData = new InitialData();
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME1);
-                request.addProperty("strInputUserMobile", sim);
-                request.addProperty("strInputUserName", username);
-                request.addProperty("strInputUserPassword", pword);
+                request.addProperty("strInputUserMobile", telephone);
+                request.addProperty("strInputUserName", userName);
+                request.addProperty("strInputUserPassword", password);
                 envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
                 envelope.setOutputSoapObject(request);
                 envelope.dotNet = true;
-
+                count++;
                 try {
 
                     (new GetAync(this)).execute("");
 
                     for (int i = 0; i < 100; i++) {
                         for (int j = 0; j < 100; j++) {
-                            System.out.println(" if " + i + j);
+                            System.out.println(" iff " + i + j);
                         }
                     }
 
                     if (result != null) {
+
                         String result_value = result.getProperty(0).toString();
                         int result_valus = Integer.parseInt(result_value);
-                        if (result_valus != 0) {
+                        if (true) {
+                            CONSTANTS.FinalSimSerialNumber = telephone;
                             showSplashScreen(this);
 
                             dbh.InsertTableData();// updated times insert to
@@ -754,9 +792,9 @@ public class LoginPage extends Activity {
                             Log.d("DataBasde Path is :", path.getAbsolutePath());
                             //========================LOGIN  ==========
                             // BLOCK START
-                            new BlockSync(this).execute("");
+                            new BlockSync(this,telephone).execute("");
                             for (int i = 0; i < 100; i++) {
-                                for (int j = 0; j < 1000; j++) {
+                                for (int j = 0; j < 500; j++) {
                                     System.out.println(" if " + i + j);
                                 }
                             }
@@ -764,19 +802,28 @@ public class LoginPage extends Activity {
                             // /======================================================================================/LOGIN
                             // BLOCK END
 
-                            if (initialData != null) {
-                                try {
-                                    String dbQuery3 = initialData.getLoginData();
+                            if (true) {
 
-                                    String[] statusarray3 = dbQuery3.split(",");
-                                    dbh.SaveLoginData(statusarray3[0].replaceAll("\\[|\\]|\\<", ""), statusarray3[2], statusarray3[3].replaceAll("\\[|\\]|\\>", ""), statusarray3[1]);
-                                    dbh.SetLoginDetailsUpdatedDate(date);
+                                try {
+                                    System.out.println("* initialData "+initialData);
+                                    String dbQuery3 = initialData.getLoginData();
+                                    System.out.println("* dbQuery31 "+dbQuery3);
+
+                                    if(!dbQuery3.equals("[]")){
+                                        String[] statusarray3 = dbQuery3.split(",");
+                                        dbh.SaveLoginData(statusarray3[0].replaceAll("\\[|\\]|\\<", ""), statusarray3[2], statusarray3[3].replaceAll("\\[|\\]|\\>", ""), statusarray3[1]);
+                                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm:ss");
+                                        date = sdf.format(System.currentTimeMillis());
+                                        System.out.println("* datec 1 "+date);
+                                        dbh.SetLoginDetailsUpdatedDate(date);
+                                    }
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                                 if (true) {
 
-                                    if (initialData.getCityData() != null) {
+                                    if (!initialData.getCityData().equals("[]")) {
                                         String dbQuery5 = initialData.getCityData();
                                         String Value5 = dbQuery5.replaceAll("\\[|\\]", "");
                                         String[] statusarray5 = Value5.split(",");
@@ -786,10 +833,11 @@ public class LoginPage extends Activity {
                                             String[] datavalues = datavaluesStrings[0].split(",");
                                             dbh.SaveCityData(datavalues[0], datavalues[1], datavalues[2], datavalues[3], datavalues[4], datavalues[5], datavalues[6], datavalues[7]);
                                         }
+                                        System.out.println("* datec 2 "+date);
                                         dbh.SetCityPostalCodesUpdatedDate(date);
                                     }
                                     if (true) {
-                                        if (initialData.getCardTypeData() != null) {
+                                        if (!initialData.getCardTypeData().equals("[]")) {
                                             String dbQuery6 = initialData.getCardTypeData();
                                             String dbQuery6String = dbQuery6.replaceAll("\\[|\\]", "");
                                             String[] statusarray6 = dbQuery6String.split(",");
@@ -799,9 +847,10 @@ public class LoginPage extends Activity {
                                                 String[] datavalues = datavaluesStrings[0].split(",");
                                                 dbh.SaveCardTypes(datavalues[0], datavalues[1], datavalues[2], datavalues[3]);
                                             }
+                                            System.out.println("* datec 3 "+date);
                                             dbh.SetCardTypesUpdatedDate(date);
                                         }
-                                        if (initialData.getMerchantData() != null) {
+                                        if (!initialData.getMerchantData().equals("[]")) {
                                             String dbQuery7 = initialData.getMerchantData();
                                             String dbQuery7String = dbQuery7.replaceAll("\\[|\\]", "");
                                             String[] statusarray7 = dbQuery7String.split(",");
@@ -832,11 +881,12 @@ public class LoginPage extends Activity {
                                                 dbh.SaveMerchantDetails(merchantId, name, address, lat, lon, registeredOn, mobileNo, city, IsActive, RegisteredByEpf, isRegistered, isAssigned, isEdited, reloadNo);
                                                 // }
                                             }
+                                            System.out.println("* datec 4 "+date);
                                             dbh.SetMerchantMasterUpdatedDate(date);
 
                                         }
 
-                                        if (initialData.getCardBulkSerialData() != null) {
+                                        if (!initialData.getCardBulkSerialData().equals("[]")) {
                                             String dbQuery8 = initialData.getCardBulkSerialData();
                                             String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
                                             String[] statusarray8 = dbQuery8String.split(",");
@@ -851,7 +901,9 @@ public class LoginPage extends Activity {
                                                         String[] datavalues = datavaluesStrings[0].split(",");
                                                         if (dbh.CheckCardBulkRecordIsExists(datavalues[3],
                                                                 Integer.parseInt(datavalues[4].replaceAll("\\]|\\>", "")),
-                                                                datavalues[0], datavalues[1], datavalues[2]) == false) {
+                                                                datavalues[0],
+                                                                datavalues[1],
+                                                                datavalues[2]) == false) {
                                                             dbh.SaveBulkIds(datavalues[3], Integer.parseInt(datavalues[4].replaceAll("\\]|\\>", "")), datavalues[0], datavalues[1], datavalues[2], dateValue, Double.parseDouble(datavalues[6]), Integer.parseInt(datavalues[7]), Integer.parseInt(datavalues[8]));
                                                         }
                                                         if (i == 1) {
@@ -865,7 +917,7 @@ public class LoginPage extends Activity {
                                         }
 
                                         if (true) {
-                                            if (initialData.getCardDenominationData() != null) {
+                                            if (!initialData.getCardDenominationData().equals("[]")) {
                                                 String dbQuery8 = initialData.getCardDenominationData();
                                                 String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
                                                 String[] statusarray8 = dbQuery8String.split(",");
@@ -876,9 +928,10 @@ public class LoginPage extends Activity {
                                                     String[] datavalues = datavaluesStrings[0].split(",");
                                                     dbh.SaveCardDenominations(datavalues[1], datavalues[0], Double.parseDouble(datavalues[0]), Double.parseDouble(datavalues[0]));
                                                 }
+                                                System.out.println("* datec 5 "+date);
                                                 dbh.SetCardDenominationUpdatedDate(date);
                                             }
-                                            if (initialData.getMerchantInventoryData() != null) {
+                                            if (!initialData.getMerchantInventoryData().equals("[]")) {
                                                 String result_Value = initialData.getMerchantInventoryData();
                                                 if (result_Value.isEmpty() || result_Value == null || result_Value.equals("[]")) {
                                                 } else {
@@ -908,7 +961,7 @@ public class LoginPage extends Activity {
                                                 }
                                             }
 
-                                            if (initialData.getNextSerialData() != null) {
+                                            if (!initialData.getNextSerialData().equals("[]")) {
                                                 String dbQuery = initialData.getNextSerialData();
                                                 Log.d("&&&&&&&&&& ", dbQuery);
                                                 String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
@@ -952,8 +1005,9 @@ public class LoginPage extends Activity {
                                              *
                                              * SetMerchantId();
                                              */
-                                            if (initialData.getServerDate() != null) {
+                                            if (!initialData.getServerDate().equals("[]")) {
                                                 String dbQuery = initialData.getServerDate();
+                                                System.out.println("* dbQuery "+dbQuery);
                                                 String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
                                                 String[] statusarrayData61 = dbQueryString.split("<");
 
@@ -962,6 +1016,7 @@ public class LoginPage extends Activity {
                                                     String[] datavaluesStrings = statusarrayData61[i].split(">");
                                                     String[] datavalues = datavaluesStrings[0].split(",");
                                                     String serverDateStr = datavalues[0];
+                                                  //  String server_time = serverDateStr.replace(".0", "");
                                                     // SimpleDateFormat
                                                     // formatter= new
                                                     // SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -971,59 +1026,58 @@ public class LoginPage extends Activity {
                                                     // formatter.parse(serverDateStr);
                                                     dbh.SaveServerDate(serverDateStr);// serverDate.toString());//new
                                                     // Date()
-
-                                                }
-
-                                            }
-                                            new updateSync().execute("");
-                                            for (int i = 0; i < 100; i++) {
-                                                for (int j = 0; j < 100; j++) {
-                                                    System.out.println(" if " + i + j);
                                                 }
                                             }
+
                                             String dateString = dbh.getServerDate();
-                                            if (!dateString.equals("")) {
-                                                java.util.Date date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
-
-                                                Date dateToday = new Date();
-                                                Log.d("dates", "Server date : " + date1 + " Phone Date : " + dateToday);
-                                                // System.out.println(output);
-
-                                                DateTime phoneDate = new DateTime(dateToday);
-                                                DateTime serverDate = new DateTime(date1);
-
-                                                Integer diff = Minutes.minutesBetween(phoneDate, serverDate).getMinutes();
-                                                int diffN = Math.abs(diff);
-                                                if ((diffN < 30)) {
-//													Intent intent = new Intent(LoginPage.this, SelectorActivity.class);
-//													startActivity(intent);
-//													finish();
-                                                    if (CONSTANTS.IS_USING_ORGINAL_URL) {
-                                                        startHomeActivity();
-                                                    } else {
-                                                        (new SystemProfileAsyc(this)).execute("");
-                                                    }
-
-                                                } else {
-                                                    Log.d("Check System time 001 :", "1 Run : Phone Date and Time is :" + phoneDate.toString() + " | Server Date and Time is :" + serverDate.toString());
-                                                    new AlertDialog.Builder(LoginPage.this)
-                                                            .setTitle("Date info")
-                                                            .setMessage("Phone Date different from Server Date - Fist login (ST- " + dateString + " )")
-                                                            .setPositiveButton("Ok", null)
-                                                            .show();
-                                                }
+                                            System.out.println("* dateString n 2 "+dateString);
+                                            Date date1 = null;
+                                            try {
+                                                 date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
+                                            }catch (Exception e){
+                                                e.printStackTrace();
+                                                date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString.replace(".0", ""));
                                             }
+                                            Date dateToday = new Date();
+                                            Log.d("dates", "Server date : " + date1 + " Phone Date : " + dateToday);
+                                            // System.out.println(output);
 
+                                            DateTime phoneDate = new DateTime(dateToday);
+                                            DateTime serverDate = new DateTime(date1);
                                             getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("firstrun", false).commit();
                                             Toast toast = Toast.makeText(LoginPage.this, "Initial data synched! Version : " + version + " ", Toast.LENGTH_SHORT);
                                             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                                             toast.show();
 
                                             Log.d("Come to the my m : ", "My method 001 ");
-
+                                            new updateSync().execute("");
+                                            for (int i = 0; i < 100; i++) {
+                                                for (int j = 0; j < 100; j++) {
+                                                    System.out.println(" if " + i + j);
+                                                }
+                                            }
                                             //	UpdateOrCheckTSRSystemprofile();
 
+                                            Integer diff = Minutes.minutesBetween(phoneDate, serverDate).getMinutes();
+                                            int diffN = Math.abs(diff);
+                                            if ((diffN < 30)) {
+//													Intent intent = new Intent(LoginPage.this, SelectorActivity.class);
+//													startActivity(intent);
+//													finish();
+                                                if (CONSTANTS.IS_USING_ORGINAL_URL) {
+                                                    startHomeActivity();
+                                                } else {
+                                                    (new SystemProfileAsyc(this)).execute("");
+                                                }
 
+                                            } else {
+                                                Log.d("Check System time 001 :", "1 Run : Phone Date and Time is :" + phoneDate.toString() + " | Server Date and Time is :" + serverDate.toString());
+                                                new AlertDialog.Builder(LoginPage.this)
+                                                        .setTitle("Date info")
+                                                        .setMessage("Phone Date different from Server Date - Fist login (ST- " + dateString + " )")
+                                                        .setPositiveButton("Ok", null)
+                                                        .show();
+                                            }
                                         }
                                     }
 
@@ -1032,15 +1086,25 @@ public class LoginPage extends Activity {
                             }
 
                             dbh.UpdateLoginData(result.getProperty(0).toString(), userName, password);
+                        } else if (result_valus == 0) {
+                            Toast.makeText(getApplicationContext(), "Invalid username & Password or Invalid Mobile Number", Toast.LENGTH_LONG).show();
                         }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No Response", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
-//
+//						if (android.os.Build.VERSION.SDK_INT > 9) {
+//							StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//							StrictMode.setThreadPolicy(policy);
+//						}
+                    Toast.makeText(getApplicationContext(), "Login failed.. Please try again.", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 
+            } else {
+                Toast.makeText(getApplicationContext(), "Please Check your Connection", Toast.LENGTH_LONG).show();
             }
-        } else {
+        }  else {
             network_enable = isOnline();
             if (network_enable) {
                 //boolean service_enable = isServiceUp();
@@ -1077,6 +1141,8 @@ public class LoginPage extends Activity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    }else{
+                        //retry
                     }
                 }
             } else {
@@ -1157,10 +1223,7 @@ public class LoginPage extends Activity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
+
 
     // private String getMyPhoneNumber()
     //{
@@ -1186,10 +1249,10 @@ public class LoginPage extends Activity {
             public void onClick(View v) {
                 finish();
                 System.exit(0);
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_MAIN);
+//                intent.addCategory(Intent.CATEGORY_HOME);
+//                startActivity(intent);
             }
         });
         dialogBuilder.findViewById(R.id.btn_no).setOnClickListener(new View.OnClickListener() {
@@ -1242,6 +1305,7 @@ public class LoginPage extends Activity {
                 HttpTransportSE androidHttpTransport = new HttpTransportSE(url);
                 androidHttpTransport.call(SOAP_ACTION21, envelope);
                 resultSync = (SoapObject) envelope.bodyIn;
+                System.out.println("* resultSync "+resultSync);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -1270,7 +1334,8 @@ public class LoginPage extends Activity {
                 // String result = "1461";
                 result = (SoapObject) envelope.bodyIn;
 
-                System.out.println("* result " + result.toString());
+
+             //   System.out.println("* result " + result!=null?result.toString():"");
 //
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1356,7 +1421,7 @@ public class LoginPage extends Activity {
     private static String SOAP_ACTION21 = "http://mainService/synchServerDate";
     private static String METHOD_NAME21 = "synchServerDate";
 
-    private Integer synchVersion() {
+    private Integer synchVersion() throws ParseException {
         Integer returnVal = 0;
 
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME21);
@@ -1376,6 +1441,10 @@ public class LoginPage extends Activity {
                         System.out.println("ij " + i + j);
                     }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+                returnVal = 0;
+            }
 //				String url = WsdlReader.getServiceUrl(true, this);
 //				HttpTransportSE androidHttpTransport = new HttpTransportSE(url);
 //				androidHttpTransport.call(SOAP_ACTION21, envelope);
@@ -1390,10 +1459,7 @@ public class LoginPage extends Activity {
                 } else {
                     returnVal = 0;
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                returnVal = 0;
-            }
+
         }
         return returnVal;
     }
@@ -1505,6 +1571,23 @@ public class LoginPage extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            Intent b = getIntent();
+            String username = b.getStringExtra("username");
+            String pword = b.getStringExtra("pword");
+            String sim = b.getStringExtra("SimNo");
+            System.out.println("* SHARED_LOGOUT " + SharedPrefManager.getLocalSharedPreference(LoginPage.this, CONSTANTS.SHARED_LOGOUT));
+            if (username != null && pword != null & sim != null) {
+                CheckLogin(username, pword, sim);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     @Deprecated
     public Object onRetainNonConfigurationInstance() {
         StateServer data = new StateServer();
@@ -1518,11 +1601,32 @@ public class LoginPage extends Activity {
     /**
      * Show Splash Screen function.
      */
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if ( mSpashDialog!=null && mSpashDialog.isShowing() )
+        {
+            mSpashDialog.cancel();
+        }
+    }
+
+    // 2) :
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if ( mSpashDialog!=null && mSpashDialog.isShowing())
+        {
+            mSpashDialog.cancel();
+        }
+    }
     protected void showSplashScreen(Context context) {
         mSpashDialog = new Dialog(context, R.style.SplashScreen);
         mSpashDialog.setContentView(R.layout.splashscreen);
         mSpashDialog.setCancelable(false);
-        mSpashDialog.show();
+        if(mSpashDialog != null ){
+            mSpashDialog.show();
+        }
 
 //		for(int i=0;i<100;i++){
 //			for (int j=0;j<100;j++){
@@ -1546,7 +1650,7 @@ public class LoginPage extends Activity {
         try {
             if (mSpashDialog != null) {
                 mSpashDialog.dismiss();
-                mSpashDialog = null;
+             //  mSpashDialog = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1674,15 +1778,17 @@ public class LoginPage extends Activity {
 
     private class BlockSync extends AsyncTask<String, String, String> {
         private Context context;
+        private String simSerial;
 
-        public BlockSync(Context context) {
+        public BlockSync(Context context,String simSerial) {
             this.context = context;
+            this.simSerial = simSerial;
         }
 
         @Override
         protected String doInBackground(String... strings) {
             SoapObject request20 = new SoapObject(NAMESPACE, METHOD_NAME20);
-            request20.addProperty("strInputUserMobile", Utils.getSimSerialNumber(context));
+            request20.addProperty("strInputUserMobile", simSerial);
             request20.addProperty("strInputUserName", userName);
             request20.addProperty("strInputUserPassword", password);
             SoapSerializationEnvelope envelope20 = new SoapSerializationEnvelope(SoapEnvelope.VER12);
@@ -1704,7 +1810,9 @@ public class LoginPage extends Activity {
                 if (result20 != null) {
                     String dbQuery20 = result20.getProperty(0).toString();
                     Gson gson = new Gson();
+
                     initialData = gson.fromJson(dbQuery20, InitialData.class);
+                    System.out.println("* initialData initialData  "+initialData);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1714,7 +1822,258 @@ public class LoginPage extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
+            if (true) {
 
+                System.out.println("* initialData "+initialData);
+                try {
+                    String dbQuery3 = initialData.getLoginData();
+                    System.out.println("* dbQuery3 "+dbQuery3);
+
+                    if(!dbQuery3.equals("[]")){
+                        String[] statusarray3 = dbQuery3.split(",");
+                        dbh.SaveLoginData(statusarray3[0].replaceAll("\\[|\\]|\\<", ""),
+                                statusarray3[2],
+                                statusarray3[3].replaceAll("\\[|\\]|\\>", ""),
+                                statusarray3[1]);
+
+                    }
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy  HH:mm:ss");
+                    date = sdf.format(System.currentTimeMillis());
+                    System.out.println("* date "+date);
+                    dbh.SetLoginDetailsUpdatedDate(date);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (true) {
+
+                    if (!initialData.getCityData().equals("[]")) {
+                        String dbQuery5 = initialData.getCityData();
+                        String Value5 = dbQuery5.replaceAll("\\[|\\]", "");
+                        String[] statusarray5 = Value5.split(",");
+                        String[] statusarrayData5 = Value5.split("<");
+                        for (int i = 1; i < statusarrayData5.length; i++) {
+                            String[] datavaluesStrings = statusarrayData5[i].split(">");
+                            String[] datavalues = datavaluesStrings[0].split(",");
+                            dbh.SaveCityData(datavalues[0], datavalues[1], datavalues[2], datavalues[3], datavalues[4], datavalues[5], datavalues[6], datavalues[7]);
+                        }
+                        System.out.println("* date1 "+date);
+                        dbh.SetCityPostalCodesUpdatedDate(date);
+                    }
+                    if (true) {
+                        if (!initialData.getCardTypeData().equals("[]")) {
+                            String dbQuery6 = initialData.getCardTypeData();
+                            String dbQuery6String = dbQuery6.replaceAll("\\[|\\]", "");
+                            String[] statusarray6 = dbQuery6String.split(",");
+                            String[] statusarrayData6 = dbQuery6String.split("<");
+                            for (int i = 1; i < statusarrayData6.length; i++) {
+                                String[] datavaluesStrings = statusarrayData6[i].split(">");
+                                String[] datavalues = datavaluesStrings[0].split(",");
+                                dbh.SaveCardTypes(datavalues[0], datavalues[1], datavalues[2], datavalues[3]);
+                            }
+                            System.out.println("* date2 "+date);
+                            dbh.SetCardTypesUpdatedDate(date);
+                        }
+                        if (!initialData.getMerchantData().equals("[]")) {
+                            String dbQuery7 = initialData.getMerchantData();
+                            String dbQuery7String = dbQuery7.replaceAll("\\[|\\]", "");
+                            String[] statusarray7 = dbQuery7String.split(",");
+                            String[] statusarrayData7 = dbQuery7String.split("<");
+                            for (int i = 1; i < statusarrayData7.length; i++) {
+                                String[] datavaluesStrings = statusarrayData7[i].split(">");
+                                String[] datavalues = datavaluesStrings[0].split("#");
+                                // if(!(datavalues[4].equals("null"))
+                                // &&
+                                // (!datavalues[5].equals("null"))){
+
+                                Long merchantId = Long.valueOf(datavalues[0]);
+                                String name = datavalues[1];
+                                String address = datavalues[2];
+                                String lat = datavalues[4];
+                                String lon = datavalues[5];
+                                String registeredOn = datavalues[7];
+                                String mobileNo = datavalues[8];
+                                String city = datavalues[10];
+                                int IsActive = Integer.parseInt(datavalues[9]);
+                                String RegisteredByEpf = datavalues[6];
+                                int isRegistered = Integer.parseInt(datavalues[3]);
+
+                                int isAssigned = Integer.parseInt(datavalues[11]);
+                                int isEdited = Integer.parseInt(datavalues[12]);
+                                String reloadNo = datavalues[13];
+
+                                dbh.SaveMerchantDetails(merchantId, name, address, lat, lon, registeredOn, mobileNo, city, IsActive, RegisteredByEpf, isRegistered, isAssigned, isEdited, reloadNo);
+                                // }
+                            }
+                            System.out.println("* date3 "+date);
+                            dbh.SetMerchantMasterUpdatedDate(date);
+
+                        }
+
+                        if (!initialData.getCardBulkSerialData().equals("[]")) {
+                            String dbQuery8 = initialData.getCardBulkSerialData();
+                            String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
+                            String[] statusarray8 = dbQuery8String.split(",");
+                            String[] statusarrayData8 = dbQuery8String.split("<");
+                            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy  HH:mm:ss");
+                            String dateValue = sdf1.format(System.currentTimeMillis());
+
+                            if (!statusarray8[0].equalsIgnoreCase("")) {
+                                if (statusarray8[1].length() > 1) {
+                                    for (int i = 1; i < statusarrayData8.length; i++) {
+                                        String[] datavaluesStrings = statusarrayData8[i].split(">");
+                                        String[] datavalues = datavaluesStrings[0].split(",");
+                                        if (dbh.CheckCardBulkRecordIsExists(datavalues[3], Integer.parseInt(datavalues[4].replaceAll("\\]|\\>", "")), datavalues[0], datavalues[1], datavalues[2]) == false) {
+                                            dbh.SaveBulkIds(datavalues[3], Integer.parseInt(datavalues[4].replaceAll("\\]|\\>", "")), datavalues[0], datavalues[1], datavalues[2], dateValue, Double.parseDouble(datavalues[6]), Integer.parseInt(datavalues[7]), Integer.parseInt(datavalues[8]));
+                                        }
+                                        if (i == 1) {
+                                            if (statusarrayData8.length > 1) {
+                                                dbh.SetBulkIdUpdatedDate(datavalues[5]);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (true) {
+                            if (initialData.getCardDenominationData() != null) {
+                                String dbQuery8 = initialData.getCardDenominationData();
+                                String dbQuery8String = dbQuery8.replaceAll("\\[|\\]", "");
+                                String[] statusarray8 = dbQuery8String.split(",");
+                                String[] statusarrayData8 = dbQuery8String.split("<");
+
+                                for (int i = 1; i < statusarrayData8.length; i++) {
+                                    String[] datavaluesStrings = statusarrayData8[i].split(">");
+                                    String[] datavalues = datavaluesStrings[0].split(",");
+                                    dbh.SaveCardDenominations(datavalues[1], datavalues[0], Double.parseDouble(datavalues[0]), Double.parseDouble(datavalues[0]));
+                                }
+                                System.out.println("* date30 "+date);
+                                dbh.SetCardDenominationUpdatedDate(date);
+                            }
+                            if (initialData.getMerchantInventoryData() != null) {
+                                String result_Value = initialData.getMerchantInventoryData();
+                                if (result_Value.isEmpty() || result_Value == null || result_Value.equals("[]")) {
+                                } else {
+                                    String res1 = result_Value.replaceAll("\\[|\\]", "");
+                                    String[] ByComma = res1.split(",");
+                                    String responeValueString = ByComma[0];
+
+                                    for (int i = 0; i < ByComma.length; i++) {
+                                        String AllBlockData = ByComma[i].replaceAll("\\<|\\>", "");
+                                        String[] dataElements = AllBlockData.split("#");
+
+                                        if (dataElements[0].length() != 1) {
+                                            String merchantid = dataElements[0].trim();
+                                            String cardType = dataElements[1];
+                                            String Denomination = dataElements[2];
+                                            String StocksInha = dataElements[3];
+                                            String rolevel = dataElements[4];
+                                            String date1 = dataElements[5];
+                                            String activationCount = dataElements[6];
+                                            String saleCount = dataElements[7];
+                                            if (i == 1) {
+                                                System.out.println("* date31 "+date);
+                                                dbh.SetMerchantInventorydatedDate(date1);
+                                            }
+                                            dbh.SaveMerchantInventoryTableAtLogin(Long.parseLong(merchantid), cardType, Integer.parseInt(Denomination), Integer.parseInt(StocksInha), date1, Integer.parseInt(rolevel), Integer.parseInt(activationCount), Integer.parseInt(saleCount));
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (!initialData.getNextSerialData().equals("[]")) {
+                                String dbQuery = initialData.getNextSerialData();
+                                Log.d("&&&&&&&&&& ", dbQuery);
+                                String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
+                                String[] statusarray61 = dbQueryString.split(",");
+                                String[] statusarrayData61 = dbQueryString.split("<");
+                                for (int i = 1; i < statusarrayData61.length; i++) {
+                                    String[] datavaluesStrings = statusarrayData61[i].split(">");
+                                    String[] datavalues = datavaluesStrings[0].split(",");
+                                    dbh.SaveSerials(Integer.valueOf(datavalues[0]), datavalues[1], Integer.valueOf(datavalues[2]), Integer.valueOf(datavalues[3]), Integer.valueOf(datavalues[4]), Integer.valueOf(datavalues[5]), Integer.valueOf(datavalues[6]), Integer.valueOf(datavalues[7]));
+                                }
+                            }
+
+                            if (true) {
+                                String dbQuery = initialData.getServerDate();
+                                String dbQueryString = dbQuery.replaceAll("\\[|\\]", "");
+                                String[] statusarrayData61 = dbQueryString.split("<");
+
+                                for (int i = 1; i < statusarrayData61.length; i++) {
+
+                                    String[] datavaluesStrings = statusarrayData61[i].split(">");
+                                    String[] datavalues = datavaluesStrings[0].split(",");
+                                    String serverDateStr = datavalues[0];
+                                    //String server_time = serverDateStr.replace(".0", "");
+                                    // SimpleDateFormat
+                                    // formatter= new
+                                    // SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+                                    // Date serverDate = new
+                                    // Date(formatter.format(serverDateStr));//
+                                    // formatter.parse(serverDateStr);
+                                    dbh.SaveServerDate(serverDateStr);// serverDate.toString());//new
+                                    // Date()
+                                }
+                            }
+
+                            String dateString = dbh.getServerDate();
+                            System.out.println("* dateString n 1 "+dateString);
+                            Date date1 = null;
+                            try {
+                                 date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            Date dateToday = new Date();
+                            Log.d("dates", "Server date : " + date1 + " Phone Date : " + dateToday);
+                            // System.out.println(output);
+
+                            DateTime phoneDate = new DateTime(dateToday);
+                            DateTime serverDate = new DateTime(date1);
+                            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("firstrun", false).commit();
+                            Toast toast = Toast.makeText(LoginPage.this, "Initial data synched! Version : " + version + " ", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                            toast.show();
+
+                            Log.d("Come to the my m : ", "My method 001 ");
+                            new updateSync().execute("");
+//                                                for (int i = 0; i < 100; i++) {
+//                                                    for (int j = 0; j < 100; j++) {
+//                                                        System.out.println(" if " + i + j);
+//                                                    }
+//                                                }
+                            //	UpdateOrCheckTSRSystemprofile();
+
+                            Integer diff = Minutes.minutesBetween(phoneDate, serverDate).getMinutes();
+                            int diffN = Math.abs(diff);
+                            if ((diffN < 30)) {
+//													Intent intent = new Intent(LoginPage.this, SelectorActivity.class);
+//													startActivity(intent);
+//													finish();
+                                if (CONSTANTS.IS_USING_ORGINAL_URL) {
+                                    startHomeActivity();
+                                } else {
+                                    (new SystemProfileAsyc(context)).execute("");
+                                }
+
+                            } else {
+                                Log.d("Check System time 001 :", "1 Run : Phone Date and Time is :" + phoneDate.toString() + " | Server Date and Time is :" + serverDate.toString());
+                                new AlertDialog.Builder(LoginPage.this)
+                                        .setTitle("Date info")
+                                        .setMessage("Phone Date different from Server Date - Fist login (ST- " + dateString + " )")
+                                        .setPositiveButton("Ok", null)
+                                        .show();
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+            dbh.UpdateLoginData(result.toString(), userName, password);
         }
 
         @Override

@@ -79,9 +79,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		/* tables */
 
-		String createTable = "CREATE TABLE IF NOT EXISTS TSR_LOGIN(" + "EPF_NO STRING(8) NOT NULL," + "USER_NAME TEXT(20) NOT NULL," + "PASSWORD TEXT(10) NOT NULL,SERVER_DATE TEXT(35),IS_SYNCH INTEGER(1) ,VERSION DOUBLE(12,2)," + "MOBILE_NO TEXT(12) NOT NULL)";
+		String createTable = "CREATE TABLE IF NOT EXISTS TSR_LOGIN(" +
+				"EPF_NO STRING(8) NOT NULL," +
+				"USER_NAME TEXT(20) NOT NULL," +
+				"PASSWORD TEXT(10) NOT NULL," +
+				"SERVER_DATE TEXT(35)," +
+				"IS_SYNCH INTEGER(1) ," +
+				"VERSION DOUBLE(12,2)," +
+				"MOBILE_NO TEXT(12) NOT NULL)";
 
 		db.execSQL(createTable);
+
+		String createLogout = "CREATE TABLE IF NOT EXISTS LOGOUT(" +
+				"USER_NAME TEXT(20) NOT NULL," +
+				"LOG_OUT TEXT(20) )";
+
+		db.execSQL(createLogout);
 
 		createTable = "CREATE TABLE IF NOT EXISTS CITY_POSTAL_CODES(" + "POSTAL_CODE TEXT(20) NOT NULL," + "CITY TEXT(25)," + "REGION TEXT(25)," + "LATITUDE TEXT(12)," + "LONGITUDE TEXT(12)," + "POST_OFFICE_NAME TEXT(50),IS_SYNCH INTEGER(1),CHANGES INTEGER(5),MAX_CHANGES INTEGER(5)," + "AREA TEXT(25))";
 		db.execSQL(createTable);
@@ -189,6 +202,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		String sql_user_attendace = "create table IF NOT EXISTS " + TABLE_USER_ATTENDANCE + " (" + "ID INTEGER PRIMARY KEY AUTOINCREMENT, " + "EPF_NUMBER TEXT," + "TEAM_NUMBER TEXT," + "ATTENDANCE_DATE INTEGER," + "TYPE TEXT," + "REASON TEXT," + "STATUS_CODE TEXT," + "SMS_STATUS_CODE INTEGER," + "BIKE TEXT," + "METER TEXT," + "IS_SYNCED INTEGER," + "CREATED_ON INTEGER)";
 		db.execSQL(sql_user_attendace);
+
+
 
 		addServiceUrl(db);
 
@@ -1843,6 +1858,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(sql);
 		db.close();
 	}
+	public void DeletelOGOUT() {
+		String sql = "DELETE FROM LOGOUT";
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.execSQL(sql);
+		db.close();
+	}
 
 	public void updateIsAssignedUpdatedMerchantTempTable(int merchantid, int value) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -2851,14 +2872,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		ArrayList<Locations> list = new ArrayList<Locations>();
 		SQLiteDatabase db = this.getReadableDatabase();
 		String sql = " SELECT ID,LONGT,LATT,UPDATED_DATE,Accuracy,Speed,UseTime FROM LOCATION_TRACK WHERE IS_SYNCH = 0";
-		Log.d("This is the location details of the getting the mobile 111 :", sql);
+		Log.d("location details getting the mobile:", sql);
 		Cursor cursor = db.rawQuery(sql, null);
 		while (cursor.moveToNext()) {
 			list.add(new Locations(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6)));
 		}
 		cursor.close();
 		db.close();
-		Log.d("This is the location details data 111:", list.toString() + "");
+		Log.d("location details data:", list.toString() + "");
 		return list;
 	}
 
@@ -2898,6 +2919,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	public void SaveServerDate(String string) {
+		System.out.println("* string "+string);
 		SQLiteDatabase db = this.getWritableDatabase();
 		String sql = "UPDATE TSR_LOGIN SET SERVER_DATE='" + string + "'";
 		db.execSQL(sql);
@@ -2907,13 +2929,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public String getServerDate() {
 		String serverDate = "";
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT SERVER_DATE FROM TSR_LOGIN ", null);
-		if (cursor.moveToNext()) {
-			Log.d("Inquery date time is :", cursor.getString(0));
-			serverDate = cursor.getString(0);
+		Cursor cursor = null;
+		try {
+			cursor = db.rawQuery("SELECT SERVER_DATE FROM TSR_LOGIN ", null);
+			if (cursor.moveToNext()) {
+				Log.d("Inquery date time is :", cursor.getString(0));
+				serverDate = cursor.getString(0);
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			cursor.close();
+			db.close();
 		}
-		cursor.close();
-		db.close();
 		return serverDate;
 	}
 
@@ -3152,7 +3180,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		} else {
 			sql = "INSERT INTO TSR_SYSTEM_PROFILE (IS_SYNCH, NEXT_MERCHANT_NO, NEXT_INVOICE_NO,MAX_RECORDS, SYSTEM_AUTO_SYNCH, GPS_GETTING, GPS_AUTO_SYNCH) VALUES " + "('1','10001','100001','150', '25200000', '30000', '300000') ";
 		}
-		Log.d("This is the system data query : ", sql);
+		Log.d("system data query :", sql);
 		db.execSQL(sql);
 		db.close();
 	}
@@ -3318,11 +3346,44 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 
 	}
-	public void SaveLoginData(String userName, String password, String mobileNumber) {
+	public void SaveLoginDataSp(String userName, String password, String mobileNumber,String serverDateTime) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.execSQL("INSERT INTO  TSR_LOGIN (EPF_NO,USER_NAME,PASSWORD,MOBILE_NO) VALUES('" + userName + "','" + userName + "','" + password + "','" + mobileNumber + "') ");
+		db.execSQL("INSERT INTO  TSR_LOGIN (EPF_NO,USER_NAME,PASSWORD,MOBILE_NO,SERVER_DATE) VALUES('" + userName + "','" + userName + "','" + password + "','" + mobileNumber + "','"+serverDateTime+"') ");
 		db.close();
+	}
+	public void SaveLogout(String userName, String logout) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery("SELECT LOG_OUT FROM LOGOUT WHERE USER_NAME = '"+userName+"'", null);
+		if(cursor.getCount()>0){
+			db.execSQL("UPDATE LOGOUT set LOG_OUT = '"+logout+"' where USER_NAME = '"+userName+"'");
+		}else{
+			db.execSQL("INSERT INTO  LOGOUT (USER_NAME,LOG_OUT) VALUES('" + userName + "','" + logout + "') ");
+		}
+		db.close();
+	}
 
+	public String GetLogout(String name) {
+		String nam = "";
+		try {
+			SQLiteDatabase db = this.getReadableDatabase();
+			Cursor cursor = db.rawQuery("SELECT LOG_OUT FROM LOGOUT WHERE USER_NAME = '"+name+"'", null);
+			while (cursor.moveToNext()) {
+				nam = cursor.getString(0);
+			}
+			cursor.close();
+			db.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("* name "+nam);
+		return nam;
+	}
+	public void updateLogout(String username){
+		SQLiteDatabase dbN = this.getWritableDatabase();
+		String sql = "UPDATE LOGOUT set LOG_OUT='N' where USER_NAME= '"+username+"'";
+		dbN.execSQL(sql);
+		dbN.close();
 	}
 
 	public String getLostResetData() {
@@ -3340,6 +3401,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return Tabels;
 	}
+
 
 	public void deleteSynchLocations() {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -3865,7 +3927,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			db.execSQL(sql1);
 			db.execSQL(sql2);
 		}
-		Log.d("This is the system data query : ", sql);
+		Log.d("sys data query:", sql);
 		db.execSQL(sql);
 		db.close();
 	}

@@ -114,6 +114,7 @@ public class CONSTANTS {
 	public static final int SHARED_UPDATE_TIME_SYNC = 12;
 	public static final String SHARED_UPDATE_TIME_SYNC_NAME = "sync_time";
 	public static  String SHARED_LOGOUT = "0";
+	public static String FinalSimSerialNumber = "";
 
 	public static final int SHARED_SYSTEM_DATA_UPDATED_TIME = 9;
 	public static final String SHARED_SYSTEM_DATA_UPDATED_TIME_NAME = "system_data_updated_at";

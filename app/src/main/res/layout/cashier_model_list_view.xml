@@ -60,11 +60,8 @@
         android:id="@+id/lableInhandamountnumber"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="1dp"
-        android:layout_x="235dp"
-        android:layout_y="5dp"
-        android:gravity="end"
+        android:gravity="center"
         android:text="@string/cashier_model_lable_inhand_card_mount_number"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="11sp" />
