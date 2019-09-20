@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    
+    <RelativeLayout
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:weightSum="105"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_weight="100"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtEditName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:paddingLeft="12dp"
+                    android:id="@+id/txtEditAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+            <Button
+                android:layout_weight="5"
+                android:id="@+id/btnEditMerchant"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:onClick="onClickEditMerchantfirst"
+                android:text="Edit" 
+                />
+            <TextView
+                android:id="@+id/txtStatus"
+                android:visibility="gone"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_x="189dp"
+                android:layout_y="11dp"
+                android:textColor="#00ff00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            
+            <TextView
+                android:id="@+id/txtEditId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="102dp"
+                android:layout_y="11dp"
+                android:text="Id"
+                android:textSize="2sp"
+                android:visibility="gone"
+             />
+
+
+
+        </LinearLayout>
+        
+        
+        
+    </RelativeLayout>
+
+</LinearLayout>

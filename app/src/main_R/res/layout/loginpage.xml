@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgseesecond"
+    >
+    <!--     android:background="#ffffff" -->
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.68"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/header"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/txtUserName"
+                android:layout_marginBottom="12dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="User Name" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:layout_marginBottom="12dp"
+                android:inputType="textPassword" />
+
+            <ImageButton
+                android:layout_gravity="center"
+                android:id="@+id/btnLogin"
+                android:layout_width="100dp"
+                android:layout_height="112dp"
+                android:background="@drawable/login_icon"
+                android:onClick="onClickLogin" />
+
+            <TextView
+                android:id="@+id/lblErrorMessage"
+                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:textColor="#FF3333" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    <!-- Login Form Ends -->
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="build : 1.20.0"
+            />
+    </RelativeLayout>
+
+</TableLayout>

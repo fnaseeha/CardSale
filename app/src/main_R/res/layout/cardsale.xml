@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgseesecond"
+    android:fillViewport="false" >
+    
+<ScrollView 
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    >
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="match_parent"
+       >
+
+        <!-- Header  Starts -->
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:orientation="horizontal">
+
+            <!-- Logo Start -->
+
+            <!-- Logo Ends -->
+        </LinearLayout>
+        <!-- Header Ends -->
+
+
+
+ <!-- Menu -->
+
+ <LinearLayout
+     android:id="@+id/widget33"
+     android:orientation="vertical"
+     android:layout_width="fill_parent" 
+     android:layout_height="match_parent">
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="10dp"
+         android:weightSum="2">
+         <TextView
+             android:layout_weight="1"
+             android:textSize="16sp"
+             android:id="@+id/textView7"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Merchant :"
+             android:textColor="#FFFFFF" />
+
+         <TextView
+             android:textSize="16sp"
+             android:layout_weight="1"
+             android:id="@+id/lblMerchantName"
+             android:layout_width="220dp"
+             android:layout_height="wrap_content"
+             android:text="TextView"
+             android:textColor="#FFFFFF" />
+     </LinearLayout>
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="10dp"
+         android:weightSum="2">
+
+         <TextView
+             android:layout_weight="0.6"
+             android:id="@+id/textView5"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:text="Type :"
+             android:textColor="#FFFFFF" />
+
+         <Spinner
+             android:layout_weight="1.4"
+             android:id="@+id/spnItems"
+             android:layout_width="wrap_content"
+             android:layout_height="50dp" />
+     </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="10dp"
+         android:weightSum="2">
+
+     <TextView
+         android:layout_weight="0.5"
+         android:id="@+id/textView6"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Denom :"
+         android:textColor="#FFFFFF" />
+
+     <Spinner
+         android:layout_weight="1.5"
+         android:layout_height="50dp"
+         android:id="@+id/spnDenomination"
+         android:layout_width="wrap_content" />
+     </LinearLayout>
+
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:weightSum="2">
+
+      </LinearLayout>
+
+     <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:weightSum="2">
+          <TextView
+              android:layout_weight="0.5"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Denom :"
+              android:visibility="invisible"
+              android:textColor="#FFFFFF" />
+
+         <Spinner
+             android:layout_weight="1.5"
+             android:layout_height="50dp"
+             android:id="@+id/spnBulkId"
+             android:layout_width="wrap_content"/>
+      </LinearLayout>
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:layout_marginRight="10dp"
+             android:layout_weight="1"
+             android:gravity="center_vertical"
+             android:minEms="10"
+             android:text="Enter Start Serial" />
+
+         <EditText
+             android:id="@+id/txtStartSerial"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:ems="10"
+             android:inputType="number"
+             android:maxLength="8">
+             <requestFocus />
+         </EditText>
+     </LinearLayout>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:layout_marginTop="10dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:layout_marginRight="10dp"
+             android:layout_weight="1"
+             android:gravity="center_vertical"
+             android:minEms="10"
+             android:text="Enter End Serial" />
+
+         <EditText
+             android:id="@+id/txtEndSerial"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:ems="10"
+             android:inputType="number"
+             android:maxLength="8"
+             />
+     </LinearLayout>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:layout_marginTop="10dp" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:layout_marginRight="10dp"
+             android:layout_weight="1"
+             android:gravity="center_vertical"
+             android:minEms="10"
+             android:text="Enter No of Cards" />
+
+         <EditText
+             android:id="@+id/txtNoofCards"
+             android:layout_width="match_parent"
+             android:inputType="number"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:ems="10"
+             android:maxLength="3"
+             />
+     </LinearLayout>
+     <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:text="Bulk Id :"
+         android:textColor="#FFFFFF" />
+
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:orientation="vertical"
+          android:weightSum="2">
+
+
+
+          <TextView
+              android:id="@+id/lblCarderror"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textColor="#FF0000" />
+      </LinearLayout>
+
+
+     <Button
+         android:layout_gravity="center"
+         android:id="@+id/btnAdd"
+         android:paddingRight="35dp"
+         android:paddingTop="10dp"
+         android:paddingBottom="10dp"
+         android:paddingLeft="35dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="OnclicKAdd"
+         android:text="Add"
+         android:textStyle="bold" />
+    
+    </LinearLayout>
+      
+        <!-- Menu Form Ends -->
+
+
+
+        
+ 
+</RelativeLayout>
+
+</ScrollView>
+  
+</LinearLayout>

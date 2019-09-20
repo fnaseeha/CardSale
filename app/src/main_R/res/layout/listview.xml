@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal"
+    android:paddingTop="4dip"
+    android:paddingBottom="6dip">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.08"
+                android:weightSum="3">
+                <TextView
+                    android:id="@+id/lstMerchantName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="lstMerchantName"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lstMerchantAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="lstMerchantID"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lstMerchantID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="lstMerchantID"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCardSale"
+                android:layout_width="57dp"
+                android:layout_height="67dp"
+                android:background="@drawable/sales_pros"
+                android:onClick="onClickCardSales" />
+
+            <Button
+                android:id="@+id/btnVisit"
+                android:layout_width="57dp"
+                android:layout_height="67dp"
+                android:background="@drawable/roadshop"
+                android:onClick="onClickVisitMerchant" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

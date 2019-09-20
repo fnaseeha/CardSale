@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:weightSum="6.5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" >
+
+            <TextView
+                android:id="@+id/deno"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="@string/card_returns_denomination" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/bulkCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="@string/card_returns_bulkcode" />
+
+            <TextView
+                android:id="@+id/startserial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:text="@string/card_returns_start_serial" />
+
+            <TextView
+                android:id="@+id/nextserial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/card_returns_next_serial"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/endserial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp"
+                android:text="@string/card_returns_end_serial" />
+
+            <TextView
+                android:id="@+id/numberofcards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="11sp" 
+                android:text="@string/card_returns_cards_count" />
+            <Button
+                android:id="@+id/removebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@drawable/accept_icon"
+                android:onClick="OnClickremovebutton" />
+
+        </LinearLayout>
+        
+    </RelativeLayout> 
+
+</RelativeLayout>

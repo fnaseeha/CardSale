@@ -1,0 +1,46 @@
+//SALES DETAILS AND HEADER SYNCH NEW PROCESS
+
+		SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME15); 
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		User user = dbh.getUserDetails();
+		List<ItemSale> itemSaleHeaderList = dbh.getUpdatedItemSaleList();
+		Gson gsonItemSaleList = new Gson();
+		String json = gsonItemSaleList.toJson(itemSaleHeaderList);
+		for (int i = 0; i < itemSaleHeaderList.size(); i++) {
+			ItemSale itemSale = itemSaleHeaderList.get(i);
+			List<ItemSalesDetails> itemSalesDetailsList = dbh.getUpdatedItemSalesDetailsList(itemSale.GetItemSalesId());
+			for (int j = 0; j < itemSalesDetailsList.size(); j++) {
+				if (j == 0) {
+					double totalDis = 0;
+					for (int k = 0; k < itemSalesDetailsList.size(); k++) {
+						ItemSalesDetails ItemSalesDetails = itemSalesDetailsList.get(k);
+						totalDis = totalDis+ ItemSalesDetails.GetLineDiscount();
+					}
+					ItemSalesDetails ItemSalesDetails = itemSalesDetailsList.get(j);
+					//salesHeader = itemSale.GetItemSalesId() + ","+ itemSale.GetMerchantId() + ","+ itemSale.GetTotalAmount() + ",TO_DATE ('"+ itemSale.GetDate()+ "', 'DD-MON-YYYY hh:mi:ss') ," + user.getId()+ "," + totalDis + ",'" + itemSale.GetLatitude()+ "','" + itemSale.GetLongitude() + "'";
+				} else {
+					//salesHeader = "0";
+				}
+			}}
+				//salesDetails = itemSale.GetItemSalesId() + ","+ ItemSalesDetails.GetItemSalesId() + ","+ ItemSalesDetails.GetnoOfItems() + ",'"+ ItemSalesDetails.GetStartSerial() + "',"+ ItemSalesDetails.GetLineAmount() + ","+ ItemSalesDetails.GetLineDiscount() + ",'"+ ItemSalesDetails.GetItemNo() + "',"+ ItemSalesDetails.getDenomination();		
+		request.addProperty("strInputUserMobile", getMyPhoneNumber()); 
+		request.addProperty("strInputUserName", user.getUserName());
+		request.addProperty("strInputUserPassword", user.getPassword());
+		request.addProperty("inventoryData", json);
+		Log.w("json sales Data list", json);
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+		envelope.setOutputSoapObject(request);
+		envelope.dotNet = true;
+		try {
+			HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+			androidHttpTransport.call(SOAP_ACTION15, envelope);
+			SoapObject result = (SoapObject) envelope.bodyIn; 
+			if (result != null) {
+				Log.w("Server Inventory from mobile : ",result.getProperty(0).toString());
+				int is_synch=1;
+				//dbh.UpdateSalesHeaderTable(itemSale.GetItemSalesId(), 0,is_synch);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="false" >
+
+
+<ScrollView
+    android:id="@+id/myview"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_main" >
+
+        <!-- Header  Starts -->
+        <!-- Header Ends -->
+
+
+        <!-- Sub Menu -->
+
+		 <AbsoluteLayout
+     		
+     		android:id="@+id/widget33"
+     		android:layout_width="fill_parent"
+     		android:layout_height="475dp" >
+		     
+		    <TextView
+		        android:id="@+id/lblUserName"
+		        android:layout_width="30dp"
+		        android:layout_height="wrap_content"
+		        android:layout_x="277dp"
+		        android:layout_y="1dp"
+		        android:text="hi"
+		        android:textColor="#FFFFFF" />
+        	
+        	<TextView
+        	    android:id="@+id/lblCity"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:layout_x="100dp"
+        	    android:layout_y="75dp"
+        	    android:textAppearance="?android:attr/textAppearanceSmall"
+        	    android:textColor="#FFFFFF" />
+        	
+        	<Button
+        	    android:id="@+id/btnSubCon"
+        	    android:layout_width="140dp"
+        	    android:layout_height="36dp"
+        	    android:layout_x="16dp"
+        	    android:layout_y="300dp"
+        	    android:onClick="subContinueClickHandler"
+        	    android:text="Continue" />
+
+            <Button
+                android:id="@+id/btnMainMenu"
+                android:layout_width="113dp"
+                android:layout_height="36dp"
+                android:layout_x="180dp"
+                android:layout_y="300dp"
+                android:onClick="OnClickBackToMainMenu"
+                android:text="Main Menu" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="5dp"
+                android:layout_y="165dp"
+                android:text="Merchant :"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lblMerchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="94dp"
+                android:layout_y="165dp"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radioSubVisit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_x="4dp"
+                android:layout_y="108dp"
+                android:checked="false"
+                android:text="Just Visit"
+                android:textColor="#372c24" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="26dp"
+                android:layout_y="206dp"
+                android:text="City            :"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radioSubCardSale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_x="1dp"
+                android:layout_y="59dp"
+                android:checked="true"
+                android:text="Card Sales"
+                android:textColor="#372c24" />
+            
+		 </AbsoluteLayout>
+        <!-- Menu Form Ends -->
+
+  <AbsoluteLayout
+      
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:orientation="vertical" >
+
+      <ImageView
+          android:layout_width="64dp"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="10dip"
+          android:src="@drawable/logo" />
+
+      <RadioGroup
+          android:id="@+id/radioSubMenu"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="16dp"
+          android:layout_marginTop="170dp" >
+      </RadioGroup>
+
+      <TextView
+          android:id="@+id/textView3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="0.10"
+          android:layout_x="177dp"
+          android:layout_y="1dp"
+          android:text="User Name :"
+          android:textColor="#FFFFFF"
+          android:textSize="16sp" />
+
+  </AbsoluteLayout>
+
+        <!-- Footer Start -->
+        
+        <AbsoluteLayout
+            android:id="@+id/footer"
+            android:layout_width="fill_parent"
+            android:layout_height="90dip"
+            android:layout_alignParentBottom="true"
+            android:textColor="#372c24" >
+
+        </AbsoluteLayout>
+        <!-- Footer Ends -->
+
+
+        
+
+
+        
+
+    </RelativeLayout>
+
+</ScrollView>
+</AbsoluteLayout>

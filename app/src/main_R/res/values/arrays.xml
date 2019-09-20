@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="item_array">
+        <item>ZTE AC/DC POWER ADOPTOR</item>
+        <item>HUAWEI - Backup Battery</item>
+        <item>ZTE - Backup Battery A</item>
+        <item>ZTE - Backup Battery N</item>
+        <item>AC/DC Adopter (Charger)</item>
+        <item>CABLE for Handset (Spiral 4 pair)</item>
+        <item>HUAWEI - Indoor Antenna</item>
+        <item>ZTE - Indoor Antenna</item>
+        <item>HUAWEI Handset 2288/2200</item>
+        <item>HUAWEI Handset 2259/2229</item>
+        <item>HUAWEI Handset 2221</item>
+        <item>ZTE A Handset</item>
+        <item>ZTE N Handset</item>
+        <item>HUAWEI ETS 2222+ CDMA PHONE</item>
+        <item>HUAWEI  -ETS 2229 CDMA PHONE</item>
+        <item>HUAWEI ETS 2259 CDMA PHONE</item>
+    </string-array>
+    
+     <string-array name="mettype_array">
+        <item>Received</item>
+        <item>Issued</item>       
+    </string-array>
+    
+     <string-array name="cardReturns">
+        <item>Card Return</item>
+        <item>Card cancellation</item>
+       
+    </string-array>
+    
+</resources>

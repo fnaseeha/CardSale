@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Approved_card_retuns_Details" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <AbsoluteLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" >
+
+            <TextView
+                android:id="@+id/card_return_deno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="2dp"
+                android:layout_y="7dp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="@string/card_returns_denomination" />
+
+            <TextView
+                android:id="@+id/card_return_bulkCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="40dp"
+                android:layout_y="7dp"
+                android:textSize="11sp"
+                android:text="@string/card_returns_bulkcode" />
+
+            <TextView
+                android:id="@+id/card_return_startserial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="100dp"
+                android:layout_y="7dp"
+                android:textSize="11sp"
+                android:text="@string/card_returns_start_serial" />
+
+            <TextView
+                android:id="@+id/card_return_endserial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="160dp"
+                android:layout_y="7dp"
+                android:textSize="11sp"
+                android:text="@string/card_returns_end_serial" />
+
+            <TextView
+                android:id="@+id/card_return_numberofcards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="215dp"
+                android:layout_y="7dp"
+                android:textSize="11sp" 
+                android:text="@string/card_returns_cards_count" />
+            
+            <TextView
+                android:id="@+id/card_return_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="250dp"
+                android:layout_y="7dp"
+                android:textSize="11sp" 
+                android:text="@string/card_returns_return_type" />
+            
+            <Button
+                android:id="@+id/card_return_removebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_x="290dp"
+                android:layout_y="0dp"
+                android:background="@drawable/delete"
+                android:onClick="OnClickApprovedCard"  />
+
+        </AbsoluteLayout>
+        
+    </RelativeLayout> 
+    
+</RelativeLayout>

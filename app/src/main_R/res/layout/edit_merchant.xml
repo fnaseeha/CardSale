@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/llAutoCity"
+        android:weightSum="3"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/editAutoCity"
+            android:layout_width="230dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:ems="10"
+            android:hint="Enter City" >
+
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <Button
+            android:id="@+id/btnEditProceed"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:onClick="onClickEditProceed"
+            android:text="Proceed" />
+    </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/lstMerchantEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="764dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:fastScrollEnabled="true"
+            android:smoothScrollbar="true"
+            android:layout_below="@+id/llAutoCity" >
+        </ListView>
+
+</RelativeLayout>            

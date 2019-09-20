@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+
+    android:background="@drawable/bgseesecond"
+    android:layout_height="fill_parent"
+    android:fillViewport="false" >
+
+    <ScrollView
+        android:id="@+id/myview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <!-- Header  Starts -->
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip"
+                android:orientation="horizontal">
+
+                <!-- Logo Start -->
+
+
+                <!-- Logo Ends -->
+
+            </LinearLayout>
+            <!-- Header Ends -->
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:id="@+id/widget33"
+                android:weightSum="2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Spinner
+                    android:id="@+id/spnCity"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:layout_gravity="center"
+                    android:id="@+id/btnAccess"
+                    android:layout_width="117dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/process_icon"
+                    android:onClick="onClickProceed" />
+            </LinearLayout>
+
+            <!-- Footer Start -->
+
+            <LinearLayout
+                android:id="@+id/footer"
+                android:layout_width="fill_parent"
+                android:layout_height="90dip"
+                android:layout_alignParentBottom="true"
+                android:textColor="#372c24"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+            </LinearLayout>
+            <!-- Footer Ends -->
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+ 
+
+       <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Attendance : " />
+
+            <ToggleButton
+                 android:id="@+id/frg_atd_swtInOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="OUT"
+                android:textOn="IN" />
+        </LinearLayout>
+      <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:minEms="10"
+                android:text="@string/team_code" />
+
+            <EditText
+                android:id="@+id/frg_atd_txtTeam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/team_code"
+                 />
+        </LinearLayout>
+      <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:minEms="10"
+                android:text="@string/bike_number" />
+
+            <EditText
+                android:id="@+id/frg_atd_txtBike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/bike_number"
+                 />
+        </LinearLayout>
+      <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:minEms="10"
+                android:text="@string/meter_value" />
+
+            <EditText
+                android:id="@+id/frg_atd_txtMeter"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/meter_value"
+                 />
+        </LinearLayout>
+
+       
+        <Button
+            android:id="@+id/frg_atd_btnsubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClickSubmitAtd"
+            android:text="Submit" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" >
+
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1"
+                android:text="Mobile Time :"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <DigitalClock
+                android:id="@+id/frg_atd_clkMobileTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DigitalClock" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp" >
+
+			<Button 
+			    android:text="Check My Attendance"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:onClick="onClickCheckAttedndance"
+			    />
+             
+			
+			<LinearLayout 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"
+			    >
+			    <TextView 
+			    android:layout_width="match_parent"
+			    android:layout_marginTop="5dp"
+			    android:layout_height="wrap_content"
+			    android:text=" "
+			    android:id="@+id/frg_atd_in_text"
+			        />
+			    <TextView 
+			    android:layout_marginTop="5dp"
+			    android:text=" "
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:id="@+id/frg_atd_out_text"
+			        />
+			    
+			</LinearLayout>
+
+        </LinearLayout>
+         
+    </LinearLayout>
+
+</ScrollView>
