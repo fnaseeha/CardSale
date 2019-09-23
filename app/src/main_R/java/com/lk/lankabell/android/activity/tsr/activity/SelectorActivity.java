@@ -144,7 +144,7 @@ public class SelectorActivity extends Activity {
 																	// background
 																	// webservices
 		Log.d("================", "==1111111========================================");
-		final TextView myTitleText = (TextView) findViewById(R.id.myTitle);
+		final TextView myTitleText = findViewById(R.id.myTitle);
 		if (myTitleText != null) {
 			myTitleText.setText("Home");
 		}
@@ -153,7 +153,7 @@ public class SelectorActivity extends Activity {
 
 		registerReceiver(mybroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
 
-		(new SystemTimesAsyc(this)).execute(new String[]{""});
+		(new SystemTimesAsyc(this)).execute("");
 
 	}
 
@@ -318,7 +318,7 @@ public class SelectorActivity extends Activity {
 		menuitems.add(itemLogout);
 
 		MainMenuAdapter adpMainMenu = new MainMenuAdapter(getApplicationContext(), menuitems);
-		GridView grid = (GridView) findViewById(R.id.gridview);
+		GridView grid = findViewById(R.id.gridview);
 		grid.setAdapter(adpMainMenu);
 
 	}
@@ -353,7 +353,7 @@ public class SelectorActivity extends Activity {
 		final View dialogBuilder = factory.inflate(R.layout.custom_msg_dialog, null);
 		final AlertDialog dialogView = new AlertDialog.Builder(this).create();
 		dialogView.setView(dialogBuilder);
-		TextView title = (TextView) dialogBuilder.findViewById(R.id.title);
+		TextView title = dialogBuilder.findViewById(R.id.title);
 		title.setText("Do you want to exit?");
 		dialogBuilder.findViewById(R.id.btn_yes).setOnClickListener(new  View.OnClickListener() {
 			@Override

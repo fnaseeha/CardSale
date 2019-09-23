@@ -186,6 +186,7 @@ public class LoginPage extends Activity {
         System.out.println("* SHARED_LOGOUT " + logout);
         if (username != null && pword != null & sim != null) {
             try {
+                CONSTANTS.FinalSimSerialNumber = sim;
                 CheckLogin(username, pword, sim);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -207,8 +208,8 @@ public class LoginPage extends Activity {
         date = sdf.format(System.currentTimeMillis());
 
         error.setText("");
-        //String telephone =  Utils.getSimSerialNumber(this);
-        final String telephone = AllSerialNumbers.size() > 0 ? AllSerialNumbers.get(0) : "";
+        final String telephone =  Utils.getSimSerialNumber(this);
+       // final String telephone = AllSerialNumbers.size() > 0 ? AllSerialNumbers.get(0) : "";
 
         System.out.println("* telephone " + telephone);
         pword = findViewById(R.id.txtPassword);
@@ -232,7 +233,7 @@ public class LoginPage extends Activity {
                 if (network_enable) {
 
                     initialData = new InitialData();
-                    System.out.println("* tele "+telephone+" username "+userName);
+                    System.out.println("* initialData  tele "+telephone+" username "+userName+" password "+password);
                     SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME1);
                     request.addProperty("strInputUserMobile", telephone);
                     request.addProperty("strInputUserName", userName);
@@ -254,7 +255,7 @@ public class LoginPage extends Activity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        System.out.println("* timer 1 EXEC");
+                                        System.out.println("* timer 1 EXEC "+telephone);
                                         try {
                                             getResult(telephone);
                                         } catch (Exception e) {
@@ -372,8 +373,8 @@ public class LoginPage extends Activity {
     }
 
     public void getResult(final String telephone) {
-        if (result != null) {
-            System.out.println("* result not null");
+        if (result != null ) {//&& !result.getProperty(0).toString().equals("0")
+            System.out.println("* result not null "+result.getProperty(0));
             String result_value = result.getProperty(0).toString();
             int result_valus = Integer.parseInt(result_value);
             boolean deletedb = getApplicationContext().deleteDatabase("TSRDBNEW");
@@ -408,6 +409,12 @@ public class LoginPage extends Activity {
                                     getInitialData(telephone);
                                 } catch (ParseException e) {
                                     e.printStackTrace();
+                                    System.out.println("* userName "+userName+" password "+password+" sim "+telephone);
+                                    Toast.makeText(LoginPage.this,"Username password not match with simSerial Number",Toast.LENGTH_LONG).show();
+                                    removeSplash();
+                                    //remove f
+                                    // make simple f
+                                    // check
                                 }
                             }
                         });
@@ -437,7 +444,8 @@ public class LoginPage extends Activity {
             }
         } else {
             //RetryWithSimSerial;
-            Toast.makeText(getApplicationContext(), "No Response Please try again", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Invalid username & Password or Invalid Mobile Number", Toast.LENGTH_LONG).show();
+            //retry(telephone.toLowerCase())
         }
     }
 
@@ -455,7 +463,6 @@ public class LoginPage extends Activity {
                             statusarray3[2],
                             statusarray3[3].replaceAll("\\[|\\]|\\>", ""),
                             statusarray3[1]);
-
                 }
 
                 SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -673,7 +680,7 @@ public class LoginPage extends Activity {
             if (network_enable) {
 
                 initialData = new InitialData();
-                System.out.println("* tele "+sim+" username "+username);
+                System.out.println("* tele "+sim+" username "+username+" pword "+pword);
                 SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME1);
                 request.addProperty("strInputUserMobile", sim);
                 request.addProperty("strInputUserName", username);
