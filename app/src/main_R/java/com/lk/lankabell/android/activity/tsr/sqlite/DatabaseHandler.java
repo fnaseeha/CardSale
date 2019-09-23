@@ -1734,6 +1734,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				db.execSQL("DELETE FROM TSR_LOGIN");
 			}
 			db.execSQL("INSERT INTO  TSR_LOGIN (EPF_NO,USER_NAME,PASSWORD,MOBILE_NO) VALUES('" + epfno + "','" + username + "','" + password + "','" + mobileNo + "') ");
+            System.out.println("* Saved Login");
 		}catch (Exception e){
 			e.printStackTrace();
 		}finally {
@@ -2946,6 +2947,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Cursor cursor = null;
 		try {
 			cursor = db.rawQuery("SELECT SERVER_DATE FROM TSR_LOGIN ", null);
+			System.out.println("* coursor count "+cursor.getCount());
 			if (cursor.moveToNext()) {
 				Log.d("Inquery date time is :", cursor.getString(0));
 				serverDate = cursor.getString(0);

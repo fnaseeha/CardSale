@@ -393,10 +393,12 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 						/*telephonyManager.getSimState()==TelephonyManager.SIM_STATE_READY*/
 
 						SerialNumbers.add(serialNumber);
-						System.out.println("* serial number : " + serialNumber);
+					//	System.out.println("* serial number : " + serialNumber);
 
 					}
-
+					//SerialNumbers.clear();
+					//	SerialNumbers.add("8994034060115581639f");
+					//SerialNumbers.add("8994084111800545576"); //4107
                /* if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
                 } else {
@@ -419,25 +421,27 @@ public class Utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 
 			getSimSerialNumber = mTelephonyMgr.getSimSerialNumber();
 			SerialNumbers.add(getSimSerialNumber);
-
-			SerialNumbers.clear();
-//			SerialNumbers.add("8994034060115581639f");
-//			SerialNumbers.add("8994084111800545576f"); //4107
+//
+//			SerialNumbers.clear();
+//		//	SerialNumbers.add("8994034060115581639f");
+//			SerialNumbers.add("8994084111800545576"); //4107
 
 			// SerialNumbers.add("8994029702649458050"); //131796
 
 			//   SerialNumbers.add("8994036031116012502"); //129141 LIVE USER
 
-            /*
-                         "8994035110313941827F"); //115 live
-                         "8994029702958154753f"); //9127426
-                          "8994084111800545576f"); //1039 Test
-                          "8994036031116012658F"); //1039
-                          "8994084111800545576");
-                          "8994035110313941819f");//246
-                          "8994084111800545576"); //319
-                        "8994084111800545576");//test use 131796*/
+
+//                         "8994035110313941827F"); //115 live
+//                         "8994029702958154753f"); //9127426
+//                          "8994084111800545576f"); //1039 Test
+//                          "8994036031116012658F"); //1039
+//                          "8994084111800545576");
+//                          "8994035110313941819f");//246
+//                          "8994084111800545576"); //319
+//                        "8994084111800545576");//test use 131796
 		}
+//		ArrayList<String> SerialNumbers = new ArrayList<>();
+//		SerialNumbers.add("8994084111800545576"); //4107
 		return SerialNumbers;
 	}
 
