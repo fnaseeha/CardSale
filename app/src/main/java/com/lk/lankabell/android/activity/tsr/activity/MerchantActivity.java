@@ -63,6 +63,10 @@ public class MerchantActivity extends Activity implements OnClickListener {
 		TextView myTitleText = (TextView) findViewById(R.id.myTitle);
 		myTitleText.setText("Register Location");
 		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 		locManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 		getGps();
 	}

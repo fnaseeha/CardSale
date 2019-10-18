@@ -357,12 +357,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public PostalCode getPostalCodeDetailsByCityName(String cityName) {
 		PostalCode postalCode = null;
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery("SELECT * FROM CITY_POSTAL_CODES WHERE CITY = '" + cityName + "' ", null);
-		if (cursor.moveToNext()) {
-			postalCode = new PostalCode(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getString(4), 0, cursor.getString(2), cursor.getString(5), cursor.getString(6));
+		Cursor cursor = null;
+		try {
+			 cursor = db.rawQuery("SELECT * FROM CITY_POSTAL_CODES WHERE CITY = '" + cityName + "' ", null);
+			if (cursor.moveToNext()) {
+				postalCode = new PostalCode(cursor.getString(0), cursor.getString(1), cursor.getString(3), cursor.getString(4), 0, cursor.getString(2), cursor.getString(5), cursor.getString(6));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			if(cursor!= null){
+				cursor.close();
+			}
+			db.close();
 		}
-		cursor.close();
-		db.close();
 		return postalCode;
 	}
 
@@ -1727,8 +1735,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	public void SaveLoginData(String epfno, String username, String password, String mobileNo) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.execSQL("INSERT INTO  TSR_LOGIN (EPF_NO,USER_NAME,PASSWORD,MOBILE_NO) VALUES('" + epfno + "','" + username + "','" + password + "','" + mobileNo + "') ");
-		db.close();
+		Cursor cursor = null;
+		try {
+			cursor = db.rawQuery("SELECT * FROM TSR_LOGIN", null);
+			if (cursor.getCount() > 0) {
+				db.execSQL("DELETE FROM TSR_LOGIN");
+			}
+			db.execSQL("INSERT INTO  TSR_LOGIN (EPF_NO,USER_NAME,PASSWORD,MOBILE_NO) VALUES('" + epfno + "','" + username + "','" + password + "','" + mobileNo + "') ");
+            System.out.println("* Saved Login");
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			db.close();
+			if(cursor != null){
+				cursor.close();
+			}
+		}
+
 	}
 
 	/*
@@ -2932,6 +2955,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Cursor cursor = null;
 		try {
 			cursor = db.rawQuery("SELECT SERVER_DATE FROM TSR_LOGIN ", null);
+			System.out.println("* coursor count "+cursor.getCount());
 			if (cursor.moveToNext()) {
 				Log.d("Inquery date time is :", cursor.getString(0));
 				serverDate = cursor.getString(0);
@@ -3348,8 +3372,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 	public void SaveLoginDataSp(String userName, String password, String mobileNumber,String serverDateTime) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.execSQL("INSERT INTO  TSR_LOGIN (EPF_NO,USER_NAME,PASSWORD,MOBILE_NO,SERVER_DATE) VALUES('" + userName + "','" + userName + "','" + password + "','" + mobileNumber + "','"+serverDateTime+"') ");
-		db.close();
+		Cursor cursor = null;
+		try {
+			cursor = db.rawQuery("SELECT * FROM TSR_LOGIN WHERE USER_NAME = '" + userName + "'", null);
+			if (cursor.getCount() == 0) {
+				db.execSQL("INSERT INTO  TSR_LOGIN (EPF_NO,USER_NAME,PASSWORD,MOBILE_NO,SERVER_DATE) VALUES('" + userName + "','" + userName + "','" + password + "','" + mobileNumber + "','" + serverDateTime + "') ");
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			db.close();
+			if(cursor!= null){
+				cursor.close();
+			}
+		}
 	}
 	public void SaveLogout(String userName, String logout) {
 		SQLiteDatabase db = this.getWritableDatabase();

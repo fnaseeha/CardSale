@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@drawable/back_main"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -32,7 +32,7 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:text="Manual Sync Done !"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="15dp"
         android:textStyle="bold"/>
 
@@ -48,7 +48,7 @@
             android:id="@+id/btn_send"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:background="@android:color/white"
+            android:background="@drawable/okay_btn"
             android:clickable="true"
             android:text="Send  Email"
             android:layout_marginRight="14dp"
@@ -59,7 +59,7 @@
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginLeft="14dp"
-            android:background="@android:color/white"
+            android:background="@drawable/cancel_btn"
             android:clickable="true"
             android:text="Cancel"
             android:textStyle="bold" />

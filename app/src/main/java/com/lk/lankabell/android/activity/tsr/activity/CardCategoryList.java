@@ -75,6 +75,12 @@ public class CardCategoryList extends Activity {
 		setContentView(R.layout.cardsale_listview);
 
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
+		final TextView appversion = findViewById(R.id.appversion);
+		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 
 		merchant = getIntent().getExtras().getString("merchantName");
 		merchantId = getIntent().getExtras().getString("merchantID");
@@ -144,7 +150,6 @@ public class CardCategoryList extends Activity {
 
 			TextView txttotal = (TextView) findViewById(R.id.txttotalcard);
 
-			dbh = new DatabaseHandler(getApplicationContext());
 
 			String data = dbh.GetCardTotal();
 			double data_value = 0;
@@ -384,7 +389,7 @@ public class CardCategoryList extends Activity {
 					Log.w("date parse error", e.getMessage());
 				}
 				dbh.SaveServerDate(new Date().toString());// New Date()
-				SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy  HH:mm:ss");
+				SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 				String dateValue = sdf1.format(System.currentTimeMillis());
 
 				for (a = 0; a < listData.size(); a++) {

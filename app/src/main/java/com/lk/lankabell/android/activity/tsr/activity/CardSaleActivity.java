@@ -61,6 +61,11 @@ public class CardSaleActivity extends Activity   {		//implements android.content
 		
 		TextView myTitleText=(TextView)findViewById(R.id.myTitle);
 		myTitleText.setText("Card Sales");
+		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 
 		DataBindToItemTypeSpinner();
 		 
@@ -74,8 +79,7 @@ public class CardSaleActivity extends Activity   {		//implements android.content
 		
 			spnItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {			
 		    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) { 
-				
-				dbh = new DatabaseHandler(getApplicationContext());
+
 				final Spinner itemSpinner = (Spinner)findViewById(R.id.spnItems);
 				DataBindToDenominationTypeSpinner(itemSpinner.getSelectedItem().toString());
 		    } 

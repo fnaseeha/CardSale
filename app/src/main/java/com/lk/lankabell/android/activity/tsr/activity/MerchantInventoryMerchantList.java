@@ -7,12 +7,18 @@ import java.util.List;
 import com.lk.lankabell.android.activity.tsr.R;
 import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -63,7 +69,11 @@ public class MerchantInventoryMerchantList extends Activity {
         if (myTitleText != null) {
             myTitleText.setText("Merchant Inventory");
         }
-
+        final TextView appversion = findViewById(R.id.appversion);
+        DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
         lv = (ListView) findViewById(R.id.lvMerchantName);
 
         // Color coding
@@ -105,16 +115,19 @@ public class MerchantInventoryMerchantList extends Activity {
                         map.put(columnTags[3], OrderCursor.getString(OrderCursor.getColumnIndex("MEASURE")));
                         listData.add(map);
                     } else if (type.equals("This Area")) {
+
                         String latitude_val = OrderCursor.getString(OrderCursor.getColumnIndex("LATITUDE"));
                         String londitude_val = OrderCursor.getString(OrderCursor.getColumnIndex("LONGITUDE"));
 
                         float latitude = Float.parseFloat(latitude_val);
                         float londitude = Float.parseFloat(londitude_val);
 
-                        float my_Latitude = Float.parseFloat(lati_Value);
-                        float my_Londitude = Float.parseFloat(lond_Value);
 
-                        double distance = (float) Math.sqrt(((latitude - my_Latitude) * (latitude - my_Latitude) * 111 * 111) + ((londitude - my_Londitude) * (londitude - my_Londitude) * 111 * 111));
+                        float my_Latitude = Float.parseFloat(lati_Value != null ? lati_Value : "0");
+                        float my_Londitude = Float.parseFloat(lond_Value != null ? lond_Value : "0");
+
+                        double distance = (float) Math.sqrt(((latitude - my_Latitude) * (latitude - my_Latitude) * 111 * 111) +
+                                ((londitude - my_Londitude) * (londitude - my_Londitude) * 111 * 111));
                         if (distance < 5) {
                             HashMap<String, String> map = new HashMap<String, String>();
 
@@ -144,6 +157,8 @@ public class MerchantInventoryMerchantList extends Activity {
     /**
      * @param view Selecting the merchant inventory type function.
      */
+
+
     public void OnclickSelect(View view) {
         LinearLayout vwParentRow = (LinearLayout) view.getParent();
 

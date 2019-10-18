@@ -66,7 +66,11 @@ public class RemarksActivity extends Activity implements android.content.DialogI
 
 		final TextView myTitleText = (TextView) findViewById(R.id.myTitle);
 		myTitleText.setText("Enter Remarks");
-
+		final TextView appversion = findViewById(R.id.appversion);
+		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 		editRemarks = (EditText) findViewById(R.id.txtRemark);
 
 		String merchant = getIntent().getExtras().getString("merchantName");

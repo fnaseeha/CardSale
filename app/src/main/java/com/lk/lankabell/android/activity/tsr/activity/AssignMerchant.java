@@ -55,6 +55,12 @@ public class AssignMerchant extends Activity {
         final TextView myTitleText = (TextView) findViewById(R.id.myTitle);
         myTitleText.setText("Assign Merchant");
         dbh = new DatabaseHandler(getApplicationContext());
+
+        final TextView appversion = findViewById(R.id.appversion);
+        if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
         ArrayList<String> list = dbh.getCities();
         for (int i = 0; i < list.size(); i++) {
             String cityName = list.get(i).toString();

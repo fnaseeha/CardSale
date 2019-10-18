@@ -36,7 +36,13 @@ public class LocationRegisterActivity extends Activity {
 		setContentView(R.layout.merchant_location);
 		
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
-		
+
+		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		final TextView myTextTitle=(TextView)findViewById(R.id.myTitle);
 		myTextTitle.setText("Register Location");
 		
@@ -55,8 +61,7 @@ public class LocationRegisterActivity extends Activity {
 		
 		TextView reloadNo = (TextView) findViewById(R.id.txtReloadNo); 
 		reloadNo.setText(Common.getMerchant().getreloadNo());
-		
-		dbh = new DatabaseHandler(getApplicationContext());
+
 		id = dbh.getMerchantIdByNameANDPhone(name.getText().toString(), phone.getText().toString());
 
 		

@@ -37,8 +37,13 @@ public class MerchantViewer extends Activity {
 		if (myTitleText != null) {
 			myTitleText.setText("Merchant Global View");
 		}
+		final TextView appversion = findViewById(R.id.appversion);
 		DatabaseHandler dbh;
 		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		ArrayList<String> list = dbh.getAllMerchants();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(MerchantViewer.this,android.R.layout.simple_dropdown_item_1line, list);
 		autoMerchant = (AutoCompleteTextView) findViewById(R.id.autoMerchantName);

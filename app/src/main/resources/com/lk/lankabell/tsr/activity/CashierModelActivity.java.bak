@@ -66,6 +66,12 @@ public class CashierModelActivity extends Activity {
 		setContentView(R.layout.activity_cashier_model);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
 		final TextView myTitleText=(TextView)findViewById(R.id.myTitle);
+		final TextView appversion = findViewById(R.id.appversion);
+
+        		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+        		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 		myTitleText.setText("Cashier Confirm");
 		
 		Sales_Sum = (TextView) findViewById(R.id.txtsalesAmount);

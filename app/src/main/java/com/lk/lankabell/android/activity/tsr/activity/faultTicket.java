@@ -45,8 +45,11 @@ public class faultTicket extends Activity {
 		
 		TextView myTitleText=(TextView)findViewById(R.id.myTitle);
 		myTitleText.setText("Fault Ticket");
-		
+
 		DatabaseHandler db  = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		appversion.setText("v -"+db.getVersion());
+
 		User user = db.getUserDetails();
 		
 		TextView lblUserName = (TextView)findViewById(R.id.lblUserName);

@@ -75,8 +75,8 @@
     <string name="title_activity_card__returns__details">Card_Returns_Details</string>
     <string name="card_returns_cards_count">Count</string>
     <string name="Returns_returnType">Card Return Type :</string>
-    <string name="title_activity_approved_card_returns">Approved_card_returns</string>
-    <string name="title_activity_approved_card_retuns__details">Approved_card_retuns_Details</string>
+    <string name="title_activity_approved_card_returns">Approved Card Returns</string>
+    <string name="title_activity_approved_card_retuns__details">Approved Card Returns Details</string>
     <string name="epf">EPF</string>
     <string name="datetime">DateTime</string>
     <string name="longitude">longitude</string>

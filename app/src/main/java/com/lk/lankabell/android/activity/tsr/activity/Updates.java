@@ -134,6 +134,10 @@ public class Updates extends Activity {
 		}
 
 		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 		user = dbh.getUserDetails();
 	}
 
@@ -302,6 +306,7 @@ public class Updates extends Activity {
 						Log.w("Method 0", "TSR System profile Data id Sysnc");
 						User user = dbh.getUserDetails();
 						String epfNo = dbh.GetEmpNoByPhoneNo(user.getmobileNo());
+						System.out.println("* user "+user+" epfNo "+epfNo);
 						// start the push methods ...
 						Systemprofile = postSync.TSRSystemprofile(getApplicationContext(), getMyPhoneNumber(),
 								user.getUserName(), user.getPassword() ,epfNo ,"Sysnc");
@@ -1280,9 +1285,11 @@ public class Updates extends Activity {
 	private static String METHOD_NAME30 = "MerchantSynch";
 
 	public Integer synchMerchants() {
+
 		Integer returnVal = 0;
 		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 		User user = dbh.getUserDetails();
+		System.out.println("* user "+user);
 		int rowcount = dbh.GetNonSynchRegisterMerchantsCount();
 		
 		if(rowcount < 1 ){

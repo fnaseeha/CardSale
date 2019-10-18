@@ -41,6 +41,13 @@ public class Card_Returns extends Activity {
 		}
 		
 		SQLiteDatabase db = openOrCreateDatabase("TSRDBNEW", MODE_PRIVATE, null);
+		final TextView appversion = findViewById(R.id.appversion);
+
+		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		String sql = "select CS.DENOMINATION as DENO, CS.BULK_NO as BULKNO, CS.START_SERIAL as STARTSERIAL, NS.NEXT_SERIAL_VALUE as NEXTSERIAL, CS.END_SERIAL as ENDSERIAL, CS.NO_OF_CARDS as CARDS from TSR_RECEIVED_CARD_BUNDLES CS left join NEXT_SERIAL NS ON CS.BULK_NO = NS.BULK_NO AND CS.END_SERIAL = NS.END_SERIAL AND CS.DENOMINATION = NS.DENOMINATION AND CS.START_SERIAL = NS.START_SERIAL WHERE (NS.IS_ALL_SOLD = 0 or NS.IS_ALL_SOLD is null) and CS.CARD_RETURNS = '0' ";
 		Cursor cursor = db.rawQuery(sql, null);
 		listData.clear();
@@ -103,7 +110,7 @@ public class Card_Returns extends Activity {
 		} else {
 		  cardreturn = "C";
 		}
-	    dbh = new DatabaseHandler(getApplicationContext());
+
 	    dbh.ReturnCards( Deno.getText().toString(), bulk.getText().toString(), startserial.getText().toString(), nextserial.getText().toString(), endserial.getText().toString(), NumberOfCard.getText().toString(), cardreturn );
 	     
 	    Intent intent1 = new Intent(Card_Returns.this,Card_Returns.class);

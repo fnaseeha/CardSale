@@ -2,6 +2,8 @@ package com.lk.lankabell.android.activity.tsr.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -18,6 +20,7 @@ import com.lk.lankabell.android.activity.tsr.util.WsdlReader;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -31,6 +34,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AbsoluteLayout;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -46,7 +50,9 @@ public class Approved_card_returns extends Activity {
 	private static String NAMESPACE = "http://mainService";
 	private static String METHOD_NAME = "ReturnCardsConfirm";
 	private static String SOAP_ACTION = "http://mainService/ReturnCardsConfirm";
-	
+
+	SoapSerializationEnvelope envelope;
+	SoapObject result;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,6 +64,12 @@ public class Approved_card_returns extends Activity {
 		final TextView myTitleText=(TextView)findViewById(R.id.myTitle);
 		if(myTitleText!=null) {
 			myTitleText.setText("Cards Return Approved");
+		}
+		final TextView appversion = findViewById(R.id.appversion);
+
+		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
 		}
 		error = (TextView) findViewById(R.id.error_message);
 		error.setText("");
@@ -105,31 +117,33 @@ public class Approved_card_returns extends Activity {
 	
 	
 	public void OnClickApprovedCard(View view) {
-		
-		AbsoluteLayout vwParentRow = (AbsoluteLayout )view.getParent();
-	    TextView Deno = (TextView)vwParentRow.getChildAt(0);
-	    TextView bulk = (TextView)vwParentRow.getChildAt(1);
-	    TextView startserial = (TextView)vwParentRow.getChildAt(2);
-	    TextView endserial = (TextView)vwParentRow.getChildAt(3);
-	    TextView NumberOfCard = (TextView)vwParentRow.getChildAt(4);
-	    TextView ReturnType = (TextView)vwParentRow.getChildAt(5);
-	    
-	    String Denomination = Deno.getText().toString();
-	    String bulkcode = bulk.getText().toString();
-	    String cardstartserial = startserial.getText().toString();
-	    String cardendserila = endserial.getText().toString();
-	    String noc = NumberOfCard.getText().toString();
-	    String type = ReturnType.getText().toString();
-	    
-	    dbh = new DatabaseHandler(getApplicationContext());
-	    dbh.ReturnCards_reject( Denomination, bulkcode, cardstartserial, cardendserila, noc, type);
-	    
+		try {
+			LinearLayout vwParentRow = (LinearLayout) view.getParent();
+			TextView Deno = (TextView) vwParentRow.findViewById(R.id.card_return_deno);
+			TextView bulk = (TextView) vwParentRow.findViewById(R.id.card_return_bulkCode);
+			TextView startserial = (TextView) vwParentRow.findViewById(R.id.card_return_startserial);
+			TextView endserial = (TextView) vwParentRow.findViewById(R.id.card_return_endserial);
+			TextView NumberOfCard = (TextView) vwParentRow.findViewById(R.id.card_return_numberofcards);
+			TextView ReturnType = (TextView) vwParentRow.findViewById(R.id.card_return_type);
+
+			String Denomination = Deno.getText().toString();
+			String bulkcode = bulk.getText().toString();
+			String cardstartserial = startserial.getText().toString();
+			String cardendserila = endserial.getText().toString();
+			String noc = NumberOfCard.getText().toString();
+			String type = ReturnType.getText().toString();
+
+
+			dbh.ReturnCards_reject(Denomination, bulkcode, cardstartserial, cardendserila, noc, type);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	    Intent intent1 = new Intent(Approved_card_returns.this, Approved_card_returns.class);
 	    startActivity(intent1);
 	}
 	
 	public void OnClickConfirm(View view) {
-		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 		error.setText("");
 		String Securiry = SecurityCode.getText().toString().trim();
 		if(Securiry.equalsIgnoreCase("")){
@@ -139,7 +153,7 @@ public class Approved_card_returns extends Activity {
 		if (isOnline() == true) {
 			SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 			User user = dbh.getUserDetails();
-			ArrayList<CardReturnsData> cardReturnsDatas = dbh.GetCaedReturnsDetails();
+			final ArrayList<CardReturnsData> cardReturnsDatas = dbh.GetCaedReturnsDetails();
 			Gson gson = new Gson();
 			String cardreturn = gson.toJson(cardReturnsDatas);
 			request.addProperty("strInputUserMobile", Utils.getSimSerialNumber(this));
@@ -148,42 +162,120 @@ public class Approved_card_returns extends Activity {
 			request.addProperty("CardReturns", cardreturn);
 			request.addProperty("SecurityCode", Securiry);
 
-			SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+			envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 			envelope.setOutputSoapObject(request);
 			envelope.dotNet = true;
 			try {
-				HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+				new GetResult(this).execute("");
+
+				/*HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 				androidHttpTransport.call(SOAP_ACTION, envelope);
-				SoapObject result = (SoapObject) envelope.bodyIn;
-				if (result != null) {
-					String Message = result.getProperty(0).toString().replace("\"", "");
-					if (Message.equals("ErrorSecurityCode")) {
-						error.setText("Please Enter the Valied Security Code.");
-					}
-					if (Message.equals("Error")) {
-						error.setText("Please Try Again.");
-					}
-					if (Message.equals("Sucess")) {
-						dbh.UpdateTheCardReturns(cardReturnsDatas);
-						AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-			    		dlgAlert.setMessage("Successfully remove the Cards in mobile.");
-			    		dlgAlert.setTitle("Confirmation Success.");
-			    		dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int which) {
-								Intent intent = new Intent(Approved_card_returns.this, home.class);
-								startActivity(intent);
+				SoapObject result = (SoapObject) envelope.bodyIn;*/
+
+				Timer _timer  = new Timer();
+
+				_timer.schedule(new TimerTask() {
+					@Override
+					public void run() {
+						// use runOnUiThread(Runnable action)
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+
+								try {
+									CheckResult(dbh, cardReturnsDatas);
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
 							}
 						});
-			    		dlgAlert.setCancelable(true);
-			    		dlgAlert.create().show();						
 					}
-				}
+				}, 1000);
+
+
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
+
+	public void CheckResult(DatabaseHandler dbh, ArrayList<CardReturnsData> cardReturnsDatas) {
+		if (result != null) {
+			String Message = result.getProperty(0).toString().replace("\"", "");
+			if (Message.equals("ErrorSecurityCode")) {
+				error.setText("Please Enter the Valied Security Code.");
+			}
+			if (Message.equals("Error")) {
+				error.setText("Please Try Again.");
+			}
+			if (Message.equals("Sucess")) {
+				dbh.UpdateTheCardReturns(cardReturnsDatas);
+				AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+				dlgAlert.setMessage("Successfully remove the Cards in mobile.");
+				dlgAlert.setTitle("Confirmation Success.");
+				dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						Intent intent = new Intent(Approved_card_returns.this, home.class);
+						startActivity(intent);
+					}
+				});
+				dlgAlert.setCancelable(true);
+				dlgAlert.create().show();
+			}
+		}
+	}
+
+	private class GetResult extends AsyncTask<String, String, String> {
+
+
+		private HttpTransportSE androidHttpTransport;
+		private Context context;
+
+		public GetResult(Context context) {
+			super();
+			this.context = context;
+			androidHttpTransport = new HttpTransportSE(URL);
+		}
+
+
+		@Override
+		protected String doInBackground(String... params) {
+			try {
+
+				androidHttpTransport.call(SOAP_ACTION, envelope);
+				 result = (SoapObject) envelope.bodyIn;
+
+
+				//   System.out.println("* result " + result!=null?result.toString():"");
+//
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "";
+		}
+
+
+		@Override
+		protected void onPostExecute(String result) {
+
+			System.out.println(" * GetAync result "+result);
+
+		}
+
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
+		protected void onProgressUpdate(String... text) {
+
+
+		}
+
+	}
 	public boolean isOnline() { // check network connection is available
 		boolean connected = false;
 		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

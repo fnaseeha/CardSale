@@ -124,7 +124,13 @@ public class mysales extends Activity implements android.content.DialogInterface
 		
 		TextView myTitleText=(TextView)findViewById(R.id.myTitle);
 		myTitleText.setText("My Sales");
-		
+
+		final TextView appversion = findViewById(R.id.appversion);
+		final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		Button btnstartdate = (Button) findViewById(R.id.btnStartdate);
 		btnstartdate.setOnClickListener(new View.OnClickListener() {
 			
@@ -157,7 +163,7 @@ public class mysales extends Activity implements android.content.DialogInterface
 			final String[] columnTags = new String[] {"date","cardtype", "denom","qty" ,"merchantId"}; 
 
 	      	SQLiteDatabase db=openOrCreateDatabase("TSRDBNEW", MODE_PRIVATE, null);
-	      	final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+
 
 	      	btnViewSales.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {

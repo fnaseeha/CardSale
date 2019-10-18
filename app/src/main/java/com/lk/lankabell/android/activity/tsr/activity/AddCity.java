@@ -151,6 +151,11 @@ public class AddCity extends Activity implements OnClickListener {
 		if (myTitleText != null) {
 			myTitleText.setText("Add City");
 		}
+		final TextView appversion = findViewById(R.id.appversion);
+		final DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 
 		locManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
@@ -166,8 +171,6 @@ public class AddCity extends Activity implements OnClickListener {
 
 		dropdown_City = (AutoCompleteTextView) findViewById(R.id.dropdown_City);
 
-
-		dbh = new DatabaseHandler(getApplicationContext());
 		ArrayList<String> list = dbh.getCities();
 		Float Pos_Longitude = null;
 		Float Pos_Latitude = null;

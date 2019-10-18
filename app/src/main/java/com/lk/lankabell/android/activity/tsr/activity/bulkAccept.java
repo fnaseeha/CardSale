@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.AbsoluteLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -37,7 +38,12 @@ public class bulkAccept extends Activity {
         if ( myTitleText != null ) {      	  
              myTitleText.setText("Card Acceptance");
         }
-        
+		DatabaseHandler dbh  = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
         SQLiteDatabase db = openOrCreateDatabase("TSRDBNEW", MODE_PRIVATE, null);
 		String sql = "select CARD_TYPE,DENOMINATION,BULK_NO,START_SERIAL,END_SERIAL,NO_OF_CARDS from TSR_RECEIVED_CARD_BUNDLES WHERE IS_ACCEPTED = '0' AND CARD_RETURNS = 0 ";
 		Cursor OrderCursor = db.rawQuery(sql, null);
@@ -72,13 +78,15 @@ public class bulkAccept extends Activity {
 	        return adapter;
 	    }
 
+
 		public void OnclickAccept(View view) {
-			  AbsoluteLayout vwParentRow = (AbsoluteLayout )view.getParent();
-		      TextView CardType = (TextView)vwParentRow.getChildAt(0);
-		      TextView denomination = (TextView)vwParentRow.getChildAt(2);
-		      TextView bulkId = (TextView)vwParentRow.getChildAt(1);
-		      TextView startSerial = (TextView)vwParentRow.getChildAt(3);
-		      TextView endSerialValue = (TextView)vwParentRow.getChildAt(4);
+			LinearLayout vwParentRow = (LinearLayout) view.getParent();
+			 // AbsoluteLayout vwParentRow = (AbsoluteLayout )view.getParent();
+		      TextView CardType = (TextView)vwParentRow.findViewById(R.id.card_type);
+		      TextView denomination = (TextView)vwParentRow.findViewById(R.id.denom);
+		      TextView bulkId = (TextView)vwParentRow.findViewById(R.id.bulk);
+		      TextView startSerial = (TextView)vwParentRow.findViewById(R.id.startserial);
+		      TextView endSerialValue = (TextView)vwParentRow.findViewById(R.id.endserial);
 		      
 		      DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 			  User user = dbh.getUserDetails();

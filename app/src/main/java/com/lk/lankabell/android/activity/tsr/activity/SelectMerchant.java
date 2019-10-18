@@ -92,6 +92,12 @@ public class SelectMerchant extends Activity implements OnClickListener {
 		final TextView myTitleText = (TextView) findViewById(R.id.myTitle);
 		myTitleText.setText("Select Merchant");
 
+		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		spinner = (Spinner) findViewById(R.id.spnCitySelect);
 		if (CONSTANTS.NO_LOCATION_RESTRICT) {
 			populateCities();

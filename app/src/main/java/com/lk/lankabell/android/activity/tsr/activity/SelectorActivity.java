@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -19,12 +20,17 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.SyncStateContract;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -95,7 +101,7 @@ public class SelectorActivity extends Activity {
 
 	private int interval3 = 15 * 60; // 60 seconds
 	private TSRApplication tsrApp;
-
+	int WRITE_EXTERNAL_STORAGE_PERMISSSION_REQUEST_CODE = 100;
 	@Override
 	protected void onDestroy() {
 //		if (mTimer3 != null) {
@@ -129,27 +135,48 @@ public class SelectorActivity extends Activity {
 
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
 
+
 		tsrApp = (TSRApplication) getApplication();
 		tsrApp.startBeginReceiver();
 		tsrApp.startTSRServices();
 
 //		mTimer3.postDelayed(mTask3, interval3 * 1000L); // start the timer for
-														// the first time
+		AskWritePermission();									// the first time
 		Log.d("=================", "=======================================");
 		startService(new Intent(this, BackgroundService.class)); // start
 																	// background
 																	// webservices
 		Log.d("================", "==1111111========================================");
-		final TextView myTitleText = (TextView) findViewById(R.id.myTitle);
+		final TextView myTitleText = findViewById(R.id.myTitle);
 		if (myTitleText != null) {
 			myTitleText.setText("Home");
 		}
+
+		final TextView appversion = findViewById(R.id.appversion);
+		PackageInfo pInfo = null;
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		Double version = dbh.getVersion();
+		if(version== 0){
+			try {
+				pInfo = this.getPackageManager().getPackageInfo("com.lk.lankabell.android.activity.tsr", 0);
+				System.out.println("* pInfo.versionName "+pInfo.versionName);
+				appversion.setText("v-"+pInfo.versionName);
+				dbh.saveVersion(Double.parseDouble(pInfo.versionName));
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}else{
+			appversion.setText("v-"+version);
+		}
+
+//		double version = Double.parseDouble(pInfo.versionName);
+//		appversion.setText(Double.toString(version));
 
 		setMainMenu();
 
 		registerReceiver(mybroadcast, new IntentFilter(Intent.ACTION_SCREEN_ON));
 
-		(new SystemTimesAsyc(this)).execute(new String[]{""});
+		(new SystemTimesAsyc(this)).execute("");
 
 	}
 
@@ -184,6 +211,36 @@ public class SelectorActivity extends Activity {
 
 	}
 
+	private void AskWritePermission() {
+		//WRITE_EXTERNAL_STORAGE
+		if (ContextCompat.checkSelfPermission(SelectorActivity.this,
+				android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+				!= PackageManager.PERMISSION_GRANTED) {
+
+			// Permission is not granted
+			if (ActivityCompat.shouldShowRequestPermissionRationale(SelectorActivity.this,
+					android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+				AskWritePermissionAgain();
+				//new ToastManager(LoginPage.this).error("SMS Won't send to Coordinator!");
+			} else {
+				ActivityCompat.requestPermissions(SelectorActivity.this,
+						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+						WRITE_EXTERNAL_STORAGE_PERMISSSION_REQUEST_CODE);
+
+			}
+		}
+	}
+
+	private void AskWritePermissionAgain() {
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+				!= PackageManager.PERMISSION_GRANTED) {
+			// Check Permissions Nowx
+			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_PERMISSSION_REQUEST_CODE);
+
+		} else {
+			// permission has been granted, continue as usual
+		}
+	}
 	private void setMainMenu() {
 		// TODO Auto-generated method stub
 		ArrayList<MainMenuItem> menuitems = new ArrayList<MainMenuItem>();
@@ -269,7 +326,7 @@ public class SelectorActivity extends Activity {
 			}
 		});
 
-		menuitems.add(itemAttendance);
+		//menuitems.add(itemAttendance);
 
 		MainMenuItem itemLogout = new MainMenuItem(R.drawable.logout_icon_final, getResources().getString(R.string.logout));
 		itemLogout.setOnclick(new View.OnClickListener() {
@@ -284,7 +341,7 @@ public class SelectorActivity extends Activity {
 		menuitems.add(itemLogout);
 
 		MainMenuAdapter adpMainMenu = new MainMenuAdapter(getApplicationContext(), menuitems);
-		GridView grid = (GridView) findViewById(R.id.gridview);
+		GridView grid = findViewById(R.id.gridview);
 		grid.setAdapter(adpMainMenu);
 
 	}
@@ -319,7 +376,7 @@ public class SelectorActivity extends Activity {
 		final View dialogBuilder = factory.inflate(R.layout.custom_msg_dialog, null);
 		final AlertDialog dialogView = new AlertDialog.Builder(this).create();
 		dialogView.setView(dialogBuilder);
-		TextView title = (TextView) dialogBuilder.findViewById(R.id.title);
+		TextView title = dialogBuilder.findViewById(R.id.title);
 		title.setText("Do you want to exit?");
 		dialogBuilder.findViewById(R.id.btn_yes).setOnClickListener(new  View.OnClickListener() {
 			@Override

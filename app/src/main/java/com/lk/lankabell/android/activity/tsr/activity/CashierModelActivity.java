@@ -1,10 +1,14 @@
 package com.lk.lankabell.android.activity.tsr.activity;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
@@ -28,6 +32,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lk.lankabell.android.activity.tsr.R;
@@ -60,8 +65,8 @@ public class CashierModelActivity extends Activity {
     final int[] columnIds = new int[] {R.id.lableDenomination, R.id.lablesalescountnumber,R.id.lablesalesamountnumber, R.id.lableInhandcountnumber, R.id.lableInhandamountnumber };
     final String[] columnTags = new String[] {"Denominations", "Sales Count", "Sales Amount", "Inhand Count", "Inhand Amount"};
 	private DatabaseHandler dbh;
-	
-	
+
+	SoapObject result;
 	Double Sum_of_Sales = 0.0;
 	Double Sum_of_Inhand = 0.0;
 	
@@ -73,6 +78,13 @@ public class CashierModelActivity extends Activity {
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
 		final TextView myTitleText=(TextView)findViewById(R.id.myTitle);
 		myTitleText.setText("Cashier Confirm");
+
+		final TextView appversion = findViewById(R.id.appversion);
+		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		URL = WsdlReader.getServiceUrl(true,this);
 		Sales_Sum = (TextView) findViewById(R.id.txtsalesAmount);
 		Inhand_Sum = (TextView) findViewById(R.id.txthandamount);
@@ -84,8 +96,7 @@ public class CashierModelActivity extends Activity {
 		
 		
 		lvcashire = (ListView)findViewById(R.id.lvcashiremodel);
-		
-		dbh = new DatabaseHandler(getApplicationContext());
+
 		
 		setData();
 		
@@ -231,6 +242,9 @@ public class CashierModelActivity extends Activity {
 			return;
 		} else {
 			if (isOnline() == true) {
+
+
+
 				dbh.SaveConfirmation(salesamount.toString(),Inhand_Sum.getText().toString().trim(),TxtAdjuestAmount,TxtRemarks,Securiry);
 				SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME1);
 				User user = dbh.getUserDetails();		
@@ -247,35 +261,34 @@ public class CashierModelActivity extends Activity {
 				envelope.setOutputSoapObject(request);
 				envelope.dotNet = true;
 				try {
-					HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-					androidHttpTransport.call(SOAP_ACTION1, envelope);
-					SoapObject result = (SoapObject) envelope.bodyIn;
-					if (result != null) {
-						Gson gsonResponse = new Gson();
-						Log.d(" ******************** ", " "+ gsonResponse );
-						String Message = result.getProperty(0).toString().replace("\"", "");
-						if (Message.equals("ErrorSecurityCode")) {
-							error.setText("Please Enter the Valied Security Code.");
-						}
-						if (Message.equals("Error")) {
-							error.setText("Please Try Again.");
-						}
-						if (Message.equals("Sucess")) {
-							AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-				    		dlgAlert.setMessage("Cashier Card balance is success.");
-				    		dlgAlert.setTitle("Confirm Sucess.");
-				    		dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int which) {
-									Intent intent = new Intent(CashierModelActivity.this, Updates.class);
-									startActivity(intent);
+					/*HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+					androidHttpTransport.call(SOAP_ACTION1, envelope);*/
+
+
+					new GetCashierData(this,envelope).execute("");
+
+
+					Timer _timer  = new Timer();
+
+					_timer.schedule(new TimerTask() {
+						@Override
+						public void run() {
+
+							// use runOnUiThread(Runnable action)
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									try {
+										getResponse();
+									} catch (Exception e) {
+										e.printStackTrace();
+									}
 								}
 							});
-				    		dlgAlert.setCancelable(true);
-				    		dlgAlert.create().show();						
-							//new AlertDialog.Builder(CashierModelActivity.this).setTitle("").setMessage("").setPositiveButton("Ok", null).show();
 						}
-						Log.w("Inventory Response", Message.toString());										
-					}
+					}, 2000);
+
+
 				} catch (Exception e) {
 					dbh.insertError("Cashier Model has error. Error : "+ e.getMessage());
 					e.printStackTrace();
@@ -285,8 +298,172 @@ public class CashierModelActivity extends Activity {
 			}
 		} 
 	}
-	
-	
+
+	public void getResponse() {
+		if (result != null) {
+
+			Gson gsonResponse = new Gson();
+			Log.d(" ******************** ", " "+ gsonResponse );
+			String Message = result.getProperty(0).toString().replace("\"", "");
+			if (Message.equals("ErrorSecurityCode")) {
+				error.setText("Please Enter the Valied Security Code.");
+			}
+			if (Message.equals("Error")) {
+				error.setText("Please Try Again.");
+			}
+			if (Message.equals("Sucess")) {
+				AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+				dlgAlert.setMessage("Cashier Card balance is success.");
+				dlgAlert.setTitle("Confirm Sucess.");
+				dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						Intent intent = new Intent(CashierModelActivity.this, Updates.class);
+						startActivity(intent);
+					}
+				});
+				dlgAlert.setCancelable(true);
+				dlgAlert.create().show();
+				//new AlertDialog.Builder(CashierModelActivity.this).setTitle("").setMessage("").setPositiveButton("Ok", null).show();
+			}
+			Log.w("Inventory Response", Message.toString());
+		}
+	}
+
+	/*private class BlockSync extends AsyncTask<String, String, String> {
+		private Context context;
+		private String simSerial;
+
+		public BlockSync(Context context, String simSerial) {
+			this.context = context;
+			this.simSerial = simSerial;
+		}
+
+		@Override
+		protected String doInBackground(String... strings) {
+			SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME1);
+			User user = dbh.getUserDetails();
+			request.addProperty("strInputUserMobile", Utils.getSimSerialNumber(this));
+			request.addProperty("strInputUserName", user.getUserName());
+			request.addProperty("strInputUserPassword", user.getPassword());
+			request.addProperty("SalesAmount", salesamount.toString());
+			request.addProperty("InHandAmount", Inhand_Sum.getText().toString().trim());
+			request.addProperty("AdjuestAmount", TxtAdjuestAmount);
+			request.addProperty("Remarks", TxtRemarks);
+			request.addProperty("SecurityCode", Securiry);
+
+			SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+			envelope.setOutputSoapObject(request);
+			envelope.dotNet = true;
+			try {
+				HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+				androidHttpTransport.call(SOAP_ACTION1, envelope);
+				SoapObject result = (SoapObject) envelope.bodyIn;
+				if (result != null) {
+					Gson gsonResponse = new Gson();
+					Log.d(" ******************** ", " " + gsonResponse);
+					String Message = result.getProperty(0).toString().replace("\"", "");
+					if (Message.equals("ErrorSecurityCode")) {
+						error.setText("Please Enter the Valied Security Code.");
+					}
+					if (Message.equals("Error")) {
+						error.setText("Please Try Again.");
+					}
+					if (Message.equals("Sucess")) {
+						AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
+						dlgAlert.setMessage("Cashier Card balance is success.");
+						dlgAlert.setTitle("Confirm Sucess.");
+						dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+								Intent intent = new Intent(CashierModelActivity.this, Updates.class);
+								startActivity(intent);
+							}
+						});
+						dlgAlert.setCancelable(true);
+						dlgAlert.create().show();
+						//new AlertDialog.Builder(CashierModelActivity.this).setTitle("").setMessage("").setPositiveButton("Ok", null).show();
+					}
+					Log.w("Inventory Response", Message.toString());
+				}
+			} catch (Exception e) {
+				dbh.insertError("Cashier Model has error. Error : " + e.getMessage());
+				e.printStackTrace();
+			}
+			return "";
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+
+			System.out.println("* POST EXECUTED  " + result);
+
+		}
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
+		protected void onProgressUpdate(String... text) {
+
+
+		}
+	}*/
+
+	private class GetCashierData extends AsyncTask<String, String, String> {
+
+
+		private HttpTransportSE androidHttpTransport;
+		private Context context;
+		private SoapSerializationEnvelope envelope;
+	//	private SoapObject result;
+
+		public GetCashierData(Context context,
+							  SoapSerializationEnvelope envelope) {
+			super();
+			this.context = context;
+			androidHttpTransport = new HttpTransportSE(URL);
+			this.envelope = envelope;
+			//this.result = result;
+		}
+
+
+		@Override
+		protected String doInBackground(String... params) {
+			try {
+
+				HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+				androidHttpTransport.call(SOAP_ACTION1, envelope);
+				 result = (SoapObject) envelope.bodyIn;
+
+
+				//   System.out.println("* result " + result!=null?result.toString():"");
+//
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "";
+		}
+
+
+		@Override
+		protected void onPostExecute(String result) {
+
+			System.out.println(" * GetAync result "+result);
+
+		}
+
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
+		protected void onProgressUpdate(String... text) {
+
+
+		}
+
+	}
 	@Override
 	public void onBackPressed() {
 		Intent intent = new Intent(CashierModelActivity.this, Updates.class);
@@ -294,8 +471,8 @@ public class CashierModelActivity extends Activity {
 		finish();
         return;
 	}
-	
-	
+
+
 	public boolean isOnline() { // check network connection is available
 		boolean connected = false;
 		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -309,17 +486,17 @@ public class CashierModelActivity extends Activity {
 		}
 		return connected;
 	}
-	
+
 //	private String getMyPhoneNumber() {
 //		TelephonyManager mTelephonyMgr;
 //		mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 //		String getSimSerialNumber = mTelephonyMgr.getSimSerialNumber();
 //		return getSimSerialNumber;
 //	}
-	
+
 	private class AysncCashireModel extends AsyncTask<Void, Void, SoapObject>{
- 
-		
+
+
 		private Context context;
 		private ProgressDialog pg;
 
@@ -341,7 +518,7 @@ public class CashierModelActivity extends Activity {
 			super.onPostExecute(result);
 			pg.dismiss();
 			viewData(result);
-			
+
 		}
 
 		@Override
@@ -350,13 +527,13 @@ public class CashierModelActivity extends Activity {
 			super.onPreExecute();
 			pg = ProgressDialog.show(this.context, "Loading", "Please wait. Loading data");
 			pg.setCancelable(true);
-			 
+
 		}
-		
-		
-		
+
+
+
 	}
-	
-	
+
+
 
 }

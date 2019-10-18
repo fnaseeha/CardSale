@@ -23,8 +23,15 @@ public class MerchantViewerFinal extends Activity{
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
 		final TextView myTextTitle=(TextView)findViewById(R.id.myTitle);
 		myTextTitle.setText("Merchant Viewer");
+
+		final TextView appversion = findViewById(R.id.appversion);
+		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		String merchantId =  getIntent().getExtras().getString("merchantID");
-		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+
 		Merchant merchant = dbh.GetMerchantByMerchantId(Long.valueOf(merchantId));
 		EditText txtMerchantName =(EditText)findViewById(R.id.txtMerchantViewerName);
 		EditText txtReload_number=(EditText)findViewById(R.id.txtMerchantViewerReloadNumber);

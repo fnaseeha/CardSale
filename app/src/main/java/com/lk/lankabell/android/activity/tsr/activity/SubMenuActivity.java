@@ -35,8 +35,14 @@ public class SubMenuActivity extends Activity {
 		
 		final TextView myTitleText=(TextView)findViewById(R.id.myTitle);
 		myTitleText.setText("Select Your options");
-		
+		final TextView appversion = findViewById(R.id.appversion);
+
 		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
+
 		User user = dbh.getUserDetails();
 		
 		TextView lblUserName = (TextView)findViewById(R.id.lblUserName);

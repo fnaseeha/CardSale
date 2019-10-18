@@ -45,9 +45,15 @@ public class MerchantInventoryCitySelect extends Activity{
         if ( myTitleText != null ) {
             myTitleText.setText("Merchant Inventory By City");
         }
+		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		btnSelect =(Button)findViewById(R.id.btnSelect);
 		lv=(ListView)findViewById(R.id.lvMerSelect);
-		dbh = new DatabaseHandler(getApplicationContext());
+
 
 		ArrayList<String> list = dbh.getCities();
   		ArrayAdapter<String> adapter = new ArrayAdapter(MerchantInventoryCitySelect.this,android.R.layout.simple_dropdown_item_1line, list);

@@ -63,6 +63,11 @@ public class WebMobileProcessors extends Activity {
 		if (myTitleText != null) {
 			myTitleText.setText("Updates");
 		}
+		final TextView appversion = findViewById(R.id.appversion);
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 	}
 
 	@Override

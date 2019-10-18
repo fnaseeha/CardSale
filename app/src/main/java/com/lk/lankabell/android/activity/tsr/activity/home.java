@@ -9,6 +9,7 @@ package com.lk.lankabell.android.activity.tsr.activity;
  */
 
 import com.lk.lankabell.android.activity.tsr.R;
+import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
 import com.lk.lankabell.android.activity.tsr.util.WsdlReader;
 
 import android.app.Activity;
@@ -48,6 +49,12 @@ public class home extends Activity{
 		final TextView myTitleText=(TextView)findViewById(R.id.myTitle);
 		if(myTitleText!=null) {
 			myTitleText.setText("Cards");
+		}
+		final TextView appversion = findViewById(R.id.appversion);
+
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
 		}
 	}
 

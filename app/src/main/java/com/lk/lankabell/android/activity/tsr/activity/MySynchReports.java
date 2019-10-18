@@ -43,6 +43,12 @@ public class MySynchReports extends Activity {
 		if(myTitleText!=null){
 			myTitleText.setText("My Sync Reports");
 		}
+		final TextView appversion = findViewById(R.id.appversion);
+
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 		listView=(ListView) findViewById(R.id.synchreportlistView);
 		addItemsOnSpinner1();
 		setLastSyncTime();

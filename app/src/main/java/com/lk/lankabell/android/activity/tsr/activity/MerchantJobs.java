@@ -16,6 +16,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.lk.lankabell.android.activity.tsr.R;
+import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
 
 /**
  * @author Jei
@@ -40,6 +41,11 @@ public class MerchantJobs extends Activity {
 		if (myTitleText != null) {
 			myTitleText.setText("Merchants");
 
+		}
+		final TextView appversion = findViewById(R.id.appversion);
+		DatabaseHandler dbh=  new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
 		}
 	}
 

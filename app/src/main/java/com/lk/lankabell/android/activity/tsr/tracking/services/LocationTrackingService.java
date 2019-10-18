@@ -2,10 +2,12 @@ package com.lk.lankabell.android.activity.tsr.tracking.services;
 
 import java.util.Date;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,6 +16,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.IBinder;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -30,13 +33,14 @@ import com.lk.lankabell.android.activity.tsr.tracking.utils.Utils;
 import com.lk.lankabell.android.activity.tsr.util.CONSTANTS;
 
 public class LocationTrackingService extends Service implements
-        IOnTrackerLocationChanged, SensorEventListener {
+		IOnTrackerLocationChanged, SensorEventListener {
 
 	// private static final long MIN_TIME_BW_UPDATES = 5;
 	// private static final float MIN_DISTANCE_CHANGE_FOR_UPDATES = 1;
 	private DBTracker dbHelper;
 	private TrackerLocationManager mTracker;
 	private DatabaseHandler mDbTsr;
+
 
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -94,6 +98,16 @@ public class LocationTrackingService extends Service implements
 		c.setCostAllowed(true);
 		c.setPowerRequirement(Criteria.POWER_HIGH);
 		String provider = locationManager.getBestProvider(c, true);
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+			// TODO: Consider calling
+			//    ActivityCompat#requestPermissions
+			// here to request the missing permissions, and then overriding
+			//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+			//                                          int[] grantResults)
+			// to handle the case where the user grants the permission. See the documentation
+			// for ActivityCompat#requestPermissions for more details.
+			return;
+		}
 		Location locationn = locationManager.getLastKnownLocation(provider);
 		// ////////////////////////////////////////////////////////
 

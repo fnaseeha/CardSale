@@ -8,15 +8,18 @@ import com.lk.lankabell.android.activity.tsr.tracking.utils.DateTimeFormatings;
 import com.lk.lankabell.android.activity.tsr.tracking.utils.Utils;
 import com.lk.lankabell.android.activity.tsr.util.CONSTANTS;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 public class TrackerLocationManager {
@@ -26,7 +29,7 @@ public class TrackerLocationManager {
 	private Location currentBestLocation;
 	private static long MIN_TIME_BW_UPDATES = 30 * 1000;
 	private static float MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; // maually changed
-																// to 0
+	// to 0
 
 	public LocationManager locationManager;
 	private TSRLocationListen locatoinlistner;
@@ -41,7 +44,7 @@ public class TrackerLocationManager {
 	public void trackLocation() {
 		try {
 			locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-			locatoinlistner =  new TSRLocationListen();
+			locatoinlistner = new TSRLocationListen();
 			Criteria locationCritera = new Criteria();
 			locationCritera.setAccuracy(Criteria.ACCURACY_FINE);
 			locationCritera.setAltitudeRequired(false);
@@ -50,6 +53,17 @@ public class TrackerLocationManager {
 			locationCritera.setPowerRequirement(Criteria.NO_REQUIREMENT);
 
 			String providerName = locationManager.getBestProvider(locationCritera, true);
+			if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+					ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+				// TODO: Consider calling
+				//    ActivityCompat#requestPermissions
+				// here to request the missing permissions, and then overriding
+				//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+				//                                          int[] grantResults)
+				// to handle the case where the user grants the permission. See the documentation
+				// for ActivityCompat#requestPermissions for more details.
+				return;
+			}
 			Location location = locationManager.getLastKnownLocation(providerName);
 
 			double latitude = 0;

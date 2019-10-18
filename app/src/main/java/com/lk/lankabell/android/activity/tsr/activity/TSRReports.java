@@ -72,7 +72,11 @@ public class TSRReports extends Activity {
 		if (myTitleText != null) {
 			myTitleText.setText("My Sales Reports");
 		}
-		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		DatabaseHandler dbh=  new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 		listView = (ListView) findViewById(R.id.tsrreportlistView);
 
 		addItemsOnSpinner1();
@@ -81,8 +85,11 @@ public class TSRReports extends Activity {
 		addListenerOnButton();
 		addListenerOnSpinnerItemSelection();
 
-		dbh.getAllSalesData();
-
+		try {
+			dbh.getAllSalesData();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private void addListenerOnSpinnerItemSelection() {
@@ -210,9 +217,13 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
+				try {
+					salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 
 			}
 
@@ -225,48 +236,58 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("Yesterday")) {
 			
 			fromDate.setTime(getStartEndTimes(-1, true));
 			toDate.setTime(getStartEndTimes(-1, false));
-			
-			
-			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
-				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
-				dateVal = 1;
-				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
-			 
-				if (adapter != null) {
-					salesReport.clear();
-					adapter.notifyDataSetChanged();
+
+				if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
+					ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
+					dateVal = 1;
+					detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
+
+					if (adapter != null) {
+						salesReport.clear();
+						adapter.notifyDataSetChanged();
+					}
+					try {
+						salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+						adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+						listView.setAdapter(adapter);
+					}catch (Exception e){
+						e.printStackTrace();
+					}
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
 
-			}
+				if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
+					ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
+					dateVal = 7;
+					detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
 
-			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
-				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
-				dateVal = 7;
-				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
- 
-				if (adapter != null) {
-					salesReport.clear();
-					adapter.notifyDataSetChanged();
+					if (adapter != null) {
+						salesReport.clear();
+						adapter.notifyDataSetChanged();
+					}
+					try {
+						salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+						adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+						listView.setAdapter(adapter);
+					}catch (Exception e){
+						e.printStackTrace();
+					}
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
 
-			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("This Week")) {
+
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
 				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
 				dateVal = 7;
@@ -276,10 +297,13 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
@@ -291,112 +315,130 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 
-		} else if (selectDateRangeSprinner.getSelectedItem().equals("Last Week")) {
-			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
-				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
-				dateVal = 14;
-				toDateVal = 7;
-				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
-				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
-				toDate.setTime(new Date().getTime() - (toDateVal * 24 * 60 * 60 * 1000));
-				if (adapter != null) {
-					salesReport.clear();
-					adapter.notifyDataSetChanged();
+		}
+		else if (selectDateRangeSprinner.getSelectedItem().equals("Last Week")) {
+			try {
+				if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
+					ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
+					dateVal = 14;
+					toDateVal = 7;
+					detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
+					fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
+					toDate.setTime(new Date().getTime() - (toDateVal * 24 * 60 * 60 * 1000));
+					if (adapter != null) {
+						salesReport.clear();
+						adapter.notifyDataSetChanged();
+					}
+					try {
+						salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+						adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+						listView.setAdapter(adapter);
+					}catch (Exception e){
+						e.printStackTrace();
+					}
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
-			}
-			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
-				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
-				dateVal = 14;
-				toDateVal = 7;
-				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
-				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
-				toDate.setTime(new Date().getTime() - (toDateVal * 24 * 60 * 60 * 1000));
-				if (adapter != null) {
-					salesReport.clear();
-					adapter.notifyDataSetChanged();
+				if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
+					ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
+					dateVal = 14;
+					toDateVal = 7;
+					detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
+					fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
+					toDate.setTime(new Date().getTime() - (toDateVal * 24 * 60 * 60 * 1000));
+					if (adapter != null) {
+						salesReport.clear();
+						adapter.notifyDataSetChanged();
+					}
+					try {
+						salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
+						adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
+						listView.setAdapter(adapter);
+					}catch (Exception e){
+						e.printStackTrace();
+					}
 				}
-				salesReport = dbh.getMerchantWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+			}catch (Exception e){
+				e.printStackTrace();
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("This Month")) {
-			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
-				Toast toast = Toast.makeText(TSRReports.this, "Summary report only avaiable ! ", Toast.LENGTH_SHORT);
-				toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-				toast.show();
-			}
-			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
-				dateVal = 30;
-				toDate = new Date();
-				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
-				// ++++++++++++++++++++++++++++++++MERCHANT
-				// WISE+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-				String fromDateString = "";
-				String toDateString = "";
-				SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd");
-				try {
-					fromDateString = sd.format(fromDate);
-					toDateString = sd.format(toDate);
-				} catch (Exception e) {
-					e.printStackTrace();
+			try {
+				if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
+					Toast toast = Toast.makeText(TSRReports.this, "Summary report only avaiable ! ", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
 				}
-				SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME2);
-				DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
-				User user = dbh.getUserDetails();
-				request.addProperty("strInputUserMobile", getMyPhoneNumber());
-				request.addProperty("strInputUserName", user.getUserName());
-				request.addProperty("strInputUserPassword", user.getPassword());
-				request.addProperty("strFromDate", fromDateString);
-				request.addProperty("strToDate", toDateString);
-				SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-				envelope.setOutputSoapObject(request);
-				envelope.dotNet = true;
-				try {
-					HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-					androidHttpTransport.call(SOAP_ACTION2, envelope);
-					SoapObject result = (SoapObject) envelope.bodyIn;
-					if (result != null) {
-						ArrayList<SalesReport> salesReportList = new ArrayList<SalesReport>();
-						String dbQuery5 = result.getProperty(0).toString();
-						String Value5 = dbQuery5.replaceAll("\\[|\\]", "");
-						String[] statusarrayData5 = Value5.split("<");
-						String[] firstValue = statusarrayData5[0].split(",");
-						Long statusvalue5 = Long.parseLong(firstValue[0].toString());
-						if (statusvalue5 == 1) {
-							salesReportList.clear();
-							for (int i = 1; i < statusarrayData5.length; i++) {
-								String realValues = statusarrayData5[i].replaceAll(">", "");
-								String[] statusarray5 = realValues.split("#");
-								SalesReport salesReportN = new SalesReport();
-								salesReportN.setMerchantId(Long.valueOf(statusarray5[0].toString().replace(",", "").trim()));
-								salesReportN.setCardType(statusarray5[1].toString().replace(",", ""));
-								salesReportN.setDenom(Double.valueOf(statusarray5[2].toString().replace(",", "")));
-								salesReportN.setQty(Integer.valueOf(statusarray5[3].toString().replace(",", "").trim()));
-								salesReportN.setAmount(Double.valueOf(statusarray5[4].toString().replace(",", "")));
-								salesReportList.add(salesReportN);
-							}
-							adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReportList);
-							listView.setAdapter(adapter);
-
-						}
+				if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
+					dateVal = 30;
+					toDate = new Date();
+					fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
+					// ++++++++++++++++++++++++++++++++MERCHANT
+					// WISE+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					String fromDateString = "";
+					String toDateString = "";
+					SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd");
+					try {
+						fromDateString = sd.format(fromDate);
+						toDateString = sd.format(toDate);
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
-					Utils.ShowMsg(this, "Error occured while loading the report");
-					Utils.writeToErrLogFileWithTime(e);
+					SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME2);
+					DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+					User user = dbh.getUserDetails();
+					request.addProperty("strInputUserMobile", getMyPhoneNumber());
+					request.addProperty("strInputUserName", user.getUserName());
+					request.addProperty("strInputUserPassword", user.getPassword());
+					request.addProperty("strFromDate", fromDateString);
+					request.addProperty("strToDate", toDateString);
+					SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+					envelope.setOutputSoapObject(request);
+					envelope.dotNet = true;
+					try {
+						HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+						androidHttpTransport.call(SOAP_ACTION2, envelope);
+						SoapObject result = (SoapObject) envelope.bodyIn;
+						if (result != null) {
+							ArrayList<SalesReport> salesReportList = new ArrayList<SalesReport>();
+							String dbQuery5 = result.getProperty(0).toString();
+							String Value5 = dbQuery5.replaceAll("\\[|\\]", "");
+							String[] statusarrayData5 = Value5.split("<");
+							String[] firstValue = statusarrayData5[0].split(",");
+							Long statusvalue5 = Long.parseLong(firstValue[0].toString());
+							if (statusvalue5 == 1) {
+								salesReportList.clear();
+								for (int i = 1; i < statusarrayData5.length; i++) {
+									String realValues = statusarrayData5[i].replaceAll(">", "");
+									String[] statusarray5 = realValues.split("#");
+									SalesReport salesReportN = new SalesReport();
+									salesReportN.setMerchantId(Long.valueOf(statusarray5[0].toString().replace(",", "").trim()));
+									salesReportN.setCardType(statusarray5[1].toString().replace(",", ""));
+									salesReportN.setDenom(Double.valueOf(statusarray5[2].toString().replace(",", "")));
+									salesReportN.setQty(Integer.valueOf(statusarray5[3].toString().replace(",", "").trim()));
+									salesReportN.setAmount(Double.valueOf(statusarray5[4].toString().replace(",", "")));
+									salesReportList.add(salesReportN);
+								}
+								adapter = new TSRMerchantWiseReportAdapter(TSRReports.this, salesReportList);
+								listView.setAdapter(adapter);
+
+							}
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+						Utils.ShowMsg(this, "Error occured while loading the report");
+						Utils.writeToErrLogFileWithTime(e);
+					}
+					// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 				}
-				// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			}catch (Exception e){
+				e.printStackTrace();
 			}
 		}
 	}
@@ -418,11 +460,14 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				adapter.notifyDataSetChanged();
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					adapter.notifyDataSetChanged();
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
 				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
@@ -433,11 +478,14 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				adapter.notifyDataSetChanged();
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					adapter.notifyDataSetChanged();
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("Yesterday")) {
 			fromDate.setTime(getStartEndTimes(-1, true));
@@ -452,11 +500,14 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				adapter.notifyDataSetChanged();
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					adapter.notifyDataSetChanged();
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
 				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
@@ -468,10 +519,13 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("This Week")) {
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
@@ -483,11 +537,14 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				adapter.notifyDataSetChanged();
-				listView.setAdapter(adapter);
-				
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					adapter.notifyDataSetChanged();
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
 				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
@@ -498,10 +555,13 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-				
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("Last Week")) {
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
@@ -515,10 +575,13 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
 				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
@@ -531,10 +594,13 @@ public class TSRReports extends Activity {
 					salesReport.clear();
 					adapter.notifyDataSetChanged();
 				}
-				salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getDateWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRDateWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("This Month")) {
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
@@ -685,10 +751,13 @@ public class TSRReports extends Activity {
 				dateVal = 1;
 				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
 				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
@@ -696,9 +765,13 @@ public class TSRReports extends Activity {
 				dateVal = 1;
 				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
 				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("Yesterday")) {
@@ -710,10 +783,13 @@ public class TSRReports extends Activity {
 				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
 //				fromDate.setTime(toDate.getTime() - (1 * 24 * 60 * 60 * 1000));
 //				toDate.setTime(new Date().getTime() - (2 * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
@@ -722,9 +798,13 @@ public class TSRReports extends Activity {
 				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
 //				fromDate.setTime(toDate.getTime() - (1 * 24 * 60 * 60 * 1000));
 //				toDate.setTime(new Date().getTime() - (2 * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("This Week")) {
@@ -733,9 +813,13 @@ public class TSRReports extends Activity {
 				dateVal = 7;
 				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
 				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 				
 			}
 			
@@ -744,10 +828,13 @@ public class TSRReports extends Activity {
 				dateVal = 7;
 				detOrsum = selectDetailSummarySprinner.getSelectedItem().toString();
 				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-				
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("Last Week")) {
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {
@@ -757,10 +844,13 @@ public class TSRReports extends Activity {
 				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
 				toDateVal = 7;
 				toDate.setTime(new Date().getTime() - (toDateVal * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Summary")) {
 				ArrayList<SalesReport> salesReport = new ArrayList<SalesReport>();
@@ -769,10 +859,13 @@ public class TSRReports extends Activity {
 				fromDate.setTime(toDate.getTime() - (dateVal * 24 * 60 * 60 * 1000));
 				toDateVal = 7;
 				toDate.setTime(new Date().getTime() - (toDateVal * 24 * 60 * 60 * 1000));
-				salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
-				adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
-				listView.setAdapter(adapter);
-
+				try {
+					salesReport = dbh.getCityWiseReport(epfNo, detOrsum, fromDate, toDate);
+					adapter = new TSRCityWiseReportAdapter(TSRReports.this, salesReport);
+					listView.setAdapter(adapter);
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 		} else if (selectDateRangeSprinner.getSelectedItem().equals("This Month")) {
 			if (selectDetailSummarySprinner.getSelectedItem().equals("Detail")) {

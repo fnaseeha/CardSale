@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import com.lk.lankabell.android.activity.tsr.R;
+import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
 
 
 /**
@@ -53,7 +54,13 @@ public class MainRadioActivity extends Activity  implements android.content.Dial
 		{
 			myTitleText.setText("Main menu");
 		}
-		
+		final TextView appversion = findViewById(R.id.appversion);
+
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		button =(Button) findViewById(R.id.btnCon);
 		button.setEnabled(false);
 		tv = (TextView) findViewById(R.id.menuerrortv);

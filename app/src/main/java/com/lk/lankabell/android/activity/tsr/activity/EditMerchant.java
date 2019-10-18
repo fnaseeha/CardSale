@@ -47,8 +47,12 @@ public class EditMerchant extends Activity{
             myTitleText.setText("Edit Merchant");
             
         }
-        DatabaseHandler dbh;
-        dbh = new DatabaseHandler(getApplicationContext());
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
   		ArrayList<String> list = dbh.getCities();
   
   		for (int i = 0; i < list.size(); i++) {

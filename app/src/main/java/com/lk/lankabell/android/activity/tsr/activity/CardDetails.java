@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import com.lk.lankabell.android.activity.tsr.R;
+import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
 
 public class CardDetails extends Activity{
 
@@ -32,6 +33,13 @@ public class CardDetails extends Activity{
         if ( myTitleText != null ) {      	  
              myTitleText.setText("My Cards");
         }
+		final TextView appversion = findViewById(R.id.appversion);
+
+		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
         TextView txtnextserial = (TextView)findViewById(R.id.txtStartSerialNo2);
         txtnextserial.setText("Next Serial");
         //

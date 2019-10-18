@@ -1,6 +1,7 @@
 package com.lk.lankabell.android.activity.tsr.activity;
 
 import com.lk.lankabell.android.activity.tsr.R;
+import com.lk.lankabell.android.activity.tsr.sqlite.DatabaseHandler;
 
 import android.Manifest;
 import android.content.Context;
@@ -21,6 +22,11 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -55,11 +61,16 @@ public class MerchantInventorySelectType extends Activity {
             myTitleText.setText("Merchant Inventory");
 
         }
+        final TextView appversion = findViewById(R.id.appversion);
+        DatabaseHandler dbh=  new DatabaseHandler(getApplicationContext());
+        if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
         AskLocationPermission();
         DataBindToSpinner();
 
         locManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        getGps();
+        //getGps();
     }
 
     private void AskLocationPermission() {
@@ -96,7 +107,8 @@ public class MerchantInventorySelectType extends Activity {
 
 
     public void getGps() {
-        progressDialog = ProgressDialog.show(MerchantInventorySelectType.this, "Please Wait..", "Gathering Geo informations");
+        progressDialog = ProgressDialog.show(MerchantInventorySelectType.this, "Please Wait..",
+                "Gathering Geo informations");
         // TODO Auto-generated method stub
         //progress.setVisibility(View.VISIBLE);
         // exceptions will be thrown if provider is not permitted.
@@ -121,7 +133,8 @@ public class MerchantInventorySelectType extends Activity {
         }
 
         if (gps_enabled) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -131,10 +144,11 @@ public class MerchantInventorySelectType extends Activity {
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
+            locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locListener);
         }
         if (network_enabled) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -144,7 +158,8 @@ public class MerchantInventorySelectType extends Activity {
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locListener);
+
+            locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 10, locListener);
         }
     }
 
@@ -167,6 +182,8 @@ public class MerchantInventorySelectType extends Activity {
 
                 progressDialog.dismiss();
 
+            }else{
+                System.out.println("* location is null");
             }
         }
 
@@ -193,18 +210,60 @@ public class MerchantInventorySelectType extends Activity {
     public void OnclickShow(View view) {
 
 
-        String latitudeVal = latitudeValue;
-        String LonditudeVal = londitudeValue;
+
 
         spnType = (Spinner) findViewById(R.id.spnType);
 
-        String type = spnType.getSelectedItem().toString();
+        final String type = spnType.getSelectedItem().toString();
+        if(type.equals("This Area")){
+            getGps();
+            final String latitudeVal = latitudeValue;
+            final String LonditudeVal = londitudeValue;
 
-        Intent intent = new Intent(MerchantInventorySelectType.this, MerchantInventoryMerchantList.class);
-        intent.putExtra("latitudeValue", latitudeVal);
-        intent.putExtra("londitudeValue", LonditudeVal);
-        intent.putExtra("type", type);
-        startActivity(intent);
+            Timer _timer  = new Timer();
+
+            _timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    // use runOnUiThread(Runnable action)
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            try {
+
+                                if(latitudeVal.equals("0")&&LonditudeVal.equals("0")){
+                                    Toast.makeText(MerchantInventorySelectType.this,"Error while gethering Geo Location",Toast.LENGTH_LONG).show();
+                                }else{
+                                    Intent intent = new Intent(MerchantInventorySelectType.this, MerchantInventoryMerchantList.class);
+                                    intent.putExtra("latitudeValue", latitudeVal);
+                                    intent.putExtra("londitudeValue", LonditudeVal);
+                                    intent.putExtra("type", type);
+                                    startActivity(intent);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(MerchantInventorySelectType.this,"Error while gethering Geo Location",Toast.LENGTH_LONG).show();
+
+                                //remove f
+                                // make simple f
+                                // check
+                            }
+                        }
+                    });
+                }
+            }, 2000);
+
+
+        }else{
+            Intent intent = new Intent(MerchantInventorySelectType.this, MerchantInventoryMerchantList.class);
+            intent.putExtra("latitudeValue", latitudeValue);
+            intent.putExtra("londitudeValue", londitudeValue);
+            intent.putExtra("type", type);
+            startActivity(intent);
+        }
+
+
     }
 
     /**

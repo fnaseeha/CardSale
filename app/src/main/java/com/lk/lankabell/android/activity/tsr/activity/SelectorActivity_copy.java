@@ -130,7 +130,11 @@ public class SelectorActivity_copy extends Activity {
 		if (myTitleText != null) {
 			myTitleText.setText("Home");
 		}
-		
+		final TextView appversion = findViewById(R.id.appversion);
+		DatabaseHandler dbh=  new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
 		
 		 
 		

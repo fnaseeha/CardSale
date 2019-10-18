@@ -50,9 +50,14 @@ DatabaseHandler dbh;
 		
 		final TextView myTextTitle=(TextView)findViewById(R.id.myTitle);
 		myTextTitle.setText("Edit Merchant");
-		
+
+		final TextView appversion = findViewById(R.id.appversion);
+		dbh = new DatabaseHandler(getApplicationContext());
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		String merchantId =  getIntent().getExtras().getString("merchantID");
-		DatabaseHandler dbh = new DatabaseHandler(getApplicationContext());
 		Merchant merchant = dbh.GetMerchantByMerchantId(Long.valueOf(merchantId));
 		String status = dbh.checkMerchantStatus(Long.valueOf(merchantId));
 		EditText txtMerchantName =(EditText)findViewById(R.id.txtEdit_MerchantName);

@@ -28,7 +28,13 @@ public class AssignMerchantFinal extends Activity{
 		
 		final TextView myTextTitle=(TextView)findViewById(R.id.myTitle);
 		myTextTitle.setText("Assign Merchant");
-		
+
+		dbh = new DatabaseHandler(getApplicationContext());
+		final TextView appversion = findViewById(R.id.appversion);
+		if(appversion != null){
+			appversion.setText("v -"+dbh.getVersion());
+		}
+
 		TextView name = (TextView) findViewById(R.id.txtMerchantName); 
 		
 		Intent i=getIntent();
@@ -53,7 +59,7 @@ public class AssignMerchantFinal extends Activity{
 		
 		merchantid.setText(bundle2.getString("merchantid"));
 		
-		dbh = new DatabaseHandler(getApplicationContext());
+
 	}
 
 	public boolean isOnline() {			// check network connection is available
